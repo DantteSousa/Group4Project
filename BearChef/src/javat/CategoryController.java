@@ -1,5 +1,6 @@
 package javat;
 
+import org.redisson.api.RScript;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -115,5 +116,15 @@ public class CategoryController {
     @PostMapping(path="/see-todo")
     public String seetodo2(ModelMap model) throws SQLException, ClassNotFoundException{
         return "redirect:/";
+    }
+
+    @GetMapping(path = "/index")
+    public String seeIndex(ModelMap model) throws SQLException,ClassNotFoundException{
+        return "index";
+    }
+
+    @PostMapping(path = "/index")
+    public String seeIndex2(ModelMap model) throws SQLException,ClassNotFoundException{
+        return "index";
     }
 }
