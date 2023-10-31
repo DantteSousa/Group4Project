@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+    <title>Add Entry</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Add an entry</h1>
+    <form method="POST">
+        <fieldset class="form-group">
+            <label> Category code :</label>
+            <input name="catcode" type="text" class="form-control" required th:attr="value = ${id}" />
+        </fieldset>
+        <fieldset class="form-group">
+            <label> Category description :</label>
+            <input name="catdesc" type="text" class="form-control" required th:attr="value = ${desc}" />
+        </fieldset>
+        <input class="btn btn-success" type="submit" value="Submit" />
+    </form>
+</div>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>

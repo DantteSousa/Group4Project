@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Items</title>
+</head>
+<body>
+<div class="container">
+    <h1>Items avilable for the category <span th:text="${desc}" ></span></h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Item Code</th>
+            <th>Item Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p:${itemlist}">
+            <td th:text="${p.itemcode}"></td>
+            <td th:text="${p.itemdesc}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <form method="POST">
+        <input class="btn btn-back" type="submit" value="Submit" />
+    </form>
+</div>
+</body>
+</html>
