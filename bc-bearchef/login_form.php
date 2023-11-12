@@ -7,12 +7,11 @@ session_start();
 
 if(isset($_POST['submit'])){
 
-   $name = mysqli_real_escape_string($conn, $_POST['name']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = md5($_POST['password']);
-   $cpass = md5($_POST['cpassword']);
-   $user_type = $_POST['user_type'];
-
+   $name = isset($_POST['name']) ? mysqli_real_escape_string($conn, $_POST['name']) : '';
+   $email = isset($_POST['email']) ? mysqli_real_escape_string($conn, $_POST['email']) : '';
+   $pass = isset($_POST['password']) ? md5($_POST['password']) : '';
+   $user_type = isset($_POST['user_type']) ? $_POST['user_type'] : '';
+   
    $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
 
    $result = mysqli_query($conn, $select);
@@ -55,6 +54,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
    <!-- ======== START OF THE NAV MENU ======== -->
+   <!--
    <header>
       <a href="#" class="logo">Logo</a>
       <div class="group">
@@ -74,7 +74,7 @@ if(isset($_POST['submit'])){
          <input type="text" placeholder="Search here...">
       </div>
    </header>
-   
+-->
    <!-- Import the menu the icons -->
    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

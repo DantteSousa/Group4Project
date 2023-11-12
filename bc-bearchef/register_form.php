@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
    $cpass = md5($_POST['cpassword']);
    $user_type = $_POST['user_type'];
 
-   $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
+   $select = " SELECT * FROM user_form WHERE email = '$email'";
 
    $result = mysqli_query($conn, $select);
 
@@ -23,8 +23,12 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $error[] = 'password not matched!';
       }else{
-         $insert = "INSERT INTO user_form(name, email, password, user_type) VALUES('$name','$email','$pass','$user_type')";
-         mysqli_query($conn, $insert);
+         $insert = "INSERT INTO user_form (name, lastName, email, password, user_type, address, phone) VALUES ('$name', '', '$email', '$pass', '$user_type', '', '')";
+
+         if (!mysqli_query($conn, $insert)) {
+            $error[] = "Error inserting record: " . mysqli_error($conn);
+         }
+
          header('location:login_form.php');
       }
    }
@@ -46,6 +50,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
    <!-- ======== START OF THE NAV MENU ======== -->
+   <!--
    <header>
       <a href="#" class="logo">Logo</a>
       <div class="group">
@@ -65,11 +70,12 @@ if(isset($_POST['submit'])){
          <input type="text" placeholder="Search here...">
       </div>
    </header>
-   
+-->
+
    <!-- Import the menu the icons -->
    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+<!--
    <script>
       // Click on the search button
       let searchBtn = document.querySelector('.searchBtn');
@@ -103,6 +109,7 @@ if(isset($_POST['submit'])){
       }
 
    </script>
+   -->
    <!-- ======== END OF THE NAV MENU ======== -->
 
    <div class="form-container">
