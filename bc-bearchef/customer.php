@@ -5,7 +5,7 @@ include 'includes/config.php';
 // customer_page.php or chef_page.php
 session_start();
 
-if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'chef') {
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'customer') {
    $userType = $_SESSION['user_type'];
    $userId = $_SESSION['id'];
 
