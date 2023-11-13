@@ -125,7 +125,7 @@
 }
 
 .form-container form .error-msg{
-   margin:10px 0;
+   margin: 0px 0;
    display: block;
    background: crimson;
    color:#fff;

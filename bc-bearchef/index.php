@@ -9,11 +9,11 @@
 <body>
     <!-- ======== START OF THE NAV MENU ======== -->
     <header>
-        <a href="#" class="logo">Logo</a>
+        <a href="index.php" class="logo">Logo</a>
         <div class="group">
             <ul class="navigation">
                 <li><a href="login_form.php">Login</a></li>
-                <li><a href="register_form.php">Sign In</a></li>
+                <li><a href="register.php">Sign In</a></li>
             </ul>
             <div class="search">
                 <span class="icon">
