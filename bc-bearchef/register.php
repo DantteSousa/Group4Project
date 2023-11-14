@@ -43,6 +43,20 @@
                     if (!mysqli_query($conn, $insert)) {
                         $errors[] = "Error inserting record: " . mysqli_error($conn);
                     } else {
+                        $select2 = "SELECT * FROM user_form WHERE email = '$email'";
+                        $result = mysqli_query($conn, $select2);
+                        if (mysqli_num_rows($result) > 0) {
+
+                            $row = mysqli_fetch_array($result);
+                            $userID = $row['id'];
+
+                            if($user_type == "chef"){
+                                $insert2 = "INSERT INTO chef (chefid, specialities, description, education, plates, isPremium) VALUES ('$userID', '', '', '', '', 'false')";
+                            }else{
+                                $insert2 = "INSERT INTO customer (customerID, experienceID) VALUES ('$userID', '')";
+                            }
+                            $result = mysqli_query($conn, $insert2);
+                        }
                         header('location:login_form.php');
                         exit();
                     }
