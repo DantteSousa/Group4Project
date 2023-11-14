@@ -4,7 +4,7 @@
    include 'includes/config.php';
 
    session_start();
-   //  header_HTML();
+   header_HTML();
    if($_SERVER['REQUEST_METHOD'] == 'POST'){
       //If validate_form returns errors, pass them to show_form()
       if($form_errors = validate_form($conn)){

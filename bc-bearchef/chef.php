@@ -1,6 +1,7 @@
 <?php
 
 include 'includes/config.php';
+include 'views/helpers_user.php';
 
 // customer_page.php or chef_page.php
 session_start();
@@ -17,34 +18,55 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'chef') {
    exit();
 }
 
-?>
+header_USER('chef');
+body();
+footer_HTML();
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>admin page</title>
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
-
-</head>
-<body>
-   
-<div class="container">
-
-   <div class="content">
-      <h3>hi, <span>chef</span></h3>
-      <h1>welcome <span><?php echo $_SESSION['name'] ?></span></h1>
-      <p>this is an admin page</p>
-      <a href="login_form.php" class="btn">login</a>
-      <a href="register.php" class="btn">register</a>
-      <a href="logout.php" class="btn">logout</a>
+function body(){
+   echo <<<BODY
+      <div class="main-container">
+      <div class="options-bar">
+            <ul>
+               <li><a href="#" onclick="showOption('Option1')">Pending-Orders</a></li>
+               <li><a href="#" onclick="showOption('Option2')">Accepted Orders</a></li>
+               <li><a href="#" onclick="showOption('Option3')">Schedule</a></li>
+               <li><a href="#" onclick="showOption('Option4')">Reviews</a></li>
+            </ul>
+      </div>
+      <div class="account-info" id="account-info">
+            <h2>Welcome, User123!</h2>
+            <p>Email: user123@example.com</p>
+            <p>Membership Level: Premium</p>
+      </div>
    </div>
 
-</div>
+   <script>
+      function showOption(option) {
+            var accountInfoContainer = document.getElementById('account-info');
+            var content = '';
 
-</body>
-</html>
+            // Add logic for each option
+            switch (option) {
+               case 'Option1':
+                  content = 'Specific content for Pending-Orders';
+                  break;
+               case 'Option2':
+                  content = 'Specific content for Accepted Orders';
+                  break;
+               case 'Option3':
+                  content = 'Specific content for Schedule.';
+                  break;
+               case 'Option4':
+                  content = 'Specific content for Reviews';
+                  break;
+               default:
+                  content = 'Select an option to view content.';
+            }
+
+            // Update content in the account info container
+            accountInfoContainer.innerHTML = content;
+      }
+      </script>   
+   BODY;
+}
+?>
