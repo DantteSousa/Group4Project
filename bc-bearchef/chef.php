@@ -2,16 +2,15 @@
 
 include 'includes/config.php';
 include 'views/helpers_user.php';
+include 'class/user_class.php';
 
-// customer_page.php or chef_page.php
 session_start();
+$user_type = 'chef';
+$userId = '';
 
-if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'chef') {
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type) {
    $userType = $_SESSION['user_type'];
-   $userId = $_SESSION['id'];
-   // ... any other information you stored in the session
-
-   // Now you can use $userType, $userId, and other session data as needed
+   $GLOBALS['userId'] = $_SESSION['id'];   
 } else {
    // Redirect to login page or handle unauthorized access
    header("Location: login_form.php");
@@ -19,10 +18,24 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'chef') {
 }
 
 header_USER('chef');
-body();
-footer_HTML();
+body($conn);
+footer_USER();
 
-function body(){
+function body($conn){
+   $userID = $GLOBALS['userId'];
+   $select = "SELECT * FROM user_form WHERE id = $userID";
+
+   $chef = new Chef();
+   $result = mysqli_query($conn, $select);
+   if (mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_array($result);
+      $chef->setIdid = $row["id"];
+      $name = $row["name"];
+      $email = $row["email"];
+      $chef->setPhone = $row["phone"];
+   }
+   
+   
    echo <<<BODY
       <div class="main-container">
       <div class="options-bar">
@@ -34,8 +47,8 @@ function body(){
             </ul>
       </div>
       <div class="account-info" id="account-info">
-            <h2>Welcome, User123!</h2>
-            <p>Email: user123@example.com</p>
+            <h2>Welcome, ${name}</h2>
+            <p>Email: ${email}</p>
             <p>Membership Level: Premium</p>
       </div>
    </div>

@@ -53,7 +53,8 @@
              $errors[] = 'Invalid user type!';
          }
       } else {
-         $errors[] = 'Incorrect email or password!';   }
+         $errors[] = 'Incorrect email or password!';   
+      }
          
       return $errors;
    }

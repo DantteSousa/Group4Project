@@ -1,14 +1,11 @@
-body {
-    
-   
+body { 
     display: flex;
     justify-content: center;
     align-items: center;
-   
+    
 }
 
-.main-container {
-    
+.main-container {    
     width: 500px;
    /* width: 75%;  for responsive */
     display: flex;
@@ -38,12 +35,12 @@ body {
     font-weight: bold;
 }
 
-.account-info {
-    
+.account-info {    
     padding: 20px;
     background-color:gray;
     border-top: 2px solid #ccc;
 }
+
 /* Media query for smaller screens */
 @media screen and (max-width: 600px) {
     .options-bar ul {

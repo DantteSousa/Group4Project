@@ -42,6 +42,7 @@ if ($conn->connect_error) {
 // Select the database
 mysqli_select_db($conn, $dbname);
 
+// USER TABLE
 // Check if the user table exists
 $tableName = 'user_form';
 $tableExistsQuery = "SELECT * FROM `$tableName`";
@@ -58,6 +59,28 @@ if (!$tableExists) {
         user_type VARCHAR(50) NOT NULL,
         address VARCHAR(220),
         phone VARCHAR(50)
+    )";
+
+    if ($conn->query($createTableQuery) === FALSE) {
+       echo "Error creating table: " . $conn->error . "\n";
+    }
+}
+
+// CHEF TABLE
+// Check if the user table exists
+$tableName = 'chef';
+$tableExistsQuery = "SELECT * FROM `$tableName`";
+$tableExists = mysqli_query($conn, $tableExistsQuery);
+
+if (!$tableExists) {
+    // If the table doesn't exist, create it
+    $createTableQuery = "CREATE TABLE $tableName (
+            chefID INT PRIMARY KEY,
+            specialities VARCHAR(255),
+            description TEXT,
+            education VARCHAR(255),
+            plates TEXT,
+            isPremium BOOLEAN
     )";
 
     if ($conn->query($createTableQuery) === FALSE) {

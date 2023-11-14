@@ -10,12 +10,8 @@
         private $address;
         private $phone;
 
-        public function __construct($id, $name, $email, $password, $user_type){
-            $this->id = $id;
-            $this->name = $name;
-            $this->email = $email;
-            $this->password = $password;
-            $this->user_type = $user_type;
+        public function __construct(){
+
         }
 
         // Getter and Setter for $id
@@ -99,6 +95,11 @@
         private $plates;
         private $isPremium;
     
+        public function __construct()
+        {
+            parent::__construct();
+        }
+
         // Getter and Setter for $chefId
         public function getChefId() {
             return $this->chefId;

@@ -8,7 +8,7 @@ function header_USER($user_type){
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>BC -  Bears Chef</title>
+        <title>BC -  Bears Chefs</title>
 
         <!-- custom css file link  --> 
         <link rel="stylesheet" href="css/style.css">
@@ -18,11 +18,13 @@ function header_USER($user_type){
         <body>
         <!-- ======== START OF THE NAV MENU ======== --> 
         <header>
-            <a href="index.php" class="logo">Logo</a>
+            <a href="index.php" class="logo">BC -  Bear Chefs</a>
+            <img src="./images/bear.png" alt="Logo" width="90px" height="90px">
             <div class="group">
                 <ul class="navigation">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="${user_type}.php">Profile</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
                 <div class="search">
                     <span class="icon">
@@ -77,7 +79,7 @@ function header_USER($user_type){
     HTML;
 }
 
-function footer_HTML(){
+function footer_USER(){
     echo <<<HTML_FOOTER
         </body>
         </html>
