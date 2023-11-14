@@ -43,8 +43,8 @@
                     if (!mysqli_query($conn, $insert)) {
                         $errors[] = "Error inserting record: " . mysqli_error($conn);
                     } else {
-                    header('location:login_form.php');
-                    exit();
+                        header('location:login_form.php');
+                        exit();
                     }
                 }
             }   

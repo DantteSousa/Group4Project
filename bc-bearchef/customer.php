@@ -31,7 +31,6 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'customer') {
 <body>
    
 <div class="container">
-
    <div class="content">
       <h3>hi, <span>customer</span></h3>
       <h1>welcome <span>oi</span></h1>

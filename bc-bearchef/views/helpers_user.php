@@ -24,6 +24,7 @@ function header_USER($user_type){
                 <ul class="navigation">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="${user_type}.php">Profile</a></li>
+                    <li><a href="settings.php">Settings</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
                 <div class="search">

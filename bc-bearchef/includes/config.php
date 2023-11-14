@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Database name
-$dbname = 'databaseTeste2';
+$dbname = 'teste_nova';
 
 // Check if the database exists
 if (!mysqli_select_db($conn, $dbname)) {
@@ -87,5 +87,25 @@ if (!$tableExists) {
        echo "Error creating table: " . $conn->error . "\n";
     }
 }
+
+// User Table
+// Customer TABLE
+// Check if the user table exists
+$tableName = 'customer';
+$tableExistsQuery = "SELECT * FROM `$tableName`";
+$tableExists = mysqli_query($conn, $tableExistsQuery);
+
+if (!$tableExists) {
+    // If the table doesn't exist, create it
+    $createTableQuery = "CREATE TABLE $tableName (
+            customerID INT PRIMARY KEY,
+            experienceID INT
+    )";
+
+    if ($conn->query($createTableQuery) === FALSE) {
+       echo "Error creating table: " . $conn->error . "\n";
+    }
+}
+
 
 ?>

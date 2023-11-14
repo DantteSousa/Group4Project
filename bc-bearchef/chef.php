@@ -32,54 +32,53 @@ function body($conn){
       $chef->setIdid = $row["id"];
       $name = $row["name"];
       $email = $row["email"];
-      $chef->setPhone = $row["phone"];
    }
    
    
    echo <<<BODY
       <div class="main-container">
-      <div class="options-bar">
-            <ul>
-               <li><a href="#" onclick="showOption('Option1')">Pending-Orders</a></li>
-               <li><a href="#" onclick="showOption('Option2')">Accepted Orders</a></li>
-               <li><a href="#" onclick="showOption('Option3')">Schedule</a></li>
-               <li><a href="#" onclick="showOption('Option4')">Reviews</a></li>
-            </ul>
-      </div>
-      <div class="account-info" id="account-info">
+         <div class="options-bar">
+               <ul>
+                  <li><a href="#" onclick="showOption('Option1')">Pending-Orders</a></li>
+                  <li><a href="#" onclick="showOption('Option2')">Accepted Orders</a></li>
+                  <li><a href="#" onclick="showOption('Option3')">Schedule</a></li>
+                  <li><a href="#" onclick="showOption('Option4')">Reviews</a></li>
+               </ul>
+         </div>
+         <div class="account-info" id="account-info">
             <h2>Welcome, ${name}</h2>
             <p>Email: ${email}</p>
-            <p>Membership Level: Premium</p>
+            <p>Membership Level: Basic</p>
+         </div>
       </div>
-   </div>
 
-   <script>
-      function showOption(option) {
-            var accountInfoContainer = document.getElementById('account-info');
-            var content = '';
+      <script>
+         function showOption(option) {
+               var accountInfoContainer = document.getElementById('account-info');
+               var content = '';
 
-            // Add logic for each option
-            switch (option) {
-               case 'Option1':
-                  content = 'Specific content for Pending-Orders';
-                  break;
-               case 'Option2':
-                  content = 'Specific content for Accepted Orders';
-                  break;
-               case 'Option3':
-                  content = 'Specific content for Schedule.';
-                  break;
-               case 'Option4':
-                  content = 'Specific content for Reviews';
-                  break;
-               default:
-                  content = 'Select an option to view content.';
-            }
+               // Add logic for each option
+               switch (option) {
+                  case 'Option1':
+                     content = 'Specific content for Pending-Orders';
+                     break;
+                  case 'Option2':
+                     content = 'Specific content for Accepted Orders';
+                     break;
+                  case 'Option3':
+                     content = 'Specific content for Schedule.';
+                     break;
+                  case 'Option4':
+                     content = 'Specific content for Reviews';
+                     break;
+                  default:
+                     content = 'Select an option to view content.';
+               }
 
-            // Update content in the account info container
-            accountInfoContainer.innerHTML = content;
-      }
-      </script>   
+               // Update content in the account info container
+               accountInfoContainer.innerHTML = content;
+         }
+         </script>   
    BODY;
 }
 ?>

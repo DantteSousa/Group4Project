@@ -71,7 +71,6 @@ function header_HTML(){
                 closeBtn.classList.remove('active');
                 searchBtn.classList.remove('active');
             }
-
         </script>
     HTML;
 }
