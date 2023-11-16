@@ -2,7 +2,7 @@
 
 include 'includes/config.php';
 include 'views/helpers_user.php';
-include 'class/user_class.php';
+include 'class/retriveDB.php';
 
 session_start();
 $user_type = 'chef';
@@ -23,18 +23,14 @@ footer_USER();
 
 function body($conn){
    $userID = $GLOBALS['userId'];
-   $select = "SELECT * FROM user_form WHERE id = $userID";
+   $chef = retrieveChef($conn, $userID);
 
-   $chef = new Chef();
-   $result = mysqli_query($conn, $select);
-   if (mysqli_num_rows($result) > 0) {
-      $row = mysqli_fetch_array($result);
-      $chef->setIdid = $row["id"];
-      $name = $row["name"];
-      $email = $row["email"];
+   if($chef->getIsPremium() == 0){
+      $membershipLevel = "Basic" ;
+   }else{
+      $membershipLevel = "Premium";
    }
-   
-   
+
    echo <<<BODY
       <div class="main-container">
          <div class="options-bar">
@@ -46,9 +42,15 @@ function body($conn){
                </ul>
          </div>
          <div class="account-info" id="account-info">
-            <h2>Welcome, ${name}</h2>
-            <p>Email: ${email}</p>
-            <p>Membership Level: Basic</p>
+            <h2>Welcome, {$chef->getName()}</h2>
+            <p><strong>Email:</strong> {$chef->getEmail()}</p>
+            <p><strong>Membership Level:</strong> ${membershipLevel}</p>
+            <br>
+            <h3>About the Chef</h3>
+            <p><strong>Specialities:</strong> {$chef->getSpecialities()}</p>
+            <p><strong>Description:</strong> {$chef->getDescription()}</p>
+            <p><strong>Education:</strong> {$chef->getEducation()}</p>
+            <p><strong>Plates:</strong> {$chef->getPlates()}</p>
          </div>
       </div>
 
