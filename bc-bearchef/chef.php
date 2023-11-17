@@ -18,8 +18,16 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type) {
 }
 
 header_USER('chef');
+body_hello();
 body($conn);
 footer_USER();
+
+function body_hello(){
+
+   echo <<<BODY
+      
+   BODY;
+}
 
 function body($conn){
    $userID = $GLOBALS['userId'];
@@ -55,32 +63,27 @@ function body($conn){
       </div>
 
       <script>
-         function showOption(option) {
-               var accountInfoContainer = document.getElementById('account-info');
-               var content = '';
-
-               // Add logic for each option
-               switch (option) {
-                  case 'Option1':
-                     content = 'Specific content for Pending-Orders';
-                     break;
-                  case 'Option2':
-                     content = 'Specific content for Accepted Orders';
-                     break;
-                  case 'Option3':
-                     content = 'Specific content for Schedule.';
-                     break;
-                  case 'Option4':
-                     content = 'Specific content for Reviews';
-                     break;
-                  default:
-                     content = 'Select an option to view content.';
-               }
-
-               // Update content in the account info container
-               accountInfoContainer.innerHTML = content;
+      function showOption(option) {
+         // Add logic for each option
+         switch (option) {
+            case 'Option1':
+               window.location.href = 'chef_pending_orders.php'; // Change 'pending_orders.php' to the actual page you want to redirect to
+               break;
+            case 'Option2':
+               window.location.href = 'chef_accepted_orders.php'; // Change 'accepted_orders.php' to the actual page you want to redirect to
+               break;
+            case 'Option3':
+               window.location.href = 'chef_schedule.php'; // Change 'schedule.php' to the actual page you want to redirect to
+               break;
+            case 'Option4':
+               window.location.href = 'chef_reviews.php'; // Change 'reviews.php' to the actual page you want to redirect to
+               break;
+            default:
+               // You can choose to do nothing or redirect to a default page
+               break;
          }
-         </script>   
+      }
+   </script> 
    BODY;
 }
 ?>

@@ -13,19 +13,21 @@ if ($conn->connect_error) {
 }
 
 // Database name
-$dbname = 'teste_nova';
+$dbname = 'senhorDosAneis';
 
 // Check if the database exists
 if (!mysqli_select_db($conn, $dbname)) {
     // If the database doesn't exist, create it
-    $createDbQuery = "CREATE DATABASE $dbname";
+    $createDbQuery = "CREATE DATABASE IF NOT EXISTS $dbname";
     
     if ($conn->query($createDbQuery) === TRUE) {
         echo "Database created successfully\n";
     } else {
         echo "Error creating database: " . $conn->error . "\n";
+        exit(); // exit if there's an error creating the database
     }
 }
+
 // Close the connection
 $conn->close();
 
