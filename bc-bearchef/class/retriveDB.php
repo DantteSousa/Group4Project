@@ -20,22 +20,17 @@
          $chef->setPhone($row["phone"]);
       }
    
-      $id = $chef->getId();
-   
-      if (isset($id)) {
-         $selectFromChef = "SELECT * FROM chef WHERE chefID = $id";
-         $resultFromChef = mysqli_query($conn, $selectFromChef);
-         if (mysqli_num_rows($resultFromChef) > 0) {
-            $rowNew = mysqli_fetch_array($resultFromChef);
-            $chef->setSpecialities($rowNew["specialities"]);
-            $chef->setDescription($rowNew["description"]);
-            $chef->setEducation($rowNew["education"]);
-            $chef->setPlates($rowNew["plates"]);
-            $chef->setIsPremium($rowNew["isPremium"]);
-         }
-   
-      }
 
+      $selectFromChef = "SELECT * FROM chef WHERE chefID = $userID";
+      $resultFromChef = mysqli_query($conn, $selectFromChef);
+      if (mysqli_num_rows($resultFromChef) > 0) {
+         $rowNew = mysqli_fetch_array($resultFromChef);
+         $chef->setSpecialities($rowNew["specialities"]);
+         $chef->setDescription($rowNew["description"]);
+         $chef->setEducation($rowNew["education"]);
+         $chef->setPlates($rowNew["plates"]);
+         $chef->setIsPremium($rowNew["isPremium"]);
+      }   
       return $chef;
    }
 
@@ -62,25 +57,45 @@
       if ($stmt->affected_rows > 0) {
          echo <<<GOBACK
                <div><h3> Profile updated successfully! </h3> <br>
-               <button onclick="goBack()">Go Back</button></div>
-               <script>
-                  function goBack() {
-                     // Use the browser's history to go back
-                     window.history.back();
-                  }
-               </script>
                GOBACK;
       } else {
          echo <<<GOBACK
             <div><h3> No changes made to the profile. </h3> <br>
-            <button onclick="goBack()">Go Back</button></div>
-            <script>
-                  function goBack() {
-                     // Use the browser's history to go back
-                     window.history.back();
-                  }
-            </script>
         GOBACK;
+      }
+  
+      // Close the statement
+      $stmt->close();
+   }
+
+   function updateChefInfo($conn, $userID, $specialities, $description, $education){
+      $stmt = $conn->prepare("UPDATE chef SET specialities=?, description=?, education=? WHERE chefID=?");
+    
+      // Check if the statement was prepared successfully
+      if (!$stmt) {
+         die("Error during updateChefInfo preparation: " . $conn->error);
+      }
+
+      // Bind parameters
+      $stmt->bind_param("sssi", $specialities, $description, $education, $userID);
+      
+      // Check if the parameters were bound successfully
+      if (!$stmt) {
+         die("Error during updateChefInfo binding: " . $conn->error);
+      }
+
+      // Execute the statement
+      $stmt->execute();
+
+      // Check if the statement execution was successful
+      if ($stmt->affected_rows > 0) {
+         echo <<<GOBACK
+               <div><h3> Profile updated successfully! </h3> <br>
+               GOBACK;
+      } else {
+         echo <<<GOBACK
+            <div><h3> No changes made to the profile. </h3> <br>
+            GOBACK;
       }
   
       // Close the statement

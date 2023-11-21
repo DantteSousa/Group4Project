@@ -84,14 +84,7 @@ function check_update($conn) {
         updateUserInfo($conn, $userID, $name, $lastname, $email, $newHashedPassword, $address, $phone);
     } else{
         echo <<<GOBACK
-            <div><h3> No changes made to the profile. </h3> <br>
-            <button onclick="goBack()">Go Back</button></div>
-            <script>
-                  function goBack() {
-                     // Use the browser's history to go back
-                     window.history.back();
-                  }
-            </script>
+            <div><h3> No changes made to the profile. 2</h3> <br>
         GOBACK;
     }
 }

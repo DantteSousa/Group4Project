@@ -26,7 +26,10 @@ footer_USER();
 
 <!-- Additional HTML content for pending_orders.php if needed -->
 <div class="content-container">
-    <h2>Add Plates</h2>
+    <h2>Plates</h2>
+    <h3>Add Plates</h3>
+    <p> texto texto e texto </p>
+    <h3>Current Plates</h3>
     <p>This is the content for pending orders. You can customize this page based on your requirements.</p>
     <!-- Add specific content for pending orders here -->
 
