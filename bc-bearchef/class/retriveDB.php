@@ -3,7 +3,7 @@
    include 'class/user_class.php';
 
    function retrieveChef($conn, $userID) {
-      $userID = $GLOBALS['userId'];
+      // $userID = $GLOBALS['userId'];
       $select = "SELECT * FROM user_form WHERE id = $userID";
    
       $chef = new Chef();
@@ -37,5 +37,53 @@
       }
 
       return $chef;
+   }
+
+   function updateUserInfo($conn, $userID, $name, $lastname, $email, $password, $address, $phone){
+      $stmt = $conn->prepare("UPDATE user_form SET name=?, lastName=?, email=?, password=?, address=?, phone=? WHERE id=?");
+    
+      // Check if the statement was prepared successfully
+      if (!$stmt) {
+         die("Error during updateChefInfo preparation: " . $conn->error);
+      }
+
+      // Bind parameters
+      $stmt->bind_param("ssssssi", $name, $lastname, $email, $password, $address, $phone, $userID);
+      
+      // Check if the parameters were bound successfully
+      if (!$stmt) {
+         die("Error during updateChefInfo binding: " . $conn->error);
+      }
+
+      // Execute the statement
+      $stmt->execute();
+
+      // Check if the statement execution was successful
+      if ($stmt->affected_rows > 0) {
+         echo <<<GOBACK
+               <div><h3> Profile updated successfully! </h3> <br>
+               <button onclick="goBack()">Go Back</button></div>
+               <script>
+                  function goBack() {
+                     // Use the browser's history to go back
+                     window.history.back();
+                  }
+               </script>
+               GOBACK;
+      } else {
+         echo <<<GOBACK
+            <div><h3> No changes made to the profile. </h3> <br>
+            <button onclick="goBack()">Go Back</button></div>
+            <script>
+                  function goBack() {
+                     // Use the browser's history to go back
+                     window.history.back();
+                  }
+            </script>
+        GOBACK;
+      }
+  
+      // Close the statement
+      $stmt->close();
    }
 ?>

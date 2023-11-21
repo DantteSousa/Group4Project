@@ -86,54 +86,19 @@ function show_settings_chef_info($conn){
 function body_settings($conn){
    $userID = $GLOBALS['userId'];
    $chef = retrieveChef($conn, $userID);
-
-   if($chef->getIsPremium() == 0){
-      $membershipLevel = "Basic" ;
-   }else{
-      $membershipLevel = "Premium";
-   }
  
     echo <<<BODY
-      <div class="main-container">
-         <div class="options-bar">
-               <ul>
-                  <li><a href="#" onclick="showOption('Option1')">Edit Profile</a></li>
-                  <li><a href="#" onclick="showOption('Option2')">Edit About the Chef</a></li>
-                  <li><a href="#" onclick="showOption('Option3')">Edit Plates</a></li>
-               </ul>
-         </div>
-         <div class="account-info" id="account-info">
-         <h2>Welcome, {$chef->getName()}</h2>
-         <p>Click on <h3>Edit Profile</h3> to edit your profile<p>
-         <p>Click on <h3>Edit About the Chef</h3> to edit what your customer should know about you<p>
-         <p>Click on <h3>Add Plates</h3> to add new plates on the menu<p>
+      <div class="container">
+         <div class="content">
+            <h3>hi, <span>chef</span></h3>
+            <h1>welcome <span>{$chef->getName()}</span></h1>
+            <p>This is your user page</p>
+            <p>You can edit your profile and your plates here!!</p>
+            <a href="chef_edit_profile.php" class="btn">Edit Profile</a>
+            <a href="chef_about.php" class="btn">Edit About Chef</a>
+            <a href="chef_add_plates.php" class="btn">Add Plates</a>
          </div>
       </div>
- 
-      <script>
-         function showOption(option) {
-               var accountInfoContainer = document.getElementById('account-info');
-               var content = '';
- 
-                // Add logic for each option
-               switch (option) {
-                  case 'Option1':
-                     content = 'Specific content for Accepted Orders';
-                     break;
-                  case 'Option2':
-                     content = 'Specific content for Accepted Orders';
-                     break;
-                  case 'Option3':
-                     content = 'Specific content for Schedule.';
-                     break;
-                  default:
-                     content = 'Select an option to view content.';
-               }
- 
-               // Update content in the account info container
-               accountInfoContainer.innerHTML = content;
-         }
-      </script>   
     BODY;
  }
 ?>

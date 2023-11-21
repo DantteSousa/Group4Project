@@ -18,26 +18,14 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type) {
 }
 
 header_USER('chef');
-body_hello();
 body($conn);
 footer_USER();
-
-function body_hello(){
-
-   echo <<<BODY
-      
-   BODY;
-}
 
 function body($conn){
    $userID = $GLOBALS['userId'];
    $chef = retrieveChef($conn, $userID);
 
-   if($chef->getIsPremium() == 0){
-      $membershipLevel = "Basic" ;
-   }else{
-      $membershipLevel = "Premium";
-   }
+   $membershipLevel = ($chef->getIsPremium() == 0) ? "Basic" : "Premium";
 
    echo <<<BODY
       <div class="main-container">

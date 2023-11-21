@@ -18,7 +18,7 @@ function header_USER($user_type){
         <body>
         <!-- ======== START OF THE NAV MENU ======== --> 
         <header>
-            <a href="index.php" class="logo">BC -  Bear Chefs</a>
+            <a href="index.php" class="logo">BC - Bear Chefs</a>
             <img src="./images/bear.png" alt="Logo" width="90px" height="90px">
             <div class="group">
                 <ul class="navigation">

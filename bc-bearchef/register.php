@@ -1,8 +1,11 @@
 <?php
     include "views/helpers_HTML.php";
     include 'includes/config.php';
-
-    header_HTML();
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    
+    // header_HTML();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //If validate_form returns errors, pass them to show_form()
         if($form_errors = validate_form($conn)){
@@ -25,8 +28,8 @@
         } else{
             $name = mysqli_real_escape_string($conn, $_POST['name']);
             $email = mysqli_real_escape_string($conn, $_POST['email']);
-            $pass = md5($_POST['password']);
-            $cpass = md5($_POST['cpassword']);
+            $pass = $_POST['password'];
+            $cpass = $_POST['cpassword'];
             $user_type = $_POST['user_type'];
 
             $select = "SELECT * FROM user_form WHERE email = '$email'";
@@ -38,7 +41,8 @@
                 if ($pass != $cpass) {
                     $errors[] = 'Password not matched!';
                 } else {
-                    $insert = "INSERT INTO user_form (name, lastName, email, password, user_type, address, phone) VALUES ('$name', '', '$email', '$pass', '$user_type', '', '')";
+                    $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
+                    $insert = "INSERT INTO user_form (name, lastName, email, password, user_type, address, phone) VALUES ('$name', '', '$email', '$hashedPassword', '$user_type', '', '')";
 
                     if (!mysqli_query($conn, $insert)) {
                         $errors[] = "Error inserting record: " . mysqli_error($conn);
