@@ -44,8 +44,7 @@ if ($conn->connect_error) {
 // Select the database
 mysqli_select_db($conn, $dbname);
 
-// USER TABLE
-// Check if the user table exists
+// USER TABLE ===============================================
 $tableName = 'user_form';
 $tableExistsQuery = "SELECT * FROM `$tableName`";
 $tableExists = mysqli_query($conn, $tableExistsQuery);
@@ -68,8 +67,7 @@ if (!$tableExists) {
     }
 }
 
-// CHEF TABLE
-// Check if the user table exists
+// CHEF TABLE ===============================================
 $tableName = 'chef';
 $tableExistsQuery = "SELECT * FROM `$tableName`";
 $tableExists = mysqli_query($conn, $tableExistsQuery);
@@ -90,9 +88,7 @@ if (!$tableExists) {
     }
 }
 
-// User Table
-// Customer TABLE
-// Check if the user table exists
+// Customer TABLE ===============================================
 $tableName = 'customer';
 $tableExistsQuery = "SELECT * FROM `$tableName`";
 $tableExists = mysqli_query($conn, $tableExistsQuery);
@@ -109,5 +105,99 @@ if (!$tableExists) {
     }
 }
 
+$tableName = 'order';
+$tableExistsQuery = "SELECT * FROM `$tableName`";
+$tableExists = mysqli_query($conn, $tableExistsQuery);
+
+if (!$tableExists) {
+    // If the table doesn't exist, create it
+    $createTableQuery = "CREATE TABLE `$tableName` (
+            orderID INT PRIMARY KEY,
+            customerID INT,
+            chefID INT,
+            dateExperienceID VARCHAR(255),
+            statusOrder INT
+    )";
+
+    if ($conn->query($createTableQuery) === FALSE) {
+       echo "Error creating table: " . $conn->error . "\n";
+    }
+}
+
+
+// Plate TABLE ===============================================
+
+$tableName = 'plate';
+$tableExistsQuery = "SELECT * FROM `$tableName`";
+$tableExists = mysqli_query($conn, $tableExistsQuery);
+
+if (!$tableExists) {
+    // If the table doesn't exist, create it
+    $createTableQuery = "CREATE TABLE `$tableName` (
+            plateID INT PRIMARY KEY,
+            chefID INT,
+            mealRangeType INT,
+            plateName VARCHAR(255),
+            starterMenu TEXT,
+            fistCourse TEXT,
+            mainCourse TEXT,
+            desert TEXT
+    )";
+
+    if ($conn->query($createTableQuery) === FALSE) {
+       echo "Error creating table: " . $conn->error . "\n";
+    }
+}
+
+// EXPERIENCE TABLE ===============================================
+
+$tableName = 'experienceDetail';
+$tableExistsQuery = "SELECT * FROM `$tableName`";
+$tableExists = mysqli_query($conn, $tableExistsQuery);
+
+if (!$tableExists) {
+    // If the table doesn't exist, create it
+    $createTableQuery = "CREATE TABLE `$tableName` (
+            experienceID INT PRIMARY KEY,
+            customerID INT,
+            numOfPeople INT,
+            dayTime INT,
+            eventDay VARCHAR(255),
+            cusineType INT,
+            stoveTopType INT,
+            numBurners INT,
+            oven BOOLEAN,
+            mealType INT,
+            restrictions BOOLEAN,
+            typeRestrictions TEXT,
+            extraInfo TEXT
+    )";
+
+    if ($conn->query($createTableQuery) === FALSE) {
+       echo "Error creating table: " . $conn->error . "\n";
+    }
+}
+
+
+// MESSAGE TABLE ===============================================
+
+$tableName = 'message';
+$tableExistsQuery = "SELECT * FROM `$tableName`";
+$tableExists = mysqli_query($conn, $tableExistsQuery);
+
+if (!$tableExists) {
+    // If the table doesn't exist, create it
+    $createTableQuery = "CREATE TABLE `$tableName` (
+            messageID INT PRIMARY KEY,
+            senderID INT,
+            receiverID INT,
+            dateMsg VARCHAR(255),
+            textMsg TEXT
+    )";
+
+    if ($conn->query($createTableQuery) === FALSE) {
+       echo "Error creating table: " . $conn->error . "\n";
+    }
+}
 
 ?>
