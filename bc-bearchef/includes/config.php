@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Database name
-$dbname = 'harryPotter';
+$dbname = 'euVouChorar';
 
 // Check if the database exists
 if (!mysqli_select_db($conn, $dbname)) {
@@ -112,7 +112,7 @@ $tableExists = mysqli_query($conn, $tableExistsQuery);
 if (!$tableExists) {
     // If the table doesn't exist, create it
     $createTableQuery = "CREATE TABLE `$tableName` (
-            orderID INT PRIMARY KEY,
+            orderID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             customerID INT,
             chefID INT,
             dateExperienceID VARCHAR(255),
@@ -134,14 +134,15 @@ $tableExists = mysqli_query($conn, $tableExistsQuery);
 if (!$tableExists) {
     // If the table doesn't exist, create it
     $createTableQuery = "CREATE TABLE `$tableName` (
-            plateID INT PRIMARY KEY,
+            plateID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             chefID INT,
+            cusineType INT,
             mealRangeType INT,
             plateName VARCHAR(255),
             starterMenu TEXT,
-            fistCourse TEXT,
+            firstCourse TEXT,
             mainCourse TEXT,
-            desert TEXT
+            dessert TEXT
     )";
 
     if ($conn->query($createTableQuery) === FALSE) {
@@ -158,7 +159,7 @@ $tableExists = mysqli_query($conn, $tableExistsQuery);
 if (!$tableExists) {
     // If the table doesn't exist, create it
     $createTableQuery = "CREATE TABLE `$tableName` (
-            experienceID INT PRIMARY KEY,
+            experienceID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             customerID INT,
             numOfPeople INT,
             dayTime INT,
@@ -188,7 +189,7 @@ $tableExists = mysqli_query($conn, $tableExistsQuery);
 if (!$tableExists) {
     // If the table doesn't exist, create it
     $createTableQuery = "CREATE TABLE `$tableName` (
-            messageID INT PRIMARY KEY,
+            messageID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             senderID INT,
             receiverID INT,
             dateMsg VARCHAR(255),
