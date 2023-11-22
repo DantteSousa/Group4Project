@@ -37,9 +37,9 @@ function body_edit_profile($conn){
             <h2>Edit Profile</h2>      
             <form action="$_SERVER[PHP_SELF]" method="post">
                 <h3>profile settings</h3>
-                <div><label>Specialities:</label><br> <textarea name="specialities" rows="4" cols="50" value="{$chef->getSpecialities()}"></textarea></div>
-                <div><label>Description:</label><br> <textarea name="description" rows="4" cols="50" value="{$chef->getDescription()}"></textarea></div>
-                <div><label>Education:</label><br> <textarea name="education" rows="4" cols="50" value="{$chef->getEducation()}"></textarea></div>
+                <div><label>Specialities:</label><br> <textarea name="specialities" rows="4" cols="50">{$chef->getSpecialities()}</textarea></div>
+                <div><label>Description:</label><br> <textarea name="description" rows="4" cols="50">{$chef->getDescription()}</textarea></div>
+                <div><label>Education:</label><br> <textarea name="education" rows="4" cols="50">{$chef->getEducation()}</textarea></div>
                 <input type="submit" name="submit" value="save information">
             </form>
             <button>VIEW PLATES</button> <br>
@@ -55,6 +55,7 @@ function body_edit_profile($conn){
         </script>
     PROFILE;
 }
+
 
 function check_update_about($conn) {
     $userID = $GLOBALS['userId'];
