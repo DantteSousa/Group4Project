@@ -27,6 +27,7 @@ if (isset($_POST['submit'])) {
 } else {
     add_plate_form();
 }
+
 footer_USER();
 
 function add_plate_form(){
@@ -76,7 +77,9 @@ function add_plate_form(){
                 </div>
                 <input type="submit" name="submit" value="save information">
             </form>
-            <button>VIEW PLATES</button> <br>
+            <a href="chef_view_plates.php" class="btn">VIEW PLATES</a>
+            <br>
+     
             <!-- Back button -->
             <button onclick="goBack()">Go Back</button>
         </div>
@@ -114,6 +117,7 @@ function check_update_plate($conn){
      
     $plate->addToDatabase($conn);
 }
+
 
 ?>
 
