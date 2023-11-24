@@ -46,15 +46,8 @@ function body_edit_profile($conn){
                 <input type="submit" name="submit" value="save information" class="btn">
             </form>
             <!-- Back button -->
-            <button onclick="goBack()">Go Back</button>
+            <button onclick="location.href = 'settings.php';"">Go Back</button>
         </div>
-        
-        <script>
-            function goBack() {
-                // Use the browser's history to go back
-                window.history.back();
-            }
-        </script>
     PROFILE;
 }
 
@@ -83,9 +76,9 @@ function check_update($conn) {
         // Data has changed, update the database
         updateUserInfo($conn, $userID, $name, $lastname, $email, $newHashedPassword, $address, $phone);
     } else{
-        echo <<<GOBACK
-            <div><h3> No changes made to the profile. 2</h3> <br>
-        GOBACK;
+        echo '<script type="text/javascript">
+            location="chef_edit_profile.php";
+            </script>';
     }
 }
 

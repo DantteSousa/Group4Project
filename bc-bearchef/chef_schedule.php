@@ -31,12 +31,7 @@ footer_USER();
     <!-- Add specific content for pending orders here -->
 
     <!-- Back button -->
-    <button onclick="goBack()">Go Back</button>
+    <button onclick="location.href = 'settings.php';"">Go Back</button>
 </div>
 
-<script>
-    function goBack() {
-        // Use the browser's history to go back
-        window.history.back();
-    }
-</script>
+

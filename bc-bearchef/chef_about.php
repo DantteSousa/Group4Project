@@ -44,15 +44,8 @@ function body_edit_profile($conn){
             </form>
             <button>VIEW PLATES</button> <br>
             <!-- Back button -->
-            <button onclick="goBack()">Go Back</button>
-        </div>
-        
-        <script>
-            function goBack() {
-                // Use the browser's history to go back
-                window.history.back();
-            }
-        </script>
+            <button onclick="location.href = 'settings.php';"">Go Back</button>
+        </div>    
     PROFILE;
 }
 
@@ -75,16 +68,9 @@ function check_update_about($conn) {
         // Data has changed, update the database
         updateChefInfo($conn, $userID, $specialities, $description, $education);
     } else{
-        echo <<<GOBACK
-            <div><h3> No changes made to the profile. </h3> <br>
-            <button onclick="goBack()">Go Back</button></div>
-            <script>
-                  function goBack() {
-                     // Use the browser's history to go back
-                     window.history.back();
-                  }
-            </script>
-        GOBACK;
+        echo '<script type="text/javascript">
+            location="chef_about.php";
+            </script>';
     }
 }
 
