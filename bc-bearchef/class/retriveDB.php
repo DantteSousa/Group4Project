@@ -198,4 +198,46 @@
       // close connection
       $conn->close();
    }
+
+   function retriveReview($conn, $userId){
+      $query = "SELECT * FROM review WHERE chefID= '$userId'";
+      $result = $conn->query($query);
+
+      echo "<div class='content-container'>";
+      echo "<h2>Reviews</h2>";
+      if ($result->num_rows > 0) {
+         echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+            <tr>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Review</th>
+                  <th>Rating</th>                  
+            </tr>";
+
+         while ($row = $result->fetch_assoc()) {
+            
+            echo "<tr>";
+            echo "<td>" . $row['nameCustomer'] . "</td>";
+            echo "<td>" . $row['dateMsg'] . "</td>";
+            echo "<td>" . $row['reviewDescription'] . "</td>";
+            echo "<td>" . $row['rating'] . "</td>";
+            echo "</tr>";
+         }
+         echo "</table></div>";
+         echo "</td></tr>";
+         echo "</fieldset></form></div></div></div> ";
+
+      }else{
+         echo <<<NOREVIEW
+               The user dont't have any review <br>
+               NOREVIEW;
+      }
+      echo <<<ENDREVIEW
+         <button onclick="location.href = 'chef.php';"">Go Back</button>
+         </div>
+         ENDREVIEW;
+
+      // close connection
+      $conn->close();
+   }
 ?>

@@ -31,7 +31,7 @@ footer_USER();
     <!-- Add specific content for pending orders here -->
 
     <!-- Back button -->
-    <button onclick="location.href = 'settings.php';"">Go Back</button>
+    <button onclick="location.href = 'chef.php';"">Go Back</button>
 </div>
 
 

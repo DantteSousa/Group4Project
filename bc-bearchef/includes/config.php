@@ -105,7 +105,8 @@ if (!$tableExists) {
     }
 }
 
-$tableName = 'order';
+// ORDER
+$tableName = 'orders';
 $tableExistsQuery = "SELECT * FROM `$tableName`";
 $tableExists = mysqli_query($conn, $tableExistsQuery);
 
@@ -195,6 +196,32 @@ if (!$tableExists) {
             dateMsg VARCHAR(255),
             textMsg TEXT
     )";
+
+    if ($conn->query($createTableQuery) === FALSE) {
+       echo "Error creating table: " . $conn->error . "\n";
+    }
+}
+
+
+// REVIEW TABLE ===============================================
+
+$tableName = 'review';
+$tableExistsQuery = "SELECT * FROM `$tableName`";
+$tableExists = mysqli_query($conn, $tableExistsQuery);
+
+if (!$tableExists) {
+    // If the table doesn't exist, create it
+    $createTableQuery = "CREATE TABLE $tableName (
+        reviewID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        customerID INT,
+        chefID INT,
+        dateMsg VARCHAR(20),
+        nameCustomer VARCHAR(20),
+        reviewDescription TEXT,
+        rating INT,
+        anonymus TINYINT(1)
+    );
+    ";
 
     if ($conn->query($createTableQuery) === FALSE) {
        echo "Error creating table: " . $conn->error . "\n";

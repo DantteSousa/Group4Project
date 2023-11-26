@@ -21,16 +21,9 @@ $userId = $_SESSION['id'];
 
 // Include the header and body functions
 header_USER('chef');
+retriveReview($conn, $userId);
 footer_USER();
 ?>
 
-<!-- Additional HTML content for pending_orders.php if needed -->
-<div class="content-container">
-    <h2>Reviews</h2>
-    <p>This is the content for pending orders. You can customize this page based on your requirements.</p>
-    <!-- Add specific content for pending orders here -->
 
-    <!-- Back button -->
-    <button onclick="location.href = 'settings.php';"">Go Back</button>
-</div>
 
