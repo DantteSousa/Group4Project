@@ -24,18 +24,44 @@ body_customer($conn);
 footer_USER();
 
 function body_customer($conn){
+   $userID = $GLOBALS['userId'];
+   $customer = retriveCustomer($conn, $userID);
+
 
    echo <<<BODY
-      <div class="container">
-         <div class="content">
-            <h3>hi, <span>customer</span></h3>
-            <h1>welcome <span>oi</span></h1>
-            <p>this is an user page</p>
-            <a href="login_form.php" class="btn">login</a>
-            <a href="register.php" class="btn">register</a>
-            <a href="logout.php" class="btn">logout</a>
+      <div class="main-container">
+         <div class="options-bar">
+               <ul>
+                  <li><a href="#" onclick="showOption('Option1')">Recent Orders</a></li>
+                  <li><a href="#" onclick="showOption('Option2')">Experience</a></li>
+                  <li><a href="#" onclick="showOption('Option3')">Reviews History</a></li>
+               </ul>
+         </div>
+         <div class="account-info" id="account-info">
+            <h2>Welcome, {$customer->getName()}</h2>
+            <p><strong>Email:</strong> {$customer->getEmail()}</p>            
          </div>
       </div>
+
+      <script>
+      function showOption(option) {
+         // Add logic for each option
+         switch (option) {
+            case 'Option1':
+               window.location.href = 'customer_orders.php'; // Change 'pending_orders.php' to the actual page you want to redirect to
+               break;
+            case 'Option2':
+               window.location.href = 'customer_experience.php'; // Change 'accepted_orders.php' to the actual page you want to redirect to
+               break;
+            case 'Option3':
+               window.location.href = 'customer_reviews.php'; // Change 'schedule.php' to the actual page you want to redirect to
+               break;           
+            default:
+               // You can choose to do nothing or redirect to a default page
+               break;
+         }
+      }
+   </script> 
    BODY;
 }
 ?>

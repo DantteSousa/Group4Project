@@ -154,5 +154,31 @@
             $this->isPremium = $isPremium;
         }
     }
+
+    class Customer extends User{
+        private $customerId;
+        private $experienceId;
+
+        public function __construct()
+        {
+            parent::__construct();
+        }
+
+        public function getCustomerId(){
+            return $this->customerId;
+        }
+
+        public function setCustomerId($customerId){
+            $this->customerId = $customerId;
+        }
+
+        public function getExperienceId(){
+            return $this->experienceId;
+        }
+
+        public function setExperienceId($experienceId){
+            $this->experienceId = $experienceId;
+        }
+    }
     
 ?>

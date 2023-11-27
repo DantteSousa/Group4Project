@@ -21,6 +21,7 @@ $userId = $_SESSION['id'];
 
 // Include the header and body functions
 header_USER('chef');
+
 retriveReview($conn, $userId);
 footer_USER();
 ?>

@@ -34,6 +34,33 @@
       return $chef;
    }
 
+   function retriveCustomer($conn, $userID) {
+      $select = "SELECT * FROM user_form WHERE id = $userID";
+   
+      $customer = new Customer();
+   
+      $result = mysqli_query($conn, $select);
+      if (mysqli_num_rows($result) > 0) {
+         $row = mysqli_fetch_array($result);
+         $customer->setId($row["id"]);
+         $customer->setName($row["name"]);
+         $customer->setLastName($row["lastName"]);
+         $customer->setPassword($row["password"]);
+         $customer->setEmail($row["email"]);
+         $customer->setAddress($row["address"]);
+         $customer->setPhone($row["phone"]);
+      }
+
+      $selectFromCustomer = "SELECT * FROM customer WHERE customerID = $userID";
+      $resultFromCustomer = mysqli_query($conn, $selectFromCustomer);
+      if (mysqli_num_rows($resultFromCustomer) > 0) {
+         $rowNew = mysqli_fetch_array($resultFromCustomer);
+         $customer->setExperienceId($rowNew["experienceID"]);
+         
+      }   
+      return $customer;
+   }
+
    function updateUserInfo($conn, $userID, $name, $lastname, $email, $password, $address, $phone){
       $stmt = $conn->prepare("UPDATE user_form SET name=?, lastName=?, email=?, password=?, address=?, phone=? WHERE id=?");
     
@@ -57,7 +84,7 @@
       if ($stmt->affected_rows > 0) {
          echo '<script type="text/javascript">
          alert("Profile Successfully Updated");
-         location="chef_edit_profile.php";
+         location="edit_profile.php";
          </script>';
       }   
       // Close the statement
