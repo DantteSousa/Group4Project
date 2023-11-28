@@ -42,24 +42,24 @@
                     $errors[] = 'Password not matched!';
                 } else {
                     $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
-                    $insert = "INSERT INTO user_form (name, lastName, email, password, user_type, address, phone) VALUES ('$name', '', '$email', '$hashedPassword', '$user_type', '', '')";
+                    $insertUser = "INSERT INTO user_form (name, lastName, email, password, user_type, address, phone) VALUES ('$name', '', '$email', '$hashedPassword', '$user_type', '', '')";
 
-                    if (!mysqli_query($conn, $insert)) {
+                    if (!mysqli_query($conn, $insertUser)) {
                         $errors[] = "Error inserting record: " . mysqli_error($conn);
                     } else {
-                        $select2 = "SELECT * FROM user_form WHERE email = '$email'";
-                        $result = mysqli_query($conn, $select2);
-                        if (mysqli_num_rows($result) > 0) {
+                        $insertInUserType = "SELECT * FROM user_form WHERE email = '$email'";
+                        $result = mysqli_query($conn, $insertInUserType);
 
+                        if (mysqli_num_rows($result) > 0) {
                             $row = mysqli_fetch_array($result);
                             $userID = $row['id'];
 
                             if($user_type == "chef"){
-                                $insert2 = "INSERT INTO chef (chefid, specialities, description, education, plates, isPremium) VALUES ('$userID', '', '', '', '', 'false')";
+                                $userTypeTable = "INSERT INTO chef (chefid, specialities, description, education, plates, isPremium) VALUES ('$userID', '', '', '', '', 'false')";
                             }else{
-                                $insert2 = "INSERT INTO customer (customerID, experienceID) VALUES ('$userID', '')";
+                                $userTypeTable = "INSERT INTO customer (customerID, experienceID) VALUES ('$userID', '')";
                             }
-                            $result = mysqli_query($conn, $insert2);
+                            $result = mysqli_query($conn, $userTypeTable);
                         }
                         header('location:login_form.php');
                         exit();

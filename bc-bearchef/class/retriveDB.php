@@ -50,7 +50,7 @@
          $customer->setPhone($row["phone"]);
       }
 
-      $selectFromCustomer = "SELECT * FROM customer WHERE customerID = $userID";
+      $selectFromCustomer = "SELECT * FROM customer  WHERE customerID = $userID";
       $resultFromCustomer = mysqli_query($conn, $selectFromCustomer);
       if (mysqli_num_rows($resultFromCustomer) > 0) {
          $rowNew = mysqli_fetch_array($resultFromCustomer);
@@ -200,6 +200,61 @@
          <button onclick="location.href = 'chef.php';"">Go Back</button>
          </div>
          ENDREVIEW;
+
+      // close connection
+      $conn->close();
+   }
+
+   function retriveCustomerReviews($conn, $userId){
+      $query = "SELECT * FROM review WHERE customerID= '$userId'";
+      $result = $conn->query($query);
+
+      if ($result->num_rows > 0) {
+         echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+            <tr>
+                  <th>Anonymus</th>
+                  <th>Date</th>
+                  <th>Review</th>
+                  <th>Rating</th>
+                  <th>Action</th>
+            </tr>";
+
+         while ($row = $result->fetch_assoc()) {
+            $isAnonymus = ($row['reviewDescription'] == 0) ? "No" : "Yes";
+            echo "<tr>";
+            echo "<td>" . $isAnonymus . "</td>";
+            echo "<td>" . $row['dateMsg'] . "</td>";
+            echo "<td>" . $row['reviewDescription'] . "</td>";
+            echo "<td>" . $row['rating'] . "</td>";
+            echo "<td><form class='form-horizontal' method='post' action='customer_reviews.php'>
+                     <input name='reviewID' type='hidden' value='" . $row['reviewID'] . "'>
+                     <input type='submit' class='btn btn-danger' name='delete' value='Delete'>
+                     </form></td>";
+            echo "</tr>";
+         }
+         echo "</table></div>";
+         echo "</td></tr>";
+
+         // Delete record
+         if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            echo '<script type="text/javascript">
+                     alert("Review Successfully Deleted");
+                     location="customer_reviews.php";
+                  </script>';
+         }
+
+         if (isset($_POST['reviewID'])) {
+            $id = $conn->real_escape_string($_POST['reviewID']);
+            $sql = $conn->query("DELETE FROM review WHERE reviewID='$id'");
+            if (!$sql) {
+               echo ("Could not delete rows" . $conn->error);
+            }
+         }
+         echo "</fieldset></form></div></div></div> ";
+
+      }else{
+         echo "hm";
+      }
 
       // close connection
       $conn->close();

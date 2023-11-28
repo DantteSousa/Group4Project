@@ -48,13 +48,13 @@ function body_customer($conn){
          // Add logic for each option
          switch (option) {
             case 'Option1':
-               window.location.href = 'customer_orders.php'; // Change 'pending_orders.php' to the actual page you want to redirect to
+               window.location.href = 'customer_orders.php'; 
                break;
             case 'Option2':
-               window.location.href = 'customer_experience.php'; // Change 'accepted_orders.php' to the actual page you want to redirect to
+               window.location.href = 'customer_experience.php'; 
                break;
             case 'Option3':
-               window.location.href = 'customer_reviews.php'; // Change 'schedule.php' to the actual page you want to redirect to
+               window.location.href = 'customer_reviews.php'; 
                break;           
             default:
                // You can choose to do nothing or redirect to a default page

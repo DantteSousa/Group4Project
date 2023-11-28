@@ -15,6 +15,14 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_chef) {
 }else{
     header_HTML();
 }
-
+openSearch();
 footer_HTML();
+
+function openSearch(){
+    echo <<<BUTTON
+        <div class="form-container">
+        <button onclick="location.href = 'search.php';"">SEARCH CHEFS</button>
+        </div>
+    BUTTON;
+}
 ?>

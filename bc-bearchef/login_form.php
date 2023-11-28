@@ -2,9 +2,6 @@
 
 include "views/helpers_HTML.php";
 include 'includes/config.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 session_start();
 header_HTML();
@@ -34,9 +31,6 @@ function validate_form($conn){
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result);
         $hashedPassword = $row['password'];
-
-        echo "Password que eu escrevi: $enteredPassword <br>";
-        echo "PAssword hasshed $hashedPassword";
 
         // Verify the entered password against the hashed password
         if (password_verify($enteredPassword, $hashedPassword)) {

@@ -149,8 +149,11 @@ class Experience {
         $select = "SELECT * FROM experiencedetail WHERE customerID = '$userID'";
         $result = mysqli_query($connection, $select);
 
+        //In case there is alreay an experience, it will update it. 
+        //Else, it will create a new one 
+        
         if (mysqli_num_rows($result) > 0) {
-            // UPDATE
+            
         }else{
             $query = "INSERT INTO experiencedetail (customerID, numOfPeople, dayTime, eventDay, cusineType, stoveTopType, numBurners, oven, mealType, restrictions, extraInfo)
             VALUES ('$userID', '$numOfPeople', '$dayTime', '$eventDay', '$cusineType', '$stoveTopType', '$numBurners', '$oven', '$mealRangeType','$restrictions','$extraInfo')";
