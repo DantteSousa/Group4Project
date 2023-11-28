@@ -164,6 +164,106 @@
       $conn->close();
    }
 
+   function retrivePlatesForOrder($conn, $userId){
+      $query = "SELECT * FROM plate WHERE chefID= '$userId'";
+      $result = $conn->query($query);
+
+      if ($result->num_rows > 0) {
+         echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+            <tr>
+                  <th>Plate Name</th>
+                  <th>Cusine</th>
+                  <th>Meal Range</th>
+                  <th>Starter Menu</th>
+                  <th>First Course</th>
+                  <th>Main Course</th>
+                  <th>Dessert</th>
+                  <th>Action</th>
+            </tr>";
+
+         while ($row = $result->fetch_assoc()) {
+            $cusineTypeText = "";
+            switch($row['cusineType']){
+               case '0':
+                  $cusineTypeText = 'Mediterranean';
+                  break;
+               case '1':
+                  $cusineTypeText = 'Italian';
+                  break;
+               case '2':
+                  $cusineTypeText = 'French';
+                  break;
+               case '3':
+                  $cusineTypeText = 'Asian';
+                  break;
+               case '4':
+                  $cusineTypeText = 'Latin American';
+                  break;
+               case '5':
+                  $cusineTypeText = 'Other';
+                  break;
+               default:
+                  $cusineTypeText = '';
+                  break;
+            }
+
+            $mealRangeText = "";
+            switch($row['mealRangeType']){
+               case '0':
+                  $mealRangeText = 'Basic ($190 - $230 per person)';
+                  break;
+               case '1':
+                  $mealRangeText = 'Indulge ($230 - $260 per person)';
+                  break;
+               case '2':
+                  $mealRangeText = 'Exclusive ($260 - $330 per person)';
+                  break;
+               default:
+                  $mealRangeText = 'Other';
+                  break;
+            }
+
+            echo "<tr>";
+            echo "<td>" . $row['plateName'] . "</td>";
+            echo "<td>" . $cusineTypeText . "</td>";
+            echo "<td>" . $mealRangeText . "</td>";
+            echo "<td>" . $row['starterMenu'] . "</td>";
+            echo "<td>" . $row['firstCourse'] . "</td>";
+            echo "<td>" . $row['mainCourse'] . "</td>";
+            echo "<td>" . $row['dessert'] . "</td>";
+            echo "<td><form class='form-horizontal' method='post' action='chef_view_plates.php'>
+                     <input name='plateID' type='hidden' value='" . $row['plateID'] . "'>
+                     <input type='submit' class='btn btn-danger' name='reserve' value='Reserve'>
+                     </form></td>";
+            echo "</tr>";
+         }
+         echo "</table></div>";
+         echo "</td></tr>";
+
+         // Delete record
+         if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            echo '<script type="text/javascript">
+                     alert("Plate Successfully Deleted");
+                     location="chef_view_plates.php";
+                  </script>';
+         }
+
+         if (isset($_POST['plateID'])) {
+            
+         }
+         echo "</fieldset></form></div></div></div> ";
+
+      }else{
+         echo <<<NOPLATE
+               The user dont't have any added plate <br>
+               <a href="chef_add_plates.php" class="btn">Add Plates</a>
+            NOPLATE;
+      }
+
+      // close connection
+      $conn->close();
+   }
+
    function retriveReview($conn, $userId){
       $query = "SELECT * FROM review WHERE chefID= '$userId'";
       $result = $conn->query($query);

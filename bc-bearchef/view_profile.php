@@ -3,6 +3,7 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include "views/helpers_HTML.php";
+include 'class/retriveDB.php';
 
 session_start();
 $user_chef = 'chef';
@@ -33,15 +34,14 @@ if (isset($_GET['id'])) {
       $row = $result->fetch_assoc();
       $name = $row['name'];
       $lastname = $row['lastName'];
-
       echo "<h1>$name $lastname</h1>";
       // Add more details as needed
    } else {
       echo "<p>User not found.</p>";
    }
 
-    // close connection if needed
-    $conn->close();
+   retrivePlatesForOrder($conn, $idChef);
+
 } else {
    // Redirect or display an error message if 'idfortest' is not set
    header("Location: index.php"); // Redirect to the homepage or another page
