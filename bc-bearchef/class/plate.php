@@ -117,10 +117,9 @@
                 // Handle the error, e.g., log it or display a user-friendly message
                 echo "Error: " . mysqli_error($connection);
             }
-        }
+            
+        }     
 
-        
-
-}
+    }
 
 ?>

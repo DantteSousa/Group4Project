@@ -1,36 +1,36 @@
 <?php
-// Include necessary files or configurations if needed
+
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
 
-// Start the session
 session_start();
 
 // Check if the user is logged in as a chef
 $user_type = 'chef';
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
-    // Redirect to login page or handle unauthorized access
+    // Redirect to login page to handle unauthorized access
     header("Location: login_form.php");
     exit();
 }
 
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
-$userId = $_SESSION['id'];
+$userID = $_SESSION['id'];
+$chef = retrieveChef($conn, $userID);
 
-// Include the header and body functions
 header_USER($user_type);
+
 if (isset($_POST['submit'])) {
     check_update_about($conn);
 } else {
-    body_edit_profile($conn);
+    body_edit_profile();
 }
+
 footer_USER();
 
-function body_edit_profile($conn){
-    $userID = $GLOBALS['userId'];
-    $chef = retrieveChef($conn, $userID);
+function body_edit_profile(){
+    $chef = $GLOBALS['chef'];
 
     echo <<< PROFILE
         <div>
@@ -49,10 +49,9 @@ function body_edit_profile($conn){
     PROFILE;
 }
 
-
 function check_update_about($conn) {
-    $userID = $GLOBALS['userId'];
-    $chef = retrieveChef($conn, $userID);
+    $userID = $GLOBALS['userID'];
+    $chef = $GLOBALS['chef'];
 
     // Retrieve form values
     $specialities = $_POST['specialities'];
@@ -66,7 +65,7 @@ function check_update_about($conn) {
         $education != $chef->getEducation()
     ) {
         // Data has changed, update the database
-        updateChefInfo($conn, $userID, $specialities, $description, $education);
+        $chef->updateChefInfo($conn, $userID, $specialities, $description, $education);
     } else{
         echo '<script type="text/javascript">
             location="chef_about.php";

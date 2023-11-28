@@ -35,12 +35,13 @@ function body($conn){
                   <li><a href="#" onclick="showOption('Option2')">Accepted Orders</a></li>
                   <li><a href="#" onclick="showOption('Option3')">Schedule</a></li>
                   <li><a href="#" onclick="showOption('Option4')">Reviews</a></li>
+                  <li><a href="#" onclick="showOption('Option5')">Subscription</a></li>
                </ul>
          </div>
          <div class="account-info" id="account-info">
             <h2>Welcome, {$chef->getName()}</h2>
             <p><strong>Email:</strong> {$chef->getEmail()}</p>
-            <p><strong>Membership Level:</strong> ${membershipLevel}</p>
+            <p><strong>Membership Level:</strong> $membershipLevel</p>
             <br>
             <h3>About the Chef</h3>
             <p><strong>Specialities:</strong> {$chef->getSpecialities()}</p>
@@ -55,16 +56,19 @@ function body($conn){
          // Add logic for each option
          switch (option) {
             case 'Option1':
-               window.location.href = 'chef_pending_orders.php'; // Change 'pending_orders.php' to the actual page you want to redirect to
+               window.location.href = 'chef_pending_orders.php';
                break;
             case 'Option2':
-               window.location.href = 'chef_accepted_orders.php'; // Change 'accepted_orders.php' to the actual page you want to redirect to
+               window.location.href = 'chef_accepted_orders.php'; 
                break;
             case 'Option3':
-               window.location.href = 'chef_schedule.php'; // Change 'schedule.php' to the actual page you want to redirect to
+               window.location.href = 'chef_schedule.php';
                break;
             case 'Option4':
-               window.location.href = 'chef_reviews.php'; // Change 'reviews.php' to the actual page you want to redirect to
+               window.location.href = 'chef_reviews.php';
+               break;
+            case 'Option5':
+               window.location.href = 'chef_upgrade.php';
                break;
             default:
                // You can choose to do nothing or redirect to a default page

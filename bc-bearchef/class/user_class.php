@@ -11,7 +11,6 @@
         private $phone;
 
         public function __construct(){
-
         }
 
         // Getter and Setter for $id
@@ -85,6 +84,36 @@
         public function setPhone($phone) {
             $this->phone = $phone;
         }
+
+        function updateUserInfo($conn, $userID, $name, $lastname, $email, $password, $address, $phone){
+            $stmt = $conn->prepare("UPDATE user_form SET name=?, lastName=?, email=?, password=?, address=?, phone=? WHERE id=?");
+            
+            // Check if the statement was prepared successfully
+            if (!$stmt) {
+                die("Error during updateChefInfo preparation: " . $conn->error);
+            }
+
+            // Bind parameters
+            $stmt->bind_param("ssssssi", $name, $lastname, $email, $password, $address, $phone, $userID);
+            
+            // Check if the parameters were bound successfully
+            if (!$stmt) {
+                die("Error during updateChefInfo binding: " . $conn->error);
+            }
+
+            // Execute the statement
+            $stmt->execute();
+
+            // Check if the statement execution was successful
+            if ($stmt->affected_rows > 0) {
+                echo '<script type="text/javascript">
+                alert("Profile Successfully Updated");
+                location="edit_profile.php";
+                </script>';
+            }   
+            // Close the statement
+            $stmt->close();
+        }
     }
 
     class Chef extends User {
@@ -152,6 +181,37 @@
     
         public function setIsPremium($isPremium) {
             $this->isPremium = $isPremium;
+        }
+        
+        function updateChefInfo($conn, $userID, $specialities, $description, $education){
+            $stmt = $conn->prepare("UPDATE chef SET specialities=?, description=?, education=? WHERE chefID=?");
+          
+            // Check if the statement was prepared successfully
+            if (!$stmt) {
+               die("Error during updateChefInfo preparation: " . $conn->error);
+            }
+      
+            // Bind parameters
+            $stmt->bind_param("sssi", $specialities, $description, $education, $userID);
+            
+            // Check if the parameters were bound successfully
+            if (!$stmt) {
+               die("Error during updateChefInfo binding: " . $conn->error);
+            }
+      
+            // Execute the statement
+            $stmt->execute();
+      
+            // Check if the statement execution was successful
+            if ($stmt->affected_rows > 0) {
+               echo '<script type="text/javascript">
+                     alert("Profile Successfully Updated");
+                     location="chef_about.php";
+                     </script>';
+            } 
+
+            // Close the statement
+            $stmt->close();
         }
     }
 

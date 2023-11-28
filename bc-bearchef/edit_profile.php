@@ -84,7 +84,7 @@ function check_update($conn) {
         $phone != $user->getPhone()
     ) {
         // Data has changed, update the database
-        updateUserInfo($conn, $userID, $name, $lastname, $email, $newHashedPassword, $address, $phone);
+        $user->updateUserInfo($conn, $userID, $name, $lastname, $email, $newHashedPassword, $address, $phone);
     } else{
         echo '<script type="text/javascript">
             location="edit_profile.php";

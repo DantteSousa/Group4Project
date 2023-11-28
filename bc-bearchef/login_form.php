@@ -85,7 +85,6 @@ function show_form($errors = array()){
             <input type="submit" name="submit" value="login now" class="form-btn">
             <p>don't have an account? <a href="register.php">register now</a></p>
         </form>
-
     </div>
     FORM;
 }

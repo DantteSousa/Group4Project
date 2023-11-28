@@ -19,9 +19,7 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 $userType = $_SESSION['user_type'];
 $userId = $_SESSION['id'];
 
-// Include the header and body functions
 header_USER('chef');
-
 retriveReview($conn, $userId);
 footer_USER();
 ?>
