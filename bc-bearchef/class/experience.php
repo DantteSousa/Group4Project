@@ -138,9 +138,6 @@ class Experience {
         $dayTime = mysqli_real_escape_string($connection, $this->getDayTime());
         $eventDay = mysqli_real_escape_string($connection, $this->getEventDay());
         $cusineType = mysqli_real_escape_string($connection, $this->getCusineType());
-        $stoveTopType = mysqli_real_escape_string($connection, $this->getStoveTopType());
-        $numBurners = mysqli_real_escape_string($connection, $this->getNumBurners());
-        $oven = mysqli_real_escape_string($connection, $this->getOven());
         $mealRangeType = mysqli_real_escape_string($connection, $this->getMealType());
         $restrictions = mysqli_real_escape_string($connection, $this->getRestrictions());
         $extraInfo = mysqli_real_escape_string($connection, $this->getExtraInfo());
@@ -153,10 +150,38 @@ class Experience {
         //Else, it will create a new one 
         
         if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_array($result);
+            $userID = $row["customerID"];
+
+            $stmt = $connection->prepare("UPDATE experiencedetail SET numOfPeople=?, dayTime=?, eventDay=?, cusineType=?, mealType=?, restrictions=?, extraInfo=?  WHERE customerID=?");
             
+            // Check if the statement was prepared successfully
+            if (!$stmt) {
+                die("Error during updateChefInfo preparation: " . $connection->error);
+            }
+    
+            // Bind parameters
+            $stmt->bind_param('iisiiiss', $numOfPeople, $dayTime, $eventDay, $cusineType, $mealRangeType, $restrictions, $extraInfo, $userID);
+
+            // Check if the parameters were bound successfully
+            if (!$stmt) {
+                die("Error during updateChefInfo binding: " . $connection->error);
+            }
+    
+            // Execute the statement
+            $stmt->execute();
+    
+            // Check if the statement execution was successful
+            if ($stmt->affected_rows > 0) {
+                echo '<script type="text/javascript">
+                    alert("Experience Successfully Updated");
+                    location="customer.php";
+                    </script>';
+            } 
+
         }else{
-            $query = "INSERT INTO experiencedetail (customerID, numOfPeople, dayTime, eventDay, cusineType, stoveTopType, numBurners, oven, mealType, restrictions, extraInfo)
-            VALUES ('$userID', '$numOfPeople', '$dayTime', '$eventDay', '$cusineType', '$stoveTopType', '$numBurners', '$oven', '$mealRangeType','$restrictions','$extraInfo')";
+            $query = "INSERT INTO experiencedetail (customerID, numOfPeople, dayTime, eventDay, cusineType, mealType, restrictions, extraInfo)
+            VALUES ('$userID', '$numOfPeople', '$dayTime', '$eventDay', '$cusineType', '$mealRangeType','$restrictions','$extraInfo')";
 
             // Execute the query
             mysqli_query($connection, $query);
@@ -166,9 +191,55 @@ class Experience {
                 // Handle the error, e.g., log it or display a user-friendly message
                 echo "Error: " . mysqli_error($connection);
             }
-        }
-        
+        }        
     }
+
+    public function addInformationAboutCustomer($connection){
+        
+        $stoveTopType = mysqli_real_escape_string($connection, $this->getStoveTopType());
+        $numBurners = mysqli_real_escape_string($connection, $this->getNumBurners());
+        $oven = mysqli_real_escape_string($connection, $this->getOven());
+        $userID = mysqli_real_escape_string($connection, $this->getCustomerID());
+
+        $select = "SELECT * FROM experiencedetail WHERE customerID = '$userID'";
+        $result = mysqli_query($connection, $select);
+
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_array($result);
+            $userID = $row["customerID"];
+
+            $stmt = $connection->prepare("UPDATE experiencedetail SET stoveTopType=?, numBurners=?, oven=? WHERE customerID=?");
+          
+            // Check if the statement was prepared successfully
+            if (!$stmt) {
+               die("Error during updateChefInfo preparation: " . $connection->error);
+            }
+      
+            // Bind parameters
+            $stmt->bind_param("iiii", $stoveTopType, $numBurners, $oven, $userID);
+            
+            // Check if the parameters were bound successfully
+            if (!$stmt) {
+               die("Error during updateChefInfo binding: " . $connection->error);
+            }
+      
+            // Execute the statement
+            $stmt->execute();
+      
+            // Check if the statement execution was successful
+            if ($stmt->affected_rows > 0) {
+               echo '<script type="text/javascript">
+                     alert("Experience Successfully Updated");
+                     location="customer.php";
+                     </script>';
+            } 
+
+            // Close the statement
+            $stmt->close();
+        }
+    }
+
+
 }
 
 

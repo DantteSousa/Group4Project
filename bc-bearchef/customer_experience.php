@@ -75,34 +75,7 @@ function add_experience(){
                     <input type="radio" id="3" name="cusineType" value="5">
                     <label for="5">Other</label><br>
                 </div>
-                <br>
-                <div>
-                    <label for="stoveTopType">Our stove top is...</label><br>
-                    <select name="stoveTopType" id="stoveTopType" required>
-                        <option value="0">Eletric</option>
-                        <option value="1">Induction</option>
-                        <option value="2">Gas</option>
-                    </select>
-                </div>
-                <br>
-                <div>
-                    <label for="numBurners">Our kitchen has...</label><br>
-                    <select name="numBurners" id="numBurners" required>
-                        <option value="2">2 burners</option>
-                        <option value="3">3 burners</option>
-                        <option value="4">4 burners</option>
-                        <option value="5">5 burners</option>                        
-                    </select>
-                </div>
-                <br>
-                <div>
-                    <label for="oven">We have an oven...</label><br>
-                    <select name="oven" id="oven" required>
-                        <option value="0">No</option>                      
-                        <option value="1">Yes</option>
-                    </select>
-                </div>
-                <br>
+                <br>               
                 <div>
                     <label for="mealRangeType">We are looking for...:</label><br>
                     <select name="mealRangeType" id="mealRangeType" required>
@@ -191,9 +164,6 @@ function check_update_experience($conn){
     $dayTime = $_POST['dayTime'];
     $eventDay = $_POST['eventDay'];
     $cusineType = $_POST['cusineType'];
-    $stoveTopType = $_POST['stoveTopType'];
-    $numBurners = $_POST['numBurners'];
-    $oven = $_POST['oven'];
     $mealRangeType = $_POST['mealRangeType'];
     $restrictions = $_POST['restrictions'];
     $extraInfo = $_POST['extraInfo'];
@@ -206,9 +176,6 @@ function check_update_experience($conn){
     $experience->setDayTime($dayTime);
     $experience->setEventDay($eventDay);
     $experience->setCusineType((int)$cusineType);
-    $experience->setStoveTopType($stoveTopType);
-    $experience->setNumBurners($numBurners);
-    $experience->setOven($oven);
     $experience->setMealType($mealRangeType);
     $experience->setRestrictions($restrictions);
     $experience->setExtraInfo($extraInfo);

@@ -55,8 +55,8 @@
       if (mysqli_num_rows($resultFromCustomer) > 0) {
          $rowNew = mysqli_fetch_array($resultFromCustomer);
          $customer->setExperienceId($rowNew["experienceID"]);
-         
       }   
+      
       return $customer;
    }
 
@@ -253,10 +253,42 @@
          echo "</fieldset></form></div></div></div> ";
 
       }else{
-         echo "hm";
+         echo <<<NOREVIEW
+               <div>
+                  The user didn't made any review <br>
+                  <button onclick="location.href = 'customer.php';"">Go Back</button>        
+               </div>
+               NOREVIEW;
       }
 
       // close connection
       $conn->close();
    }
+
+   function retriveUserExperience($conn, $userID) {
+      $select = "SELECT * FROM experiencedetail WHERE customerID = $userID";
+   
+      $experience = new Experience();
+   
+      $result = mysqli_query($conn, $select);
+      if (mysqli_num_rows($result) > 0) {
+         $row = mysqli_fetch_array($result);
+         $experience->setExperienceID($row["experienceID"]);
+         $experience->setCustomerID($row["customerID"]);
+         $experience->setNumOfPeople($row["numOfPeople"]);
+         $experience->setDayTime($row["dayTime"]);
+         $experience->setEventDay($row["eventDay"]);
+         $experience->setCusineType($row["cusineType"]);
+         $experience->setStoveTopType($row["stoveTopType"]);
+         $experience->setNumBurners($row["numBurners"]);
+         $experience->setOven($row["oven"]);
+         $experience->setMealType($row["mealType"]);
+         $experience->setRestrictions($row["restrictions"]);
+         $experience->setTypeRestrictions($row["typeRestrictions"]);
+         $experience->setExtraInfo($row["extraInfo"]);
+      }
+      
+      return $experience;
+   }
+
 ?>

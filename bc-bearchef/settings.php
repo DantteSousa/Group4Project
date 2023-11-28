@@ -57,6 +57,7 @@ function body_settings_customer($conn){
             <p>This is your user page</p>
             <p>You can edit your profile and your experience here!!</p>
             <a href="edit_profile.php" class="btn">Edit Profile</a>
+            <a href="customer_information.php" class="btn">Edit Information</a>
             <a href="customer_experience.php" class="btn">Edit Experience</a>
          </div>
       </div>

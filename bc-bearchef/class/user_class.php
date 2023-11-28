@@ -239,6 +239,25 @@
         public function setExperienceId($experienceId){
             $this->experienceId = $experienceId;
         }
+
+        public function retriveExperience($connection){
+            $userID = mysqli_real_escape_string($connection, $this->getCustomerID());
+            $select = "SELECT * FROM experiencedetail WHERE customerID = '$userID'";
+            $result = mysqli_query($connection, $select);
+            
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_array($result);
+                $experienceID = $row["experienceID"];
+                
+                $stmt = $connection->prepare("UPDATE customer SET experienceID=?  WHERE customerID=?");
+                $stmt->bind_param('ii', $experienceID, $userID);
+               
+                // Execute the statement
+                $stmt->execute();
+
+            }
+        }
+       
     }
     
 ?>

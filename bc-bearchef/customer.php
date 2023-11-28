@@ -3,6 +3,7 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
+include 'class/experience.php';
 
 
 // customer_page.php or chef_page.php
@@ -26,7 +27,18 @@ footer_USER();
 function body_customer($conn){
    $userID = $GLOBALS['userId'];
    $customer = retriveCustomer($conn, $userID);
+   $customer->retriveExperience($conn);
 
+   $experience = retriveUserExperience($conn, $userID);
+   $doesHaveOven = ($experience->getOven() == 0) ? "No" : "Yes";
+   $stoveTop = "";
+   if($experience->getStoveTopType() == 0){
+      $stoveTop = "Eletric";
+   }else if ($experience->getStoveTopType() == 1){
+      $stoveTop = "Induction";
+   } else{
+      $stoveTop = "Gas";
+   }
 
    echo <<<BODY
       <div class="main-container">
@@ -40,6 +52,14 @@ function body_customer($conn){
          <div class="account-info" id="account-info">
             <h2>Welcome, {$customer->getName()}</h2>
             <p><strong>Email:</strong> {$customer->getEmail()}</p>            
+            <p><strong>Address:</strong> {$customer->getAddress()}</p>            
+            <p><strong>Phone:</strong> {$customer->getPhone()}</p>           
+            <br>
+            <h3>Settings from your house </h3>
+            <p><strong>Type of Stove top:</strong> $stoveTop</p>
+            <p><strong>Number of burners:</strong> {$experience->getNumBurners()} burners</p>
+            <p><strong>Does it have oven?</strong> $doesHaveOven </p>
+            <p><strong></strong></p>
          </div>
       </div>
 
