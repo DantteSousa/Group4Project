@@ -52,7 +52,7 @@ function body_settings_customer($conn){
    echo <<<BODY
       <div class="container">
          <div class="content">
-            <h3>hi, <span>chef</span></h3>
+            <h3>hi, <span>customer</span></h3>
             <h1>welcome <span>{$customer->getName()}</span></h1>
             <p>This is your user page</p>
             <p>You can edit your profile and your experience here!!</p>

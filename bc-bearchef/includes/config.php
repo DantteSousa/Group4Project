@@ -228,4 +228,33 @@ if (!$tableExists) {
     }
 }
 
+// PAYMENT TABLE ===============================================
+
+$tableName = 'paymentInfo';
+$tableExistsQuery = "SELECT * FROM `$tableName`";
+$tableExists = mysqli_query($conn, $tableExistsQuery);
+
+if (!$tableExists) {
+    // If the table doesn't exist, create it
+    $createTableQuery = "CREATE TABLE $tableName (
+        paymentInfoID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        userID INT,
+        fullName VARCHAR(220),
+        email VARCHAR(20),
+        address_user VARCHAR(220),
+        city_user VARCHAR(20),
+        state_user VARCHAR(20),
+        zip_user VARCHAR(20),
+        name_card VARCHAR(220),
+        credit_card INT,
+        exp_month INT,
+        exp_year INT,
+        cvv int
+    );
+    ";
+
+    if ($conn->query($createTableQuery) === FALSE) {
+       echo "Error creating table: " . $conn->error . "\n";
+    }
+}
 ?>

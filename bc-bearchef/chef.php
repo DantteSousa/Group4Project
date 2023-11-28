@@ -47,7 +47,7 @@ function body($conn){
             <p><strong>Specialities:</strong> {$chef->getSpecialities()}</p>
             <p><strong>Description:</strong> {$chef->getDescription()}</p>
             <p><strong>Education:</strong> {$chef->getEducation()}</p>
-            <p><strong>Plates:</strong> <button onclick="location.href = 'settings.php';"">View</button></p>
+            <p><strong>Plates:</strong> <button onclick="location.href = 'chef_view_plates.php';"">View</button></p>
          </div>
       </div>
 

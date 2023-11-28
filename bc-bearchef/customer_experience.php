@@ -148,7 +148,6 @@ function add_experience(){
 
                 <input type="submit" name="submit" value="save information">
             </form>
-            <a href="chef_view_plates.php" class="btn">VIEW PLATES</a>
             <br>
      
             <!-- Back button -->
