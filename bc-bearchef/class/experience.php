@@ -239,7 +239,30 @@ class Experience {
         }
     }
 
+    public function getStringStoveTopType(){
+        $stoveTop = "";
+   
+        if($this->getStoveTopType() == 0){
+            $stoveTop = "Eletric";
+        }else if ($this->getStoveTopType() == 1){
+            $stoveTop = "Induction";
+        } else{
+            $stoveTop = "Gas";
+        }
+        return $stoveTop;
+    }
 
+    public function doesHaveOven(){
+        return ($this->getOven() == 0) ? "No" : "Yes"; 
+    }
+
+    public function doesHaveRestriction(){
+        return ($this->getRestrictions() == 0) ? "No" : "Yes"; 
+    }
+
+    public function getStringDayTime(){
+        return ($this->getDayTime() == 0) ? "Lunch" : "Dinner"; 
+    }
 }
 
 

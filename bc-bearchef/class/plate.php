@@ -118,7 +118,97 @@
                 echo "Error: " . mysqli_error($connection);
             }
             
-        }     
+        }   
+
+        public function getStringCusineType() {
+            $cusineTypeText = "";
+            switch($this->getCusineType()){
+                case '0':
+                   $cusineTypeText = 'Mediterranean';
+                   break;
+                case '1':
+                   $cusineTypeText = 'Italian';
+                   break;
+                case '2':
+                   $cusineTypeText = 'French';
+                   break;
+                case '3':
+                   $cusineTypeText = 'Asian';
+                   break;
+                case '4':
+                   $cusineTypeText = 'Latin American';
+                   break;
+                case '5':
+                   $cusineTypeText = 'Other';
+                   break;
+                default:
+                   $cusineTypeText = '';
+                   break;
+            }
+            return $cusineTypeText;
+        }
+
+        public function getStringMealRange() {
+            $mealRangeText = "";
+            switch($this->getMealRangeType()){
+                case '0':
+                   $mealRangeText = 'Basic';
+                   break;
+                case '1':
+                   $mealRangeText = 'Indulge';
+                   break;
+                case '2':
+                   $mealRangeText = 'Exclusive';
+                   break;                
+            }
+            return $mealRangeText;
+        }
+
+        public function calculateUnitPlatePrice($numOfPeople){
+            $unitPrice = "";
+            switch ($numOfPeople) {
+                case '2':
+                    if($this->getMealRangeType() == 0){
+                        $unitPrice = 190;
+                    } else if($this->getMealRangeType() == 2){
+                        $unitPrice =  230;
+                    }else{
+                        $unitPrice = 260;
+                    }
+                    break;
+                case '3':
+                    if($this->getMealRangeType() == 0){
+                        $unitPrice = 170;
+                    } else if($this->getMealRangeType() == 2){
+                        $unitPrice =  190;
+                    }else{
+                        $unitPrice = 240;
+                    }
+                    break;
+                case '7':
+                    if($this->getMealRangeType() == 0){
+                        $unitPrice = 150;
+                    } else if($this->getMealRangeType() == 2){
+                        $unitPrice =  170;
+                    }else{
+                        $unitPrice = 220;
+                    }
+                    break;
+                case '13':
+                    if($this->getMealRangeType() == 0){
+                        $unitPrice = 150;
+                    } else if($this->getMealRangeType() == 2){
+                        $unitPrice =  170;
+                    }else{
+                        $unitPrice = 220;
+                    }
+                    break;    
+            }
+            return $unitPrice;
+
+        }
+        
+        
 
     }
 

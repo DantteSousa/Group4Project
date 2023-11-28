@@ -98,7 +98,6 @@ function check_update_plate($conn){
     $userID = $GLOBALS['userId'];
 
     $plate = new Plate();
-    $plate = new Plate();
     $plate->setChefID($userID);
     $plate->setPlateName($plateName);
     $plate->setMealRangeType((int)$mealRangeType);

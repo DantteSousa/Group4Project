@@ -2,6 +2,9 @@
    include 'includes/config.php';
    include 'class/user_class.php';
 
+   ////////////////////////////////////////////////////////////////////////////////////////////////
+   //// Retrive CHEF from DB
+   ////////////////////////////////////////////////////////////////////////////////////////////////
    function retrieveChef($conn, $userID) {
       $select = "SELECT * FROM user_form WHERE id = $userID";
    
@@ -17,8 +20,7 @@
          $chef->setEmail($row["email"]);
          $chef->setAddress($row["address"]);
          $chef->setPhone($row["phone"]);
-      }
-   
+      }   
 
       $selectFromChef = "SELECT * FROM chef WHERE chefID = $userID";
       $resultFromChef = mysqli_query($conn, $selectFromChef);
@@ -160,8 +162,6 @@
             NOPLATE;
       }
 
-      // close connection
-      $conn->close();
    }
 
    function retrivePlatesForOrder($conn, $userId){
@@ -222,7 +222,7 @@
                   $mealRangeText = 'Other';
                   break;
             }
-
+            $plateID = $row['plateID'];
             echo "<tr>";
             echo "<td>" . $row['plateName'] . "</td>";
             echo "<td>" . $cusineTypeText . "</td>";
@@ -231,37 +231,27 @@
             echo "<td>" . $row['firstCourse'] . "</td>";
             echo "<td>" . $row['mainCourse'] . "</td>";
             echo "<td>" . $row['dessert'] . "</td>";
-            echo "<td><form class='form-horizontal' method='post' action='chef_view_plates.php'>
-                     <input name='plateID' type='hidden' value='" . $row['plateID'] . "'>
-                     <input type='submit' class='btn btn-danger' name='reserve' value='Reserve'>
-                     </form></td>";
+            echo "<td> <button onclick='redirectToProfile($plateID);'>Reserve</button> </td>";
             echo "</tr>";
          }
          echo "</table></div>";
          echo "</td></tr>";
 
-         // Delete record
-         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            echo '<script type="text/javascript">
-                     alert("Plate Successfully Deleted");
-                     location="chef_view_plates.php";
-                  </script>';
-         }
-
-         if (isset($_POST['plateID'])) {
-            
-         }
-         echo "</fieldset></form></div></div></div> ";
+         echo <<<ENDPLATE
+         </div>
+         <script>
+           function redirectToProfile(id) {
+               window.location.href = 'orders.php?id=' + id;
+           }
+         </script>
+         ENDPLATE;
 
       }else{
          echo <<<NOPLATE
-               The user dont't have any added plate <br>
-               <a href="chef_add_plates.php" class="btn">Add Plates</a>
+               The user dont't have any added plate <br>               
             NOPLATE;
       }
 
-      // close connection
-      $conn->close();
    }
 
    function retriveReview($conn, $userId){
@@ -301,8 +291,6 @@
          </div>
          ENDREVIEW;
 
-      // close connection
-      $conn->close();
    }
 
    function retriveCustomerReviews($conn, $userId){
@@ -361,8 +349,6 @@
                NOREVIEW;
       }
 
-      // close connection
-      $conn->close();
    }
 
    function retriveUserExperience($conn, $userID) {
