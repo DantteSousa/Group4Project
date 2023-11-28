@@ -5,7 +5,6 @@ include 'views/helpers_user.php';
 include 'class/retriveDB.php';
 
 session_start();
-
 // Check if the user is logged in as a chef
 $user_type = 'chef';
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
@@ -20,13 +19,11 @@ $userID = $_SESSION['id'];
 $chef = retrieveChef($conn, $userID);
 
 header_USER($user_type);
-
 if (isset($_POST['submit'])) {
     check_update_about($conn);
 } else {
     body_edit_profile();
 }
-
 footer_USER();
 
 function body_edit_profile(){
@@ -43,7 +40,6 @@ function body_edit_profile(){
                 <input type="submit" name="submit" value="save information">
             </form>
             <button>VIEW PLATES</button> <br>
-            <!-- Back button -->
             <button onclick="location.href = 'settings.php';"">Go Back</button>
         </div>    
     PROFILE;
@@ -72,7 +68,6 @@ function check_update_about($conn) {
             </script>';
     }
 }
-
 ?>
 
 

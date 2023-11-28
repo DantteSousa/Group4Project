@@ -1,5 +1,4 @@
 <?php
-// Include necessary files or configurations if needed
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
@@ -7,7 +6,6 @@ include 'class/experience.php';
 
 // Start the session
 session_start();
-
 // Check if the user is logged in as a customer
 $user_type = 'customer';
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
@@ -20,7 +18,6 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 $userType = $_SESSION['user_type'];
 $userId = $_SESSION['id'];
 
-// Include the header and body functions
 header_USER($user_type);
 if (isset($_POST['submit'])) {
     check_update_experience($conn);
@@ -150,7 +147,6 @@ function add_experience(){
             </form>
             <br>
      
-            <!-- Back button -->
             <button onclick="location.href = 'settings.php';"">Go Back</button>
         </div>
     PROFILE;
