@@ -6,6 +6,7 @@ class Orders {
     private $experienceID;
     private $status;
 
+
     // Constructor
     public function __construct() {
         
@@ -58,6 +59,40 @@ class Orders {
 
     public function calculateTotal($numOfPeople, $pricePerPeople){
         return $numOfPeople * $pricePerPeople;
+    }
+
+    public function statusString(){
+        switch($this->status) {
+            case '0':
+                return "Order Placed";                
+            case "1":
+                return "Chef accepted order";                
+            case "2":
+                return "Order canceled";                
+            case "3":
+                return "Order completed";                
+            default:    
+                return "";  
+        }
+    }
+
+    public function makeOrder($connection) {
+
+        $chefID = mysqli_real_escape_string($connection, $this->getChefID());
+        $customerID = mysqli_real_escape_string($connection, $this->getCustomerID());
+        $experienceID = mysqli_real_escape_string($connection, $this->getExperienceID());
+        $statusID = mysqli_real_escape_string($connection, $this->getStatus());
+
+        $query = "INSERT INTO orders (customerID, chefID, experienceID, statusID) 
+            VALUES ('$customerID', '$chefID', '$experienceID', '$statusID')";
+
+        // Execute the query
+        mysqli_query($connection, $query);
+
+        // You may want to add error handling here
+        if (mysqli_error($connection)) {
+            echo "Error: " . mysqli_error($connection);
+        }
     }
 }
 

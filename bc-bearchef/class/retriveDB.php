@@ -286,11 +286,6 @@
                The user dont't have any review <br>
                NOREVIEW;
       }
-      echo <<<ENDREVIEW
-         <button onclick="location.href = 'chef.php';"">Go Back</button>
-         </div>
-         ENDREVIEW;
-
    }
 
    function retriveCustomerReviews($conn, $userId){

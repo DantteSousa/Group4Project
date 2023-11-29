@@ -183,12 +183,9 @@ class Experience {
             $query = "INSERT INTO experiencedetail (customerID, numOfPeople, dayTime, eventDay, cusineType, mealType, restrictions, extraInfo)
             VALUES ('$userID', '$numOfPeople', '$dayTime', '$eventDay', '$cusineType', '$mealRangeType','$restrictions','$extraInfo')";
 
-            // Execute the query
             mysqli_query($connection, $query);
 
-            // You may want to add error handling here
             if (mysqli_error($connection)) {
-                // Handle the error, e.g., log it or display a user-friendly message
                 echo "Error: " . mysqli_error($connection);
             }
         }        

@@ -20,11 +20,8 @@ footer_HTML();
 
 function search($conn)
 {
-
     $query = "SELECT * FROM user_form WHERE user_type= 'chef'";
     $result = $conn->query($query);
-
-    echo "<div class='content-container'>";
 
     if ($result->num_rows > 0) {
 
@@ -32,6 +29,7 @@ function search($conn)
             $name = $row['name'];
             $lastname = $row['lastName'];
             $idChef = $row['id'];
+
             echo <<<REVIEW
                <button onclick="redirectToProfile($idChef);">$name $lastname</button></p> 
             REVIEW;
@@ -44,7 +42,6 @@ function search($conn)
     }
 
     echo <<<ENDREVIEW
-      </div>
       <script>
         function redirectToProfile(id) {
             window.location.href = 'view_profile.php?id=' + id;

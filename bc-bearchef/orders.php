@@ -49,7 +49,11 @@ if (isset($_GET['id'])) {
  
     $usuario = $GLOBALS['userId'];
     $experience=retriveUserExperience($conn, $usuario);
-    
+    $order->setChefID($plate->getChefID());
+    $order->setCustomerID($userId);
+    $order->setExperienceID($experience->getExperienceID());
+    $order->setStatus(0);
+
     echo <<<ORDERREVIEW
         <h2>Order Review</h2>
         Please, check the information before purchasing
@@ -78,15 +82,58 @@ if (isset($_GET['id'])) {
         <strong>Restriction: </strong> {$experience->doesHaveRestriction()}<br>
 
         <h4> Total: $ {$order->calculateTotal($plate->calculateUnitPlatePrice($experience->getNumOfPeople()),$experience->getNumOfPeople())}</h4> 
-
+        <form action="/action_page.php">
+            <h3>Billing Address</h3>
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe"> <br>
+            
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com"><br>
+            
+            <label for="adr">Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street"><br>
+            
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="Burnaby"><br>           
+            
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" placeholder="BC"><br>
+            
+            <label for="zip">Zip</label>
+            <input type="text" id="zip" name="zip" placeholder="XXX XXX"><br><br>
+                
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe"><br>
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"><br>
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="XX"><br>
+                <div class="col-50">
+                    <label for="expyear">Exp Year</label>
+                    <input type="text" id="expyear" name="expyear" placeholder="XXXX">
+                </div>
+                <div class="col-50">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="XXX">
+                </div>
+            
+            <input type="submit" value="Continue to checkout" class="btn">
+        </form>
 
     ORDERREVIEW;
 
-
 } else {
-   // Redirect or display an error message if 'idfortest' is not set
-   header("Location: index.php"); // Redirect to the homepage or another page
-   exit();
+  header("Location: index.php"); 
+  exit();
 }
 
 footer_USER();

@@ -36,9 +36,9 @@ if (isset($_GET['id'])) {
    } else {
       echo "<p>User not found.</p>";
    }
-   retriveReview($conn,$idChef);
+   echo "Plates:";
    retrivePlatesForOrder($conn, $idChef);
-
+   retriveReview($conn,$idChef);
 
 } else {
    // Redirect or display an error message if 'idfortest' is not set
