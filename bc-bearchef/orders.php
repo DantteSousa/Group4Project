@@ -12,25 +12,22 @@ $user_customer = 'customer';
 $userID = "";
 
 head_HTML();
-if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_chef) {
-   //header_USER($user_chef);
-   $GLOBALS['userID'] = $_SESSION['userID'];
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer) {
+    header_USER($user_customer);    
+    $GLOBALS['userID'] = $_SESSION['userID'];
+}else{
+    header_HTML();
+    $GLOBALS['userID'] = $_SESSION['userID'];
     echo '<script type="text/javascript">
-    alert("Please use an customer account!");
+    alert("Please be logged on a customer account!");
     location="settings.php";
     </script>';
-
- } elseif (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer) {
-    //header_USER($user_customer);    
-   $GLOBALS['userID'] = $_SESSION['userID'];
- }else{
-    //header_HTML();
 }
+
 $order = new Orders();
 $plate = new Plate();
 $customer = retriveCustomer($conn, $userID);
 
-echo $GLOBALS['userID'];
 order_body($conn, $order, $plate, $customer);
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //If validate_form returns errors, pass them to show_form()

@@ -359,7 +359,7 @@ footer {
     padding:5px;
 }
 /* Search page */
-.search h2{
+.search h2, .view-profile h1{
     font-size: 35px;
     margin-bottom: 10px;
     color:orangered;
@@ -387,12 +387,13 @@ footer {
 
 .search-user {
     width: calc(33.33% - 10px); 
+    padding-top: 5px;
     margin-bottom: 20px;
     box-sizing: border-box; 
     border-radius: 5px;
     background-color: #f8d0c5;
     padding-left: 1.5%;
-    padding-bottom: .5%;
+    padding-bottom: 1%;
     display: flex;
     align-items: center;
 }
@@ -427,6 +428,142 @@ footer {
     display: table;
     clear: both;
 }
+
+/* Display on profile chef page */
+.view-profile{
+    align-items: center;
+    justify-content: center;
+    padding:5px 60px;
+    padding-bottom: 60px;
+}
+
+#description{
+    font-size: 20px;
+    color:#333;
+    text-align: center;
+    font-style: italic;
+}
+
+.view-profile .text-view-profile h1{
+    font-size: 30px;
+    color:orangered;
+    text-align: center;
+}
+
+.view-profile .text-view-profile p{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.table {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+caption h2{
+    font-size: 25px;
+    color:orangered;
+}
+
+#review-title{
+    font-size: 25px;
+    color:orangered;
+    text-align: center;
+}
+/* Optional: Style for the table cells */
+.table td, .table th {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.button{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e44d26;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.button:hover{
+    background: rgb(143, 43, 6);
+    color:#fff;
+}
+
+.review-user-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the columns horizontally */
+    align-items: center; /* Center the columns vertically */
+    gap: 20px; /* Adjust the gap between columns as needed */
+}
+
+.review-user {
+    width: calc(25% - 10px);
+    align-self: center;
+    padding-top: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box; 
+    border-radius: 5px;
+    background-color: #fbf1ee;
+    padding-left: 2%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+    display: flex;
+    flex-direction: column; /* Change flex direction to column */
+    align-items: center;
+    text-align: center; /* Center-align text content */
+}
+
+.review-user img {
+    width: 90px; 
+    height: auto;
+    margin-bottom: 10px; /* Add margin at the bottom to separate image and text */
+}
+
+/* Clearfix to handle the floating elements */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Stars rating */
+.star-rating {
+    display: inline-block;
+    font-size: 24px; /* Adjust the font size as needed */
+    color: #ffd700; /* Set the color of the stars */
+
+    /* Generate stars using Unicode character '\2605' (black star) */
+    content: "\2605\2605\2605\2605\2605";
+}
+
+.star-rating[data-rating="1"]::before {
+    content: "\2605\2606\2606\2606\2606"; /* Display one filled star */
+}
+
+.star-rating[data-rating="2"]::before {
+    content: "\2605\2605\2606\2606\2606"; /* Display two filled stars */
+}
+
+.star-rating[data-rating="3"]::before {
+    content: "\2605\2605\2605\2606\2606"; /* Display three filled stars */
+}
+
+.star-rating[data-rating="4"]::before {
+    content: "\2605\2605\2605\2605\2606"; /* Display four filled stars */
+}
+
+.star-rating[data-rating="5"]::before {
+    content: "\2605\2605\2605\2605\2605"; /* Display five filled stars */
+}
+
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {

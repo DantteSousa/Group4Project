@@ -188,7 +188,9 @@
       $result = $conn->query($query);
 
       if ($result->num_rows > 0) {
-         echo "<div class='container'><table>
+         echo "<div class='table'>
+            <table>
+            <caption><h2>Plates</h2></caption>
             <tr>
                   <th>Plate Name</th>
                   <th>Cusine</th>
@@ -253,16 +255,16 @@
             echo "<td> <button onclick='redirectToProfile($plateID);'>Reserve</button> </td>";
             echo "</tr>";
          }
-         echo "</table></div>";
          echo "</td></tr>";
+         echo "</table></div>";
 
          echo <<<ENDPLATE
-         </div>
-         <script>
-           function redirectToProfile(id) {
-               window.location.href = 'orders.php?id=' + id;
-           }
-         </script>
+         
+            <script>
+            function redirectToProfile(id) {
+                  window.location.href = 'orders.php?id=' + id;
+            }
+            </script>
          ENDPLATE;
 
       }else{
@@ -329,29 +331,28 @@
       $query = "SELECT * FROM review WHERE chefID= '$userId'";
       $result = $conn->query($query);
 
-      echo "<div class='content-container'>";
-      echo "<h2>Reviews</h2>";
+      echo <<<REVIEW_HTML
+            <div class="review">
+            <h2 id="review-title">Reviews</h2>
+                  <div class="review-user-container clearfix">
+            REVIEW_HTML;
+      
       if ($result->num_rows > 0) {
-         echo "<div class='container'><table>
-            <tr>
-                  <th>Customer</th>
-                  <th>Date</th>
-                  <th>Review</th>
-                  <th>Rating</th>                  
-            </tr>";
-
-         while ($row = $result->fetch_assoc()) {            
-            echo "<tr>";
-            echo "<td>" . $row['nameCustomer'] . "</td>";
-            echo "<td>" . $row['dateMsg'] . "</td>";
-            echo "<td>" . $row['reviewDescription'] . "</td>";
-            echo "<td>" . $row['rating'] . "</td>";
-            echo "</tr>";
-         }
-         echo "</table></div>";
-         echo "</td></tr>";
-         echo "</fieldset></form></div></div></div> ";
-
+         while ($row = $result->fetch_assoc()) {  
+            $reviewDescription = $row['reviewDescription']; 
+            $rating = $row['rating'];
+            $customerName = $row['nameCustomer'];
+            $date = $row['dateMsg'];
+            echo <<<DISPLAY_USER
+               <div class="review-user">
+                                               
+                  <div class="star-rating" data-rating="$rating"></div>   
+                  <em>"$reviewDescription"</em> <br>
+                  <p><strong>$customerName</strong> - $date</p>
+                
+               </div>
+            DISPLAY_USER; 
+         }         
       }else{
          echo <<<NOREVIEW
                The user dont't have any review <br>
