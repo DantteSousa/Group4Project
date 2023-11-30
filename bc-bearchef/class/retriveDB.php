@@ -393,6 +393,7 @@
          $row = mysqli_fetch_array($result);
          $order->setOrderID($row["orderID"]);
          $order->setCustomerID($row["customerID"]);
+         $order->setChefID($row["chefID"]);
          $order->setDateExperience($row["dateExperience"]);
          $order->setStatus($row["statusOrder"]);
          $order->setTotal($row["total"]);

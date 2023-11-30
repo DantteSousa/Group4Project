@@ -7,6 +7,7 @@ class Message {
     private $dateMsg;
     private $textMsg;
 
+    private $orderID; 
     public function __construct($senderID, $receiverID, $dateMsg, $textMsg) {
         $this->senderID = $senderID;
         $this->receiverID = $receiverID;
@@ -22,6 +23,13 @@ class Message {
         $this->messageID = $messageID;
     }
 
+    public function getOrderID() {
+        return $this->orderID;
+    }
+
+    public function setOrderID($orderID) {
+        $this->orderID = $orderID;
+    }
     public function getSenderID() {
         return $this->senderID;
     }
@@ -59,12 +67,13 @@ class Message {
         $customerID = mysqli_real_escape_string($connection, $this->getReceiverID());
         $date = mysqli_real_escape_string($connection, $this->getDateMsg());
         $message = mysqli_real_escape_string($connection, $this->getTextMsg());
+        $orderID = mysqli_real_escape_string($connection, $this->getOrderID());
 
         
-        $query = "INSERT INTO message (senderID, receiverID, dateMsg, textMsg) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO messages (senderID, receiverID, dateMsg, textMsg, orderID) VALUES (?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($connection, $query);
-        mysqli_stmt_bind_param($stmt, "ssss", $senderID, $customerID, $date, $message);
+        mysqli_stmt_bind_param($stmt, "sssss", $senderID, $customerID, $date, $message, $orderID);
 
         // Execute the query
         mysqli_stmt_execute($stmt);
@@ -74,8 +83,8 @@ class Message {
             echo "Error: " . mysqli_stmt_error($stmt);
         } else {
             echo '<script type="text/javascript">
-                alert("Message sent");
-                location="settings.php";
+                alert("Message sent!");
+                location="chef_read.php";
                 </script>';
         }
     }

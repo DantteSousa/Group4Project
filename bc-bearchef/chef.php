@@ -33,9 +33,10 @@ function body($conn){
                <ul>
                   <li><a href="#" onclick="showOption('Option1')">Pending-Orders</a></li>
                   <li><a href="#" onclick="showOption('Option2')">Accepted Orders</a></li>
-                  <li><a href="#" onclick="showOption('Option3')">Schedule</a></li>
-                  <li><a href="#" onclick="showOption('Option4')">Reviews</a></li>
-                  <li><a href="#" onclick="showOption('Option5')">Subscription</a></li>
+                  <li><a href="#" onclick="showOption('Option3')">Message</a></li>
+                  <li><a href="#" onclick="showOption('Option4')">Schedule</a></li>
+                  <li><a href="#" onclick="showOption('Option5')">Reviews</a></li>
+                  <li><a href="#" onclick="showOption('Option6')">Subscription</a></li>
                </ul>
          </div>
          <div class="account-info" id="account-info">
@@ -62,12 +63,15 @@ function body($conn){
                window.location.href = 'chef_accepted_orders.php'; 
                break;
             case 'Option3':
-               window.location.href = 'chef_schedule.php';
+               window.location.href = 'chef_read.php';
                break;
             case 'Option4':
-               window.location.href = 'chef_reviews.php';
+               window.location.href = 'chef_schedule.php';
                break;
             case 'Option5':
+               window.location.href = 'chef_reviews.php';
+               break;
+            case 'Option6':
                window.location.href = 'chef_upgrade.php';
                break;
             default:

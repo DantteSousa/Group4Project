@@ -165,7 +165,7 @@ if (!$tableExists) {
 
 // MESSAGE TABLE ===============================================
 
-$tableName = 'message';
+$tableName = 'messages';
 $tableExistsQuery = "SELECT * FROM `$tableName`";
 $tableExists = mysqli_query($conn, $tableExistsQuery);
 
@@ -176,7 +176,8 @@ if (!$tableExists) {
             senderID INT,
             receiverID INT,
             dateMsg VARCHAR(255),
-            textMsg TEXT
+            textMsg TEXT,
+            orderID INT
     )";
 
     if ($conn->query($createTableQuery) === FALSE) {

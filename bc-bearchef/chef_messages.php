@@ -30,6 +30,7 @@ if (isset($_GET['orderID'])) {
             From: You <br>
             To: {$customer->getName()}
             <form method="post" action="$_SERVER[PHP_SELF]">
+                <input type="hidden" name="orderID" value="$orderID">
                 <textarea name="message" rows="4" cols="50" placeholder="Type your message here"></textarea>
                 <br>
                 <input type="submit" value="Send Message">
@@ -37,13 +38,17 @@ if (isset($_GET['orderID'])) {
         </div>
     MESSAGEFORM;
 
-    
+
 } elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $orderID = $_POST["orderID"];
     $message = $_POST['message'];
     $today = date("Y-m-d");
+    $order = retriveOrders($conn, $orderID);
     $receiverID = $order->getCustomerID();
+    
 
     $full_message = new Message($userID, $receiverID, $today, $message);
+    $full_message->setOrderID($order->getOrderID());
     $full_message->sendMessage($conn);
 
     echo "mandoooo";
