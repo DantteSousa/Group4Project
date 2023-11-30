@@ -7,7 +7,7 @@ include 'class/retriveDB.php';
 session_start();
 
 // Check if the user is logged in as a chef
-$user_type = 'chef';
+$user_type = 'customer';
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
     // Redirect to login page or handle unauthorized access
     header("Location: login_form.php");
@@ -18,12 +18,13 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
 
-header_USER('chef');
-retrieve_messages_from_chef($conn, $userID);
+header_USER('customer');
+retrieve_messages_from_customer($conn);
 footer_USER();
 
-function retrieve_messages_from_chef($conn, $userId){
-    $query = "SELECT * FROM messages WHERE senderID= '$userId' OR receiverID = '$userId'";
+function retrieve_messages_from_customer($conn){
+    $userID = $GLOBALS['userID'];
+    $query = "SELECT * FROM messages WHERE senderID = '$userID' OR receiverID = '$userID' ORDER BY 'dateExperience' DESC";
     $result = $conn->query($query);
 
     echo "<div class='content-container'>";
@@ -46,13 +47,13 @@ function retrieve_messages_from_chef($conn, $userId){
             $receiver = "";
             
         while ($row = $result->fetch_assoc()) {     
-            if($row['senderID'] == $userId){
+            if($row['senderID'] == $userID){
                 $sender = "You";
-                $customer = retriveCustomer($conn, $row['senderID']);
-                $receiver = $customer->getName();
+                $chef = retrieveChef($conn, $row['receiverID']);
+                $receiver = $chef->getName();
             }else{
-                $customer = retriveCustomer($conn, $row['receiverID']);
-                $sender = $customer->getName();
+                $chef = retrieveChef($conn, $row['senderID']);
+                $sender = $chef->getName();
                 $receiver = "You";
             } 
             echo "<tr>";
@@ -61,7 +62,7 @@ function retrieve_messages_from_chef($conn, $userId){
             echo "<td>" . $sender . "</td>";
             echo "<td>" . $receiver ."</td>";
             echo "<td>" . $row['textMsg'] . "</td>";
-            echo "<td> <a href='chef_messages.php?orderID=" . $row['orderID'] . "' class='btn btn-danger'>Message</a></td>";
+            echo "<td> <a href='customer_messages.php?orderID=" . $row['orderID'] . "' class='btn btn-danger'>Message</a></td>";
             echo "</tr>";
         }
         echo "</table></div>";

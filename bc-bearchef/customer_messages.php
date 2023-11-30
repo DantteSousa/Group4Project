@@ -44,14 +44,12 @@ if (isset($_GET['orderID'])) {
     $message = $_POST['message'];
     $today = date("Y-m-d");
     $order = retriveOrders($conn, $orderID);
-    $receiverID = $order->getCustomerID();
-    
+    $receiverID = $order->getChefID();    
 
     $full_message = new Message($userID, $receiverID, $today, $message);
     $full_message->setOrderID($order->getOrderID());
     $full_message->sendMessageToChef($conn);
 
-    echo "mandoooo";
 } else {
     // Redirect or display an error message if 'idfortest' is not set
     header("Location: index.php"); // Redirect to the homepage or another page

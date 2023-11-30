@@ -33,7 +33,8 @@ function body_customer($conn){
                <ul>
                   <li><a href="#" onclick="showOption('Option1')">Recent Orders</a></li>
                   <li><a href="#" onclick="showOption('Option2')">Experience</a></li>
-                  <li><a href="#" onclick="showOption('Option3')">Reviews History</a></li>
+                  <li><a href="#" onclick="showOption('Option3')">Messages</a></li>
+                  <li><a href="#" onclick="showOption('Option4')">Reviews History</a></li>
                </ul>
          </div>
          <div class="account-info" id="account-info">
@@ -61,6 +62,9 @@ function body_customer($conn){
                window.location.href = 'customer_experience.php'; 
                break;
             case 'Option3':
+               window.location.href = 'customer_read.php'; 
+               break;
+            case 'Option4':
                window.location.href = 'customer_reviews.php'; 
                break;           
             default:

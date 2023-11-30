@@ -47,6 +47,7 @@ function seeOrders($conn, $userID){
             $customer = retriveCustomer($conn,$row['customerID']);
             $chef = retrieveChef($conn,$row['chefID']);
             $order = retriveOrders($conn,$row['orderID']);
+            
             echo "<tr>";
             echo "<td>" . $row['orderID'] . "</td>";
             echo "<td>" . $chef->getName() . "</td>";
