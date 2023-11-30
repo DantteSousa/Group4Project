@@ -4,6 +4,7 @@ include "views/helpers_HTML.php";
 include 'includes/config.php';
 
 session_start();
+head_HTML();
 header_HTML();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($form_errors = validate_form($conn)){

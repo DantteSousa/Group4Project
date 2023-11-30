@@ -9,9 +9,10 @@ session_start();
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
-
 $user_chef = 'chef';
 $user_customer = 'customer';
+
+head_HTML();
 if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_chef) {
     header_USER($user_chef);
 } elseif (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer) {

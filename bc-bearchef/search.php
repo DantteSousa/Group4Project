@@ -9,7 +9,7 @@ $user_customer = 'customer';
 
 // Retrieve user information from the session
 $userID = "";
-
+head_HTML();
 if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_chef) {
     // header_USER($user_chef);
     $userID = $_SESSION['userID'];

@@ -8,6 +8,7 @@ include 'class/plate.php';
 // Start the session
 session_start();
 
+
 // Check if the user is logged in as a chef
 $user_type = 'chef';
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
@@ -21,6 +22,7 @@ $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
 
 // Include the header and body functions
+head_HTML();
 header_USER($user_type);
 if (isset($_POST['submit'])) {
     check_update_plate($conn);

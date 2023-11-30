@@ -19,6 +19,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type) {
    exit();
 }
 
+head_HTML();
 header_USER('customer');
 body_customer($conn);
 footer_USER();

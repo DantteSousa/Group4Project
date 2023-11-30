@@ -11,6 +11,7 @@ $user_chef = 'chef';
 $user_customer = 'customer';
 $userID = "";
 
+head_HTML();
 if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_chef) {
    //header_USER($user_chef);
    $GLOBALS['userID'] = $_SESSION['userID'];

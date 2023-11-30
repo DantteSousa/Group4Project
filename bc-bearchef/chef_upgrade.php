@@ -6,7 +6,7 @@ include 'class/retriveDB.php';
 
 // Start the session
 session_start();
-
+head_HTML();
 // Check if the user is logged in as a chef
 $user_type = 'chef';
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {

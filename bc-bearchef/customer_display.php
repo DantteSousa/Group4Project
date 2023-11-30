@@ -9,7 +9,7 @@ include 'class/payment_info.php';
 session_start();
 $user_customer = 'customer';
 $userID = "";
-
+head_HTML();
 if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer) {
     header_USER($user_customer);    
    $GLOBALS['userID'] = $_SESSION['userID'];

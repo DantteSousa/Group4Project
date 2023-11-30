@@ -16,7 +16,7 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
-
+head_HTML();
 header_USER($user_type);
 if (isset($_POST['submit'])) {
     check_update_experience($conn);

@@ -1,5 +1,5 @@
 <?php
-
+include "views/helpers_HTML.php";
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
@@ -16,7 +16,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type) {
    header("Location: login_form.php");
    exit();
 }
-
+head_HTML();
 header_USER('chef');
 body($conn);
 footer_USER();

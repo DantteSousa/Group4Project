@@ -8,7 +8,7 @@ include 'class/message.php';
 session_start();
 // $user_chef = 'chef';
 $user_customer = 'customer';
-
+head_HTML();
 // Retrieve user information from the session
 $userID = $_SESSION['userID'];
 $order = new Orders();

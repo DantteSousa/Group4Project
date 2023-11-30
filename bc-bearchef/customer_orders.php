@@ -19,6 +19,7 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
 
+head_HTML();
 header_USER('customer');
 seeOrders($conn, $userID);
 footer_USER();

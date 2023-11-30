@@ -1,135 +1,264 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
-
-*{
-   font-family: 'Poppins', sans-serif;
-   margin:0; padding:0;
-   box-sizing: border-box;
-   outline: none; border:none;
-   text-decoration: none;
+/* Reset and base styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.container{
-   min-height: 100vh;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding:20px;
-   padding-bottom: 60px;
+/* Header styles */
+header {
+    background-color: #f0f0f0;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.container .content{
-   text-align: center;
+nav ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e44d26;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
-.container .content h3{
-   font-size: 30px;
-   color:#333;
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
 }
 
-.container .content h3 span{
-   background: orangered;
-   color:#fff;
-   border-radius: 5px;
-   padding:0 15px;
+nav ul li {
+    margin-right: 20px;
 }
 
-.container .content h1{
-   font-size: 50px;
-   color:#333;
+.logo {
+    max-width: 50px;  
 }
 
-.container .content h1 span{
-   color:orangered;
+.logo img {
+    max-width: 50px; /* Adjust the value as needed */
 }
 
-.container .content p{
-   font-size: 25px;
-   margin-bottom: 20px;
+#logo {
+    max-width: 50px;  
 }
 
-.container .content .btn{
-   display: inline-block;
-   padding:10px 30px;
-   font-size: 20px;
-   background: #333;
-   color:#fff;
-   margin:0 5px;
-   text-transform: capitalize;
+#logo img {
+    max-width: 50px; /* Adjust the value as needed */
 }
 
-.container .content .btn:hover{
-   background: orangered;
+/* Main content styles */
+/*Viewport width is a unit that represents a percentage of the viewport's width. 
+Using vw for padding makes it responsive to the width of the viewport.*/
+main {
+    padding: 2vw 7vw;    
 }
 
-.form-container{
-   min-height: 100vh;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding:20px;
-   padding-bottom: 60px;
-   background: #eee;
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 
-.form-container form{
-   padding:20px;
-   border-radius: 5px;
-   box-shadow: 0 5px 10px rgba(0,0,0,.1);
-   background: #fff;
-   text-align: center;
-   width: 500px;
+/* Hero section styles */
+.hero {
+    text-align: center;
+    padding: 20px 20px;
+    background-color: #f8f8f8;
 }
 
-.form-container form h3{
-   font-size: 30px;
-   text-transform: uppercase;
-   margin-bottom: 10px;
-   color:#333;
+.hero h1 {
+    color: #333;
 }
 
-.form-container form input,
-.form-container form select{
-   width: 100%;
-   padding:10px 15px;
-   font-size: 17px;
-   margin:8px 0;
-   background: #eee;
-   border-radius: 5px;
+.hero p {
+    color: #555;
 }
 
-.form-container form select option{
-   background: #fff;
+.hero a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e44d26;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
-.form-container form .form-btn{
-   background: #fbd0d9;
-   color:orangered;
-   text-transform: capitalize;
-   font-size: 20px;
-   cursor: pointer;
+.empty {
+    background-color: transparent;
+    padding: 1vw;
 }
 
-.form-container form .form-btn:hover{
-   background: orangered;
-   color:#fff;
+/* How it Works section styles */
+.how-it-works {
+    padding: 20px 40px;
+    background-color: #f8f8f8;
 }
 
-.form-container form p{
-   margin-top: 10px;
-   font-size: 20px;
-   color:#333;
+.how-it-works h2 {
+    text-align: center;
+    color: #e44d26;
 }
 
-.form-container form p a{
-   color:orangered;
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.form-container form .error-msg{
-   margin: 0px 0;
-   display: block;
-   background: crimson;
-   color:#fff;
-   border-radius: 5px;
-   font-size: 20px;
-   padding:10px;
+.step {
+    flex-basis: calc(33.33% - 20px);
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.step img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+
+.step p {
+    margin: 0;
+}
+
+.step a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e44d26;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Chefs section styles */
+.chefs h2 {
+    margin-bottom: 25px;
+    color: #e44d26;
+    text-align: center;    
+}
+
+.chef-profile {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.chef-profile img {
+    width: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.chef-profile h3 {
+    color: #e44d26;
+}
+
+/* Social Media section styles */
+.social-media {
+    padding: 40px 0;
+}
+
+.social-media a {
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Become a Chef Section */
+.become-a-chef {
+    background-color: #f8f8f8;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.become-a-chef h2 {
+    color: #e44d26;
+}
+
+.become-a-chef p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.become-a-chef .chef-info img {
+    width: 70%;   
+}
+
+.chef-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.chef-info a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e44d26;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.chef-image {
+    flex-basis: 40%;
+    margin-right: 20px;
+}
+
+.chef-image img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.chef-details {
+    flex-basis: 60%;
+    text-align: left;
+}
+
+.chef-details h3 {
+    color: #e44d26;
+}
+
+.chef-details p {
+    color: #555;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
+
+    nav ul li {
+        margin-right: 10px;
+    }
+
+    .chefs,
+    .chef-steps li {
+        flex-basis: 100%;
+    }
 }

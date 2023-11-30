@@ -8,6 +8,7 @@ session_start();
 
 // Check if the user is logged in as a chef
 $user_type = 'customer';
+
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
     // Redirect to login page or handle unauthorized access
     header("Location: login_form.php");
@@ -18,6 +19,7 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
 
+head_HTML();
 header_USER('customer');
 retrieve_messages_from_customer($conn);
 footer_USER();

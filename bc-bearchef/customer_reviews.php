@@ -9,6 +9,7 @@ session_start();
 
 // Check if the user is logged in as a chef
 $user_type = 'customer';
+head_HTML();
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
     // Redirect to login page or handle unauthorized access
     header("Location: login_form.php");

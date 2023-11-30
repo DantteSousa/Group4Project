@@ -5,8 +5,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+head_HTML();
 header_HTML();
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // If validate_form returns errors, pass them to show_form()
     if ($form_errors = validate_form($conn)) {
