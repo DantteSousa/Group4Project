@@ -386,9 +386,9 @@ footer {
 }
 
 .search-user {
-    width: calc(33.33% - 10px); /* Adjust the width as needed */
-    margin-bottom: 20px; /* Adjust the margin between users as needed */
-    box-sizing: border-box; /* Include padding and border in the total width */
+    width: calc(33.33% - 10px); 
+    margin-bottom: 20px;
+    box-sizing: border-box; 
     border-radius: 5px;
     background-color: #f8d0c5;
     padding-left: 1.5%;
@@ -398,9 +398,9 @@ footer {
 }
 
 .search-user img{
-    width: 150px; /* Adjust the width as needed */
+    width: 150px; 
     height: auto;
-    margin-right: 10px; /* Adjust the margin as needed */
+    margin-right: 10px;
 }
 
 .search-user p{
@@ -447,5 +447,14 @@ footer {
     .chefs,
     .chef-steps li {
         flex-basis: 100%;
+    }
+
+    .search-users-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-user {
+        width: calc(50% - 10px);
     }
 }

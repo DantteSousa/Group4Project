@@ -13,10 +13,10 @@ $user_customer = 'customer';
 $userID = "";
 head_HTML();
 if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_chef) {
-   // header_USER($user_chef);
+   header_USER($user_chef);
    $userID = $_SESSION['userID'];
 } elseif (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer) {
-   // header_USER($user_customer);
+   header_USER($user_customer);
    $userID = $_SESSION['userID'];
 }else{
    header_HTML();
