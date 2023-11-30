@@ -3,6 +3,9 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Header styles */
@@ -23,6 +26,11 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
+}
+
+nav ul li a:hover{
+    background: rgb(143, 43, 6);
+    color:#fff;
 }
 
 nav ul {
@@ -56,10 +64,12 @@ nav ul li {
 Using vw for padding makes it responsive to the width of the viewport.*/
 main {
     padding: 2vw 7vw;    
+    flex-grow: 1; 
 }
 
 /* Footer styles */
 footer {
+    flex-shrink: 0;
     background-color: #333;
     color: white;
     text-align: center;
@@ -89,6 +99,11 @@ footer {
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
+}
+
+.hero a:hover{
+    background: rgb(143, 43, 6);
+    color:#fff;
 }
 
 .empty {
@@ -138,6 +153,11 @@ footer {
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
+}
+
+.step a:hover{
+    background: rgb(143, 43, 6);
+    color:#fff;
 }
 
 /* Chefs section styles */
@@ -218,6 +238,11 @@ footer {
     border-radius: 5px;
 }
 
+.chef-info a:hover{
+    background: rgb(143, 43, 6);
+    color:#fff;
+}
+
 .chef-image {
     flex-basis: 40%;
     margin-right: 20px;
@@ -239,6 +264,98 @@ footer {
 
 .chef-details p {
     color: #555;
+}
+
+/* Form container for the login/register activity */
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:20px;
+    padding-bottom: 60px;
+}
+
+.container .content{
+    text-align: center;
+}
+
+.container .content h3{
+    font-size: 30px;
+    color:#333;
+}
+
+.container .content p{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.form-container{
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:20px;
+}
+
+.form-container form{
+    padding:20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    background: rgb(254, 221, 209);
+    text-align: center;
+    width: 500px;
+}
+
+.form-container form h3{
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color:#333;
+}
+
+.form-container form input,
+.form-container form select {
+    width: 75%;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin: 8px 0px;
+    background: #eee;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    appearance: none; 
+}
+
+.form-container form .form-btn{
+    background: #e44d26;
+    color:white;
+    text-transform: capitalize;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form-container form .form-btn:hover{
+    background: rgb(143, 43, 6);
+    color:#fff;
+}
+
+.form-container form p{
+    margin-top: 10px;
+    font-size: 20px;
+    color:#333;
+}
+
+.form-container form p a{
+    color:orangered;
+}
+
+.form-container form .error-msg{
+    margin: 0px 0;
+    display: block;
+    background: crimson;
+    color:#fff;
+    border-radius: 2px;
+    font-size: 20px;
+    padding:5px;
 }
 
 /* Responsive styles */

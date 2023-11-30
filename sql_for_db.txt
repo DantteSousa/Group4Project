@@ -21,33 +21,6 @@ CREATE TABLE chef (
 
 CREATE TABLE customer (
             customerID INT PRIMARY KEY,
-            experienceID INT
-    );
-
-
-CREATE TABLE orders (
-            orderID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            customerID INT,
-            chefID INT,
-            dateExperienceID VARCHAR(255),
-            statusOrder INT
-    );
-
-CREATE TABLE plate (
-            plateID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            chefID INT,
-            cusineType INT,
-            mealRangeType INT,
-            plateName VARCHAR(255),
-            starterMenu TEXT,
-            firstCourse TEXT,
-            mainCourse TEXT,
-            dessert TEXT
-    );
-
-CREATE TABLE experienceDetail (
-            experienceID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            customerID INT,
             numOfPeople INT,
             dayTime INT,
             eventDay VARCHAR(255),
@@ -62,12 +35,34 @@ CREATE TABLE experienceDetail (
     );
 
 
-CREATE TABLE message (
+CREATE TABLE orders (
+            orderID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            customerID INT,
+            chefID INT,
+            dateExperience VARCHAR(255),
+            statusOrder INT,
+            total INT
+    );
+
+CREATE TABLE plate (
+            plateID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            chefID INT,
+            cusineType INT,
+            mealRangeType INT,
+            plateName VARCHAR(255),
+            starterMenu TEXT,
+            firstCourse TEXT,
+            mainCourse TEXT,
+            dessert TEXT
+    );
+
+CREATE TABLE messages (
             messageID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             senderID INT,
             receiverID INT,
             dateMsg VARCHAR(255),
-            textMsg TEXT
+            textMsg TEXT,
+            orderID INT
     );
 
 CREATE TABLE review (
@@ -79,4 +74,21 @@ CREATE TABLE review (
         reviewDescription TEXT,
         rating INT,
         anonymus TINYINT(1)
+    );
+
+CREATE TABLE paymentInfo (
+        paymentInfoID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        userID INT,
+        fullName VARCHAR(220),
+        email VARCHAR(20),
+        address_user VARCHAR(220),
+        city_user VARCHAR(20),
+        state_user VARCHAR(20),
+        zip_user VARCHAR(20),
+        name_card VARCHAR(220),
+        credit_card INT,
+        exp_month INT,
+        exp_year INT,
+        cvv int,
+        paymentValue int
     );

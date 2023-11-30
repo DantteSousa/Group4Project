@@ -1,0 +1,115 @@
+-- User 1
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Alice', 'Johnson', 'alice.johnson@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '789 Elm St', '555-1111');
+
+-- User 2
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Bob', 'Williams', 'bob.williams@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '101 Pine St', '555-2222');
+
+-- User 3
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Charlie', 'Smith', 'charlie.smith@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '202 Oak St', '555-3333');
+
+-- User 4
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('David', 'Davis', 'david.davis@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '404 Birch St', '555-4444');
+
+-- User 5
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Eva', 'Evans', 'eva.evans@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '505 Cedar St', '555-5555');
+
+-- User 6
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Frank', 'Franklin', 'frank.franklin@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '606 Pine St', '555-6666');
+
+-- User 7
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Grace', 'Gray', 'grace.gray@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '707 Maple St', '555-7777');
+
+-- User 8
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Henry', 'Harrison', 'henry.harrison@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '808 Oak St', '555-8888');
+
+-- User 9
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Ivy', 'Irwin', 'ivy.irwin@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '909 Birch St', '555-9999');
+
+-- User 10
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Jack', 'Johnson', 'jack.johnson@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1010 Elm St', '555-1010');
+
+-- User 11
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Katie', 'Keller', 'katie.keller@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1111 Pine St', '555-1111');
+
+-- User 12
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Leo', 'Lopez', 'leo.lopez@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1212 Cedar St', '555-1212');
+
+-- User 13
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Mia', 'Miller', 'mia.miller@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1313 Birch St', '555-1313');
+
+-- User 14
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Nathan', 'Nelson', 'nathan.nelson@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1414 Oak St', '555-1414');
+
+-- User 15
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Olivia', 'Owens', 'olivia.owens@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1515 Maple St', '555-1515');
+
+-- User 16
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Paul', 'Perry', 'paul.perry@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1616 Pine St', '555-1616');
+
+-- User 17
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Quinn', 'Quinlan', 'quinn.quinlan@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1717 Elm St', '555-1717');
+
+-- User 18
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Ryan', 'Reed', 'ryan.reed@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1818 Birch St', '555-1818');
+
+-- User 19
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Sara', 'Stone', 'sara.stone@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1919 Cedar St', '555-1919');
+
+-- User 20
+INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
+VALUES ('Tom', 'Taylor', 'tom.taylor@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '2020 Oak St', '555-202');
+
+
+===============================================================================================================================================================================================
+-- Chef 1
+INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
+VALUES (1, 'Italian Cuisine', 'Passionate chef with 10 years of experience in Italian cooking.', 'Culinary Institute of Florence', 'Spaghetti Bolognese, Margherita Pizza', true);
+
+-- Chef 3
+INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
+VALUES (3, 'Asian Fusion', 'Innovative chef blending traditional Asian flavors with modern techniques.', 'Le Cordon Bleu', 'Sushi Rolls, Pad Thai', false);
+
+-- Chef 7
+INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
+VALUES (7, 'French Cuisine', 'Experienced French chef bringing the taste of Paris to your table.', 'Le Grand Diplôme', 'Coq au Vin, Ratatouille', true);
+
+-- Chef 9
+INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
+VALUES (9, 'Mediterranean Delights', 'Master of Mediterranean cuisine creating dishes from Greece to Spain.', 'Culinary Arts School Barcelona', 'Greek Salad, Paella', false);
+
+-- Chef 13
+INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
+VALUES (13, 'Vegetarian/Vegan', 'Dedicated to crafting delicious and sustainable plant-based meals.', 'Natural Gourmet Institute', 'Quinoa Buddha Bowl, Vegan Tacos', true);
+
+-- Chef 17
+INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
+VALUES (17, 'BBQ Master', 'Pitmaster with a passion for smoking and grilling the perfect BBQ.', 'Texas BBQ School', 'Smoked Brisket, BBQ Ribs', false);
+
+-- Chef 19
+INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
+VALUES (19, 'Dessert Connoisseur', 'Sweet tooth expert creating delightful desserts for all occasions.', 'Pastry Chef Academy', 'Chocolate Mousse, Tiramisu', true);
+
+-- Chef 20
+INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
+VALUES (20, 'Gourmet Fusion', 'Innovative chef fusing flavors from around the world for a unique dining experience.', 'International Culinary Center', 'Truffle Risotto, Fusion Sushi', false);
+
+===============================================================================================================================================================================================
