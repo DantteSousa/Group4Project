@@ -3,7 +3,7 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
-
+include 'class/payment_info.php';
 // Start the session
 session_start();
 
@@ -21,16 +21,75 @@ $userID = $_SESSION['userID'];
 $chef = retrieveChef($conn, $userID);
 
 // Include the header and body functions
-header_USER('chef');
-payment_body();
+// header_USER('chef');
+
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    //If validate_form returns errors, pass them to show_form()
+    if($form_errors = validate_payment($conn, $chef)){
+        payment_body($form_errors);
+    }
+} else{
+    payment_body();
+}
 footer_USER();
 
-function payment_body(){
-    $chef = $GLOBALS['chef'];
-    $membershipLevel = ($chef->getIsPremium() == 0) ? "Basic" : "Premium";
+function validate_payment($conn, $chef){
+    $errors = array();
+
+    // Validate other form fields as needed
+    $fullName = $_POST['firstname'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    $cardName = $_POST['cardname'];
+    $cardNumber = $_POST['cardnumber'];
+    $expMonth = $_POST['expmonth'];
+    $expYear = $_POST['expyear'];
+    $cvv = $_POST['cvv'];
+    $premium = $_POST['premium'];
+
+    // Validate the fields
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL) ||  !is_numeric($cardNumber) || !is_numeric($expMonth) || !is_numeric($expYear) || !is_numeric($cvv)) {
+        $errors[] = "Please fill out correctly the fields";
+    } else{        
+        $userID = $GLOBALS['userID']; 
+        
+        $payment = new PaymentInfo($userID, $fullName, $email, $address, $city, $state, $zip, $cardName, $cardNumber, $expMonth, $expYear, $cvv);
+        $paymentID = $payment->makePayment($conn, $premium);
+        $chef->setChefId($userID);
+
+        // Check if the payment was successful before updating to premium
+        if ($paymentID) {
+            $chef->updateChefToPremium($conn);
+        } else {
+            echo '<script type="text/javascript">
+                     alert("nao entrooooo");
+                     location="chef.php";
+                     </script>';
+        }
+
+    }
+    
+    return $errors;
+}
+function payment_body($errors = array()){
+    $combinedText = null;
+    if($errors){
+        $combinedText = implode("<br> ", $errors);
+    }
 
     echo <<<UPGRADE
-        <form action="/action_page.php">
+    <form action="$_SERVER[PHP_SELF]" method="post">
+            <span class="error-msg">$combinedText</span><br>
+            <h3>Choose your upgrade</h3>
+            <input type="radio" id="yearly" name="premium" value="150" checked="true">
+            <label for="html">CA$150.00 / year</label><br>
+            <input type="radio" id="monthly" name="premium" value="15">
+            <label for="css">CA$15.00 / month </label><br>
+            <br>
             <h3>Billing Address</h3>
             <label for="fname">Full Name</label>
             <input type="text" id="fname" name="firstname" placeholder="John M. Doe"> <br>

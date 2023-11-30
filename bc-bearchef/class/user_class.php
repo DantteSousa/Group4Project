@@ -110,8 +110,6 @@
                 location="settings.php";
                 </script>';
             }   
-            // Close the statement
-            $stmt->close();
         }
     }
 
@@ -201,6 +199,11 @@
             // Execute the statement
             $stmt->execute();
       
+            // Check for errors
+            if ($stmt->errno) {
+                die("Error during updateChefToPremium execution: " . $stmt->error);
+            }
+
             // Check if the statement execution was successful
             if ($stmt->affected_rows > 0) {
                echo '<script type="text/javascript">
@@ -209,9 +212,48 @@
                      </script>';
             } 
 
-            // Close the statement
-            $stmt->close();
         }
+
+        function updateChefToPremium($conn){
+            $stmt = $conn->prepare("UPDATE chef SET isPremium=? WHERE chefID=?");
+            
+
+            // Check if the statement was prepared successfully
+            if (!$stmt) {
+                die("Error during updateChefInfo preparation: " . $conn->error);
+            }
+            
+            $premium = true;
+            $chefId = $this->getChefId();  
+            echo "UPDATE chef SET isPremium=$premium WHERE chefID=$chefId";
+            // Bind parameters
+            $stmt->bind_param("si", $premium, $chefId);  // Pass the variable by reference
+
+            // Check if the parameters were bound successfully
+            if (!$stmt->bind_param("si", $premium, $chefId)) {
+                die("Error during updateChefInfo binding: " . $stmt->error);
+            }
+
+            // Execute the statement
+            $stmt->execute();
+
+            // Check for errors during execution
+            if ($stmt->errno) {
+                echo "Error during updateChefToPremium execution: " . $stmt->error;
+            } else {
+                // Check if the statement execution was successful
+                if ($stmt->affected_rows > 0) {
+                    echo '<script type="text/javascript">
+                        alert("Thank you for becoming premium!");
+                        location="settings.php";
+                    </script>';
+                } else {
+                    echo 'No rows were affected.';
+                }
+            }
+
+        }
+        
     }
     
 ?>

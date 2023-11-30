@@ -1,5 +1,4 @@
 <?php
-
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include "views/helpers_HTML.php";
