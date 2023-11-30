@@ -7,14 +7,18 @@ session_start();
 $user_chef = 'chef';
 $user_customer = 'customer';
 
+// Retrieve user information from the session
+$userID = "";
 
-// if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_chef) {
-//    header_USER($user_chef);
-// } elseif (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer) {
-//    header_USER($user_customer);
-// }else{
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_chef) {
+    // header_USER($user_chef);
+    $userID = $_SESSION['userID'];
+} elseif (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer) {
+    $userID = $_SESSION['userID'];
+    // header_USER($user_customer);
+}else{
 //    header_HTML();
-// }
+}
 search($conn);
 footer_HTML();
 

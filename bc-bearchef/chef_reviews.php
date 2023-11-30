@@ -17,10 +17,10 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
-$userId = $_SESSION['id'];
+$userID = $_SESSION['userID'];
 
 header_USER('chef');
-retriveReview($conn, $userId);
+retriveReview($conn, $userID);
 footer_USER();
 ?>
 

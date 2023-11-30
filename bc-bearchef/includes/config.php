@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Database name
-$dbname = 'euVouChorar';
+$dbname = 'funcionaTime';
 
 // Check if the database exists
 if (!mysqli_select_db($conn, $dbname)) {
@@ -97,7 +97,17 @@ if (!$tableExists) {
     // If the table doesn't exist, create it
     $createTableQuery = "CREATE TABLE $tableName (
             customerID INT PRIMARY KEY,
-            experienceID INT
+            numOfPeople INT,
+            dayTime INT,
+            eventDay VARCHAR(255),
+            cusineType INT,
+            stoveTopType INT,
+            numBurners INT,
+            oven BOOLEAN,
+            mealType INT,
+            restrictions BOOLEAN,
+            typeRestrictions TEXT,
+            extraInfo TEXT
     )";
 
     if ($conn->query($createTableQuery) === FALSE) {
@@ -116,8 +126,9 @@ if (!$tableExists) {
             orderID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             customerID INT,
             chefID INT,
-            dateExperienceID VARCHAR(255),
-            statusOrder INT
+            dateExperience VARCHAR(255),
+            statusOrder INT,
+            total INT
     )";
 
     if ($conn->query($createTableQuery) === FALSE) {
@@ -144,35 +155,6 @@ if (!$tableExists) {
             firstCourse TEXT,
             mainCourse TEXT,
             dessert TEXT
-    )";
-
-    if ($conn->query($createTableQuery) === FALSE) {
-       echo "Error creating table: " . $conn->error . "\n";
-    }
-}
-
-// EXPERIENCE TABLE ===============================================
-
-$tableName = 'experienceDetail';
-$tableExistsQuery = "SELECT * FROM `$tableName`";
-$tableExists = mysqli_query($conn, $tableExistsQuery);
-
-if (!$tableExists) {
-    // If the table doesn't exist, create it
-    $createTableQuery = "CREATE TABLE `$tableName` (
-            experienceID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            customerID INT,
-            numOfPeople INT,
-            dayTime INT,
-            eventDay VARCHAR(255),
-            cusineType INT,
-            stoveTopType INT,
-            numBurners INT,
-            oven BOOLEAN,
-            mealType INT,
-            restrictions BOOLEAN,
-            typeRestrictions TEXT,
-            extraInfo TEXT
     )";
 
     if ($conn->query($createTableQuery) === FALSE) {
@@ -249,7 +231,8 @@ if (!$tableExists) {
         credit_card INT,
         exp_month INT,
         exp_year INT,
-        cvv int
+        cvv int,
+        paymentValue int
     );
     ";
 

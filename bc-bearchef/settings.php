@@ -5,11 +5,11 @@ include 'views/helpers_user.php';
 include 'class/retriveDB.php';
 
 session_start();
-$userId = '';
+$userID = '';
 $userType = '';
 
-if (isset($_SESSION['id'])) {
-   $GLOBALS['userId'] = $_SESSION['id'];
+if (isset($_SESSION['userID'])) {
+   $GLOBALS['userID'] = $_SESSION['userID'];
    $GLOBALS['userType'] = $_SESSION['user_type'];
 } else {
    // Redirect to login page or handle unauthorized access
@@ -26,7 +26,7 @@ if($userType == 'chef'){
 footer_USER(); 
 
 function body_settings_chef($conn){
-   $userID = $GLOBALS['userId'];
+   $userID = $GLOBALS['userID'];
    $chef = retrieveChef($conn, $userID);
  
    echo <<<BODY
@@ -46,7 +46,7 @@ function body_settings_chef($conn){
 }
 
 function body_settings_customer($conn){
-   $userID = $GLOBALS['userId'];
+   $userID = $GLOBALS['userID'];
    $customer = retriveCustomer($conn, $userID);
  
    echo <<<BODY

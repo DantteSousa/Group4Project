@@ -6,11 +6,11 @@ include 'class/retriveDB.php';
 
 session_start();
 $user_type = 'chef';
-$userId = '';
+$userID = '';
 
 if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type) {
    $userType = $_SESSION['user_type'];
-   $GLOBALS['userId'] = $_SESSION['id'];   
+   $GLOBALS['userID'] = $_SESSION['userID'];   
 } else {
    // Redirect to login page or handle unauthorized access
    header("Location: login_form.php");
@@ -22,7 +22,7 @@ body($conn);
 footer_USER();
 
 function body($conn){
-   $userID = $GLOBALS['userId'];
+   $userID = $GLOBALS['userID'];
    $chef = retrieveChef($conn, $userID);
 
    $membershipLevel = ($chef->getIsPremium() == 0) ? "Basic" : "Premium";

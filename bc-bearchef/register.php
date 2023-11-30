@@ -57,7 +57,8 @@
                             if($user_type == "chef"){
                                 $userTypeTable = "INSERT INTO chef (chefid, specialities, description, education, plates, isPremium) VALUES ('$userID', '', '', '', '', 'false')";
                             }else{
-                                $userTypeTable = "INSERT INTO customer (customerID, experienceID) VALUES ('$userID', '')";
+                                $userTypeTable = "INSERT INTO customer (customerID, numOfPeople, dayTime, eventDay, cusineType, mealType, restrictions, extraInfo)
+                                VALUES ('$userID', '', '', '', '', '','','')";                
                             }
                             $result = mysqli_query($conn, $userTypeTable);
                         }

@@ -3,17 +3,16 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
-include 'class/experience.php';
 
 
 // customer_page.php or chef_page.php
 session_start();
 $user_type = 'customer';
-$userId = '';
+$userID = '';
 
 if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type) {
+   $GLOBALS['userID'] = $_SESSION['userID'];   
    $userType = $_SESSION['user_type'];
-   $GLOBALS['userId'] = $_SESSION['id'];   
 } else {
    // Redirect to login page or handle unauthorized access
    header("Location: login_form.php");
@@ -25,13 +24,9 @@ body_customer($conn);
 footer_USER();
 
 function body_customer($conn){
-   $userID = $GLOBALS['userId'];
+   $userID = $GLOBALS['userID'];
    $customer = retriveCustomer($conn, $userID);
-   $customer->retriveExperience($conn);
-
-   $experience = retriveUserExperience($conn, $userID);
-     
-
+  
    echo <<<BODY
       <div class="main-container">
          <div class="options-bar">
@@ -48,9 +43,9 @@ function body_customer($conn){
             <p><strong>Phone:</strong> {$customer->getPhone()}</p>           
             <br>
             <h3>Settings from your house </h3>
-            <p><strong>Type of Stove top:</strong> {$experience->getStringStoveTopType()}</p>
-            <p><strong>Number of burners:</strong> {$experience->getNumBurners()} burners</p>
-            <p><strong>Does it have an oven?</strong> {$experience->doesHaveOven()} </p>
+            <p><strong>Type of Stove top:</strong> {$customer->getStringStoveTopType()}</p>
+            <p><strong>Number of burners:</strong> {$customer->getNumBurners()} burners</p>
+            <p><strong>Does it have an oven?</strong> {$customer->doesHaveOven()} </p>
             <p><strong></strong></p>
          </div>
       </div>

@@ -3,8 +3,10 @@ class Orders {
     private $orderID;
     private $customerID;
     private $chefID;
-    private $experienceID;
+    private $dateExperience;
     private $status;
+
+    private $total;
 
 
     // Constructor
@@ -40,12 +42,12 @@ class Orders {
     }
 
     // Getter and Setter for experienceID
-    public function getExperienceID() {
-        return $this->experienceID;
+    public function getDateExperience() {
+        return $this->dateExperience;
     }
 
-    public function setExperienceID($experienceID) {
-        $this->experienceID = $experienceID;
+    public function setDateExperience($dateExperience) {
+        $this->dateExperience = $dateExperience;
     }
 
     // Getter and Setter for status
@@ -57,6 +59,14 @@ class Orders {
         $this->status = $status;
     }
 
+    public function getTotal() {
+        return $this->total;
+    }
+
+    public function setTotal($total) {
+        $this->total = $total;
+    }
+
     public function calculateTotal($numOfPeople, $pricePerPeople){
         return $numOfPeople * $pricePerPeople;
     }
@@ -64,12 +74,14 @@ class Orders {
     public function statusString(){
         switch($this->status) {
             case '0':
-                return "Order Placed";                
-            case "1":
-                return "Chef accepted order";                
+                return "Order Placed";
+            case '1':
+                return "Order Placed and Payed";                
             case "2":
-                return "Order canceled";                
+                return "Chef accepted order";                
             case "3":
+                return "Order canceled";                
+            case "4":
                 return "Order completed";                
             default:    
                 return "";  
@@ -80,11 +92,12 @@ class Orders {
 
         $chefID = mysqli_real_escape_string($connection, $this->getChefID());
         $customerID = mysqli_real_escape_string($connection, $this->getCustomerID());
-        $experienceID = mysqli_real_escape_string($connection, $this->getExperienceID());
+        $dateExperience = mysqli_real_escape_string($connection, $this->getDateExperience());
         $statusID = mysqli_real_escape_string($connection, $this->getStatus());
-
-        $query = "INSERT INTO orders (customerID, chefID, experienceID, statusID) 
-            VALUES ('$customerID', '$chefID', '$experienceID', '$statusID')";
+        $total = mysqli_real_escape_string($connection, $this->getTotal());
+        
+        $query = "INSERT INTO orders (customerID, chefID, dateExperience, statusOrder, total, paymentID) 
+            VALUES ('$customerID', '$chefID', '$dateExperience', '$statusID', '$total', '')";
 
         // Execute the query
         mysqli_query($connection, $query);
@@ -93,6 +106,35 @@ class Orders {
         if (mysqli_error($connection)) {
             echo "Error: " . mysqli_error($connection);
         }
+    }
+
+    public function updatePayment($connection, $paymentID){
+        $userID = mysqli_real_escape_string($connection, $this->getCustomerID());
+        $stmt = $connection->prepare("UPDATE orders SET paymentID=? WHERE customerID=?");
+            
+        // Check if the statement was prepared successfully
+        if (!$stmt) {
+            die("Error during updateChefInfo preparation: " . $connection->error);
+        }
+
+        // Bind parameters
+        $stmt->bind_param("ii", $paymentID, $userID);
+        
+        // Check if the parameters were bound successfully
+        if (!$stmt) {
+            die("Error during updateChefInfo binding: " . $connection->error);
+        }
+
+        // Execute the statement
+        $stmt->execute();
+
+        // Check if the statement execution was successful
+        if ($stmt->affected_rows > 0) {
+        echo '<script type="text/javascript">
+                alert("Payment Made!");
+                location="customer.php";
+                </script>';
+        } 
     }
 }
 

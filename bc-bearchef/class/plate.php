@@ -116,6 +116,11 @@
             if (mysqli_error($connection)) {
                 // Handle the error, e.g., log it or display a user-friendly message
                 echo "Error: " . mysqli_error($connection);
+            }else{
+                echo '<script type="text/javascript">
+                      alert("Plate Successfully Added");
+                      location="chef_view_plates.php";
+                      </script>';
             }
             
         }   
@@ -205,7 +210,6 @@
                     break;    
             }
             return $unitPrice;
-
         }
         
         

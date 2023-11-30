@@ -2,7 +2,6 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
-include 'class/experience.php';
 
 // Start the session
 session_start();
@@ -16,7 +15,7 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
-$userId = $_SESSION['id'];
+$userID = $_SESSION['userID'];
 
 header_USER($user_type);
 if (isset($_POST['submit'])) {
@@ -162,20 +161,20 @@ function check_update_experience($conn){
     $mealRangeType = $_POST['mealRangeType'];
     $restrictions = $_POST['restrictions'];
     $extraInfo = $_POST['extraInfo'];
-    $userID = $GLOBALS['userId'];
+    $userID = $GLOBALS['userID'];
     
-    $experience = new Experience();
+    $customer = new Customer();
 
-    $experience->setCustomerID($userID);
-    $experience->setNumOfPeople($numOfPeople);
-    $experience->setDayTime($dayTime);
-    $experience->setEventDay($eventDay);
-    $experience->setCusineType((int)$cusineType);
-    $experience->setMealType($mealRangeType);
-    $experience->setRestrictions($restrictions);
-    $experience->setExtraInfo($extraInfo);
+    $customer->setCustomerID($userID);
+    $customer->setNumOfPeople($numOfPeople);
+    $customer->setDayTime($dayTime);
+    $customer->setEventDay($eventDay);
+    $customer->setCusineType((int)$cusineType);
+    $customer->setMealType($mealRangeType);
+    $customer->setRestrictions($restrictions);
+    $customer->setExtraInfo($extraInfo);
     
-    $experience->addExperience($conn);
+    $customer->addExperience($conn);
 }
 
 

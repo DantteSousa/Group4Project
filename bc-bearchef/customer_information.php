@@ -3,7 +3,6 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
-include 'class/experience.php';
 
 // Start the session
 session_start();
@@ -18,7 +17,7 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
-$userId = $_SESSION['id'];
+$userID = $_SESSION['userID'];
 
 // Include the header and body functions
 header_USER($user_type);
@@ -64,8 +63,6 @@ function add_experience(){
                 <br>                
                 <input type="submit" name="submit" value="save information">
             </form>
-            <a href="customer_information.php" class="btn">VIEW PLATES</a>
-            <br>
      
             <!-- Back button -->
             <button onclick="location.href = 'settings.php';"">Go Back</button>
@@ -79,16 +76,16 @@ function check_update_experience($conn){
     $stoveTopType = $_POST['stoveTopType'];
     $numBurners = $_POST['numBurners'];
     $oven = $_POST['oven'];
-    $userID = $GLOBALS['userId'];
+    $userID = $GLOBALS['userID'];
     
-    $experience = new Experience();
+    $customer = new Customer();
 
-    $experience->setCustomerID($userID);
-    $experience->setStoveTopType($stoveTopType);
-    $experience->setNumBurners($numBurners);
-    $experience->setOven($oven);
+    $customer->setCustomerID($userID);
+    $customer->setStoveTopType($stoveTopType);
+    $customer->setNumBurners($numBurners);
+    $customer->setOven($oven);
     
-    $experience->addInformationAboutCustomer($conn);
+    $customer->addInformationAboutCustomer($conn);
 }
 
 

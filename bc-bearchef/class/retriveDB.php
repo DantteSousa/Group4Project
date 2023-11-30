@@ -1,6 +1,7 @@
 <?php
    include 'includes/config.php';
    include 'class/user_class.php';
+   include 'class/customer_class.php';
 
    ////////////////////////////////////////////////////////////////////////////////////////////////
    //// Retrive CHEF from DB
@@ -56,9 +57,19 @@
       $resultFromCustomer = mysqli_query($conn, $selectFromCustomer);
       if (mysqli_num_rows($resultFromCustomer) > 0) {
          $rowNew = mysqli_fetch_array($resultFromCustomer);
-         $customer->setExperienceId($rowNew["experienceID"]);
-      }   
-      
+         $customer->setNumOfPeople($rowNew["numOfPeople"]);
+         $customer->setDayTime($rowNew["dayTime"]);
+         $customer->setEventDay($rowNew["eventDay"]);
+         $customer->setCusineType($rowNew["cusineType"]);
+         $customer->setStoveTopType($rowNew["stoveTopType"]);
+         $customer->setNumBurners($rowNew["numBurners"]);
+         $customer->setOven($rowNew["oven"]);
+         $customer->setMealType($rowNew["mealType"]);
+         $customer->setRestrictions($rowNew["restrictions"]);
+         $customer->setTypeRestrictions($rowNew["typeRestrictions"]);
+         $customer->setExtraInfo($rowNew["extraInfo"]);
+          
+      }         
       return $customer;
    }
 
@@ -344,32 +355,6 @@
                NOREVIEW;
       }
 
-   }
-
-   function retriveUserExperience($conn, $userID) {
-      $select = "SELECT * FROM experiencedetail WHERE customerID = $userID";
-   
-      $experience = new Experience();
-   
-      $result = mysqli_query($conn, $select);
-      if (mysqli_num_rows($result) > 0) {
-         $row = mysqli_fetch_array($result);
-         $experience->setExperienceID($row["experienceID"]);
-         $experience->setCustomerID($row["customerID"]);
-         $experience->setNumOfPeople($row["numOfPeople"]);
-         $experience->setDayTime($row["dayTime"]);
-         $experience->setEventDay($row["eventDay"]);
-         $experience->setCusineType($row["cusineType"]);
-         $experience->setStoveTopType($row["stoveTopType"]);
-         $experience->setNumBurners($row["numBurners"]);
-         $experience->setOven($row["oven"]);
-         $experience->setMealType($row["mealType"]);
-         $experience->setRestrictions($row["restrictions"]);
-         $experience->setTypeRestrictions($row["typeRestrictions"]);
-         $experience->setExtraInfo($row["extraInfo"]);
-      }
-      
-      return $experience;
    }
 
 ?>

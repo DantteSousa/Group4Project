@@ -8,7 +8,7 @@ include 'class/retriveDB.php';
 session_start();
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
-$userId = $_SESSION['id'];
+$userID = $_SESSION['userID'];
 
 $user_chef = 'chef';
 $user_customer = 'customer';
@@ -30,9 +30,9 @@ if (isset($_POST['submit'])) {
 footer_USER();
 
 function body_edit_profile($conn){
-    $userID = $GLOBALS['userId'];
+    $userID = $GLOBALS['userID'];
 
-    if($GLOBALS['userId'] == 'chef'){
+    if($GLOBALS['userID'] == 'chef'){
         $user = retrieveChef($conn, $userID);
     }else{
         $user = retriveCustomer($conn, $userID);
@@ -58,8 +58,8 @@ function body_edit_profile($conn){
 }
 
 function check_update($conn) {
-    $userID = $GLOBALS['userId'];
-    if($GLOBALS['userId'] == 'chef'){
+    $userID = $GLOBALS['userID'];
+    if($GLOBALS['userID'] == 'chef'){
         $user = retrieveChef($conn, $userID);
     }else{
         $user = retriveCustomer($conn, $userID);

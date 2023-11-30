@@ -6,7 +6,6 @@ include 'includes/config.php';
 session_start();
 header_HTML();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    //If validate_form returns errors, pass them to show_form()
     if($form_errors = validate_form($conn)){
         show_form($form_errors);
     }
@@ -38,7 +37,7 @@ function validate_form($conn){
 
             // Store user information in session
             $_SESSION['user_type'] = $row['user_type'];
-            $_SESSION['id'] = $row['id'];
+            $_SESSION['userID'] = $row['id'];
 
             // Redirect based on user type
             if ($row['user_type'] == 'customer') {

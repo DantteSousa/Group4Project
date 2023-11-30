@@ -18,7 +18,7 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
-$userId = $_SESSION['id'];
+$userID = $_SESSION['userID'];
 
 // Include the header and body functions
 header_USER($user_type);
@@ -95,7 +95,7 @@ function check_update_plate($conn){
     $starterMenu = $_POST['starterMenu'];
     $mainCourse = $_POST['mainCourse'];
     $dessert = $_POST['dessert'];
-    $userID = $GLOBALS['userId'];
+    $userID = $GLOBALS['userID'];
 
     $plate = new Plate();
     $plate->setChefID($userID);

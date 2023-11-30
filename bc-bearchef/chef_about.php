@@ -15,7 +15,7 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
-$userID = $_SESSION['id'];
+$userID = $_SESSION['userID'];
 $chef = retrieveChef($conn, $userID);
 
 header_USER($user_type);
