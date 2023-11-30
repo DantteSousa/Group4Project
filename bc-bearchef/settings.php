@@ -17,6 +17,7 @@ if (isset($_SESSION['userID'])) {
    exit();
 }
 
+head_HTML();
 header_USER($userType);
 if($userType == 'chef'){
    body_settings_chef($conn);

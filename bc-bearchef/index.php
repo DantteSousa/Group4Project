@@ -21,14 +21,6 @@ becomeAchef();
 ourchefs();
 footer_HTML();
 
-function openSearch(){
-    echo <<<BUTTON
-        <div class="form-container">
-        <button onclick="location.href = 'search.php';"">SEARCH CHEFS</button>
-        </div>
-    BUTTON;
-}
-
 function hero(){
     echo <<<HERO
         <section class="hero" id="home">

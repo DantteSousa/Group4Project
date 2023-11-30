@@ -3,7 +3,7 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
-
+include 'views/helpers_HTML.php';
 
 // customer_page.php or chef_page.php
 session_start();

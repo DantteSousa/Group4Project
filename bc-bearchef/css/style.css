@@ -187,6 +187,7 @@ footer {
     color: #e44d26;
 }
 
+
 /* Social Media section styles */
 .social-media {
     padding: 40px 0;
@@ -356,6 +357,75 @@ footer {
     border-radius: 2px;
     font-size: 20px;
     padding:5px;
+}
+/* Search page */
+.search h2{
+    font-size: 35px;
+    margin-bottom: 10px;
+    color:orangered;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.search h3{
+    color:orangered;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.search #andmore{
+    margin-bottom: 15px;
+    color: black;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+
+.search-users-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.search-user {
+    width: calc(33.33% - 10px); /* Adjust the width as needed */
+    margin-bottom: 20px; /* Adjust the margin between users as needed */
+    box-sizing: border-box; /* Include padding and border in the total width */
+    border-radius: 5px;
+    background-color: #f8d0c5;
+    padding-left: 1.5%;
+    padding-bottom: .5%;
+    display: flex;
+    align-items: center;
+}
+
+.search-user img{
+    width: 150px; /* Adjust the width as needed */
+    height: auto;
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.search-user p{
+    padding: .3px;
+}
+
+.search-user a{
+    text-decoration: none;
+    background: #e44d26;
+    color:white;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 5px; 
+}
+
+.search-user a:hover{
+    background: rgb(143, 43, 6);
+    color:#fff;
+}
+/* Clearfix to handle the floating elements */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* Responsive styles */
