@@ -43,8 +43,8 @@ function retrivePendingOrders($conn, $userId){
 
        while ($row = $result->fetch_assoc()) {  
           $customer = retriveCustomer($conn,$row['customerID']);
-          
-          
+
+
           echo "<tr>";
           echo "<td>" . $customer->getName() . "</td>";
           echo "<td>" . $row['dateExperience'] . "</td>";
@@ -92,7 +92,7 @@ function retrivePendingOrders($conn, $userId){
                         location="chef_pending_orders.php";
                     </script>';
         }
-     
+
 
     }else{
        echo <<<NOORDER

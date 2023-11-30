@@ -5,7 +5,6 @@ class Orders {
     private $chefID;
     private $dateExperience;
     private $status;
-
     private $total;
 
 

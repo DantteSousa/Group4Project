@@ -2,6 +2,7 @@
    include 'includes/config.php';
    include 'class/user_class.php';
    include 'class/customer_class.php';
+   include 'class/order_class.php';
 
    ////////////////////////////////////////////////////////////////////////////////////////////////
    //// Retrive CHEF from DB
@@ -73,6 +74,9 @@
       return $customer;
    }
 
+   ////////////////////////////////////////////////////////////////////////////////////////////////
+   //// Retrive CUSTOMER from DB
+   ////////////////////////////////////////////////////////////////////////////////////////////////
    function retrivePlates($conn, $userId){
       $query = "SELECT * FROM plate WHERE chefID= '$userId'";
       $result = $conn->query($query);
@@ -175,12 +179,16 @@
 
    }
 
+   
+   ////////////////////////////////////////////////////////////////////////////////////////////////
+   //// Retrive Plates from DB for order display on chef profile
+   ////////////////////////////////////////////////////////////////////////////////////////////////
    function retrivePlatesForOrder($conn, $userId){
       $query = "SELECT * FROM plate WHERE chefID= '$userId'";
       $result = $conn->query($query);
 
       if ($result->num_rows > 0) {
-         echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+         echo "<div class='container'><table>
             <tr>
                   <th>Plate Name</th>
                   <th>Cusine</th>
@@ -221,13 +229,13 @@
             $mealRangeText = "";
             switch($row['mealRangeType']){
                case '0':
-                  $mealRangeText = 'Basic ($190 - $230 per person)';
+                  $mealRangeText = 'Basic';
                   break;
                case '1':
-                  $mealRangeText = 'Indulge ($230 - $260 per person)';
+                  $mealRangeText = 'Indulge';
                   break;
                case '2':
-                  $mealRangeText = 'Exclusive ($260 - $330 per person)';
+                  $mealRangeText = 'Exclusive';
                   break;
                default:
                   $mealRangeText = 'Other';
@@ -265,6 +273,9 @@
 
    }
 
+   ////////////////////////////////////////////////////////////////////////////////////////////////
+   //// Retrive REVIEWS from DB for Chef 
+   ////////////////////////////////////////////////////////////////////////////////////////////////
    function retriveReview($conn, $userId){
       $query = "SELECT * FROM review WHERE chefID= '$userId'";
       $result = $conn->query($query);
@@ -272,7 +283,7 @@
       echo "<div class='content-container'>";
       echo "<h2>Reviews</h2>";
       if ($result->num_rows > 0) {
-         echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+         echo "<div class='container'><table>
             <tr>
                   <th>Customer</th>
                   <th>Date</th>
@@ -299,12 +310,15 @@
       }
    }
 
+   ////////////////////////////////////////////////////////////////////////////////////////////////
+   //// Retrive REVIEWS from DB for Customer be able to see it 
+   ////////////////////////////////////////////////////////////////////////////////////////////////
    function retriveCustomerReviews($conn, $userId){
       $query = "SELECT * FROM review WHERE customerID= '$userId'";
       $result = $conn->query($query);
 
       if ($result->num_rows > 0) {
-         echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+         echo "<div class='container'><table>
             <tr>
                   <th>Anonymus</th>
                   <th>Date</th>
@@ -357,6 +371,34 @@
 
    }
 
+   ////////////////////////////////////////////////////////////////////////////////////////////////
+   //// Retrive ORDER from DB 
+   ////////////////////////////////////////////////////////////////////////////////////////////////
+
+   function retriveOrders($conn, $orderID) {
+      $select = "SELECT * FROM orders WHERE orderID = $orderID";
    
+      $order = new Orders();
+   
+      $result = mysqli_query($conn, $select);
+
+      if (!$result) {
+         // Query failed, log the error and return an empty array or handle as needed
+         error_log("Query failed: " . $conn->error);
+         return array();
+      }
+ 
+      
+      if (mysqli_num_rows($result) > 0) {
+         $row = mysqli_fetch_array($result);
+         $order->setOrderID($row["orderID"]);
+         $order->setCustomerID($row["customerID"]);
+         $order->setDateExperience($row["dateExperience"]);
+         $order->setStatus($row["statusOrder"]);
+         $order->setTotal($row["total"]);
+      }   
+
+      return $order;
+   }
 
 ?>
