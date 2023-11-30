@@ -78,8 +78,6 @@ VALUES ('Sara', 'Stone', 'sara.stone@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
 VALUES ('Tom', 'Taylor', 'tom.taylor@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '2020 Oak St', '555-202');
 
-
-===============================================================================================================================================================================================
 -- Chef 1
 INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
 VALUES (1, 'Italian Cuisine', 'Passionate chef with 10 years of experience in Italian cooking.', 'Culinary Institute of Florence', 'Spaghetti Bolognese, Margherita Pizza', true);
@@ -113,3 +111,68 @@ INSERT INTO chef (chefID, specialities, description, education, plates, isPremiu
 VALUES (20, 'Gourmet Fusion', 'Innovative chef fusing flavors from around the world for a unique dining experience.', 'International Culinary Center', 'Truffle Risotto, Fusion Sushi', false);
 
 ===============================================================================================================================================================================================
+
+-- Plate 1
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (1, 2, 1, 'Italian Feast', 'Bruschetta', 'Caprese Salad', 'Chicken Piccata', 'Tiramisu');
+
+-- Plate 3
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (3, 4, 0, 'Asian Delights', 'Spring Rolls', 'Miso Soup', 'Beef Teriyaki', 'Green Tea Ice Cream');
+
+-- Plate 7
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (7, 1, 2, 'French Gourmet Experience', 'Escargot', 'French Onion Soup', 'Coq au Vin', 'Crème Brûlée');
+
+-- Plate 9
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (9, 3, 1, 'Mediterranean Delicacies', 'Hummus with Pita', 'Greek Salad', 'Paella', 'Baklava');
+
+-- Plate 13
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (13, 0, 2, 'Vegan Extravaganza', 'Vegan Spring Rolls', 'Quinoa Salad', 'Vegan Stir-Fry', 'Chocolate Avocado Mousse');
+
+-- Plate 17
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (17, 5, 0, 'BBQ Bonanza', 'Smoked Wings', 'Brisket Sliders', 'Pulled Pork', 'Banana Pudding');
+
+-- Plate 19
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (19, 2, 1, 'Sweet Indulgence', 'Cannoli', 'Panna Cotta', 'Tortellini with Alfredo Sauce', 'Affogato');
+
+-- Plate 20
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (20, 4, 0, 'Global Fusion Feast', 'Sushi Sampler', 'Tom Yum Soup', 'Truffle Risotto', 'Matcha Tiramisu');
+
+-- Plate 21
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (1, 3, 2, 'Mouthwatering Mediterranean', 'Spanakopita', 'Tabbouleh Salad', 'Chicken Souvlaki', 'Baklava');
+
+-- Plate 23
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (3, 2, 1, 'Sushi Sensation', 'Edamame', 'Rainbow Roll', 'Dragon Roll', 'Mochi Ice Cream');
+
+-- Plate 27
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (7, 5, 0, 'Cajun BBQ Fusion', 'Cajun Shrimp Skewers', 'Gumbo Soup', 'BBQ Jambalaya', 'Pecan Pie');
+
+-- Plate 29
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (9, 0, 2, 'Fresh and Flavorful Vegan', 'Stuffed Grape Leaves', 'Chickpea Salad', 'Vegan Paella', 'Vegan Chocolate Cake');
+
+-- Plate 33
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (13, 4, 1, 'Decadent Dessert Sampler', 'Fruit Brûlée', 'Chocolate Fondue', 'Cheesecake Trio', 'Red Velvet Cupcakes');
+
+-- Plate 37
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (17, 1, 2, 'Tex-Mex Fiesta', 'Guacamole and Chips', 'Chicken Quesadilla', 'Beef Fajitas', 'Churros with Chocolate Sauce');
+
+-- Plate 39
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (19, 3, 0, 'Flavorful Fusion Journey', 'Mango-Papaya Spring Rolls', 'Tom Kha Soup', 'Risotto with Curry Sauce', 'Matcha Cheesecake');
+
+-- Plate 40
+INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
+VALUES (20, 5, 1, 'Grilled Seafood Extravaganza', 'Grilled Octopus', 'Seafood Chowder', 'Grilled Lobster Tails', 'Key Lime Pie');
+
