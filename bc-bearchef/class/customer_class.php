@@ -199,14 +199,20 @@
     
             // Execute the statement
             $stmt->execute();
+            if ($stmt->error) {
+                die("SQL error: " . $stmt->error);
+            }
+            
     
             // Check if the statement execution was successful
             if ($stmt->affected_rows > 0) {
             echo '<script type="text/javascript">
                     alert("Experience Successfully Updated");
-                    location="customer.php";
+                    location="settings.php";
                     </script>';
-            } 
+            } else{
+                echo 'mudou porra nnehuma';
+            }
         }
 
         public function getStringStoveTopType(){

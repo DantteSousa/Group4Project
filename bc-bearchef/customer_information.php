@@ -20,7 +20,7 @@ $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
 
 // Include the header and body functions
-header_USER($user_type);
+header_USER("customer");
 if (isset($_POST['submit'])) {
     check_update_experience($conn);
 } else {
@@ -78,7 +78,8 @@ function check_update_experience($conn){
     $oven = $_POST['oven'];
     $userID = $GLOBALS['userID'];
     
-    $customer = new Customer();
+    echo "$stoveTopType $userID";
+    $customer = retriveCustomer($conn,$userID);
 
     $customer->setCustomerID($userID);
     $customer->setStoveTopType($stoveTopType);
