@@ -17,11 +17,11 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
-$userId = $_SESSION['userID'];
+$userID = $_SESSION['userID'];
 
 // Include the header and body functions
 header_USER('customer');
-retriveCustomerReviews($conn,$userId);
+retriveCustomerReviews($conn,$userID);
 footer_USER();
 ?>
 

@@ -88,6 +88,33 @@ class Message {
                 </script>';
         }
     }
+
+    public function sendMessageToChef($connection){
+        $senderID = mysqli_real_escape_string($connection, $this->getSenderID());
+        $customerID = mysqli_real_escape_string($connection, $this->getReceiverID());
+        $date = mysqli_real_escape_string($connection, $this->getDateMsg());
+        $message = mysqli_real_escape_string($connection, $this->getTextMsg());
+        $orderID = mysqli_real_escape_string($connection, $this->getOrderID());
+
+        
+        $query = "INSERT INTO messages (senderID, receiverID, dateMsg, textMsg, orderID) VALUES (?, ?, ?, ?, ?)";
+
+        $stmt = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($stmt, "sssss", $senderID, $customerID, $date, $message, $orderID);
+
+        // Execute the query
+        mysqli_stmt_execute($stmt);
+
+        // You may want to add error handling here
+        if (mysqli_stmt_error($stmt)) {
+            echo "Error: " . mysqli_stmt_error($stmt);
+        } else {
+            echo '<script type="text/javascript">
+                alert("Message sent!");
+                location="settings.php";
+                </script>';
+        }
+    }
 }
 
 
