@@ -273,7 +273,7 @@
 
    }
 
-   function sendReview($connection, $customerID, $chefID,$today,$nameCustomer,$reviewDescription,$rating,$anonymus){
+   function sendReview($connection, $orderID, $customerID, $chefID, $today, $nameCustomer, $reviewDescription, $rating, $anonymus){
       if($anonymus == "1"){
          $nameCustomer = "Anonymus";
       }
@@ -288,18 +288,38 @@
          echo "Error: " . mysqli_error($connection);
       }
 
-
       // You may want to add error handling here
       if (mysqli_error($connection)) {
          echo "Error: " . mysqli_error($connection);
-      }
-   //    else {
-   //       echo '<script type="text/javascript">
-   //           alert("Review sent!");
-   //           location="customer_reviews.php";
-   //           </script>';
-   //   }
+      }else {
+         updateOrder($connection,$orderID);
+         echo '<script type="text/javascript">
+            alert("Review sent!");
+            location="customer_reviews.php";
+            </script>';
+     }
 
+   }
+
+   function updateOrder($connection,$orderID){
+      $stmt = $connection->prepare("UPDATE orders SET statusOrder=? WHERE orderID=?");
+         
+      // Check if the statement was prepared successfully
+      if (!$stmt) {
+         die("Error during updateChefInfo preparation: " . $connection->error);
+      }
+      $status = 5;
+      // Bind parameters
+      $stmt->bind_param("ii", $status, $orderID);
+      
+      // Check if the parameters were bound successfully
+      if (!$stmt) {
+         die("Error during updateChefInfo binding: " . $connection->error);
+      }
+
+      // Execute the statement
+      $stmt->execute();
+      
    }
 
    ////////////////////////////////////////////////////////////////////////////////////////////////

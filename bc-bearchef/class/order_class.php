@@ -81,7 +81,9 @@ class Orders {
             case "3":
                 return "Order canceled";                
             case "4":
-                return "Order completed";                
+                return "Order completed";   
+            case "5":
+                return "Order completed";             
             default:    
                 return "";  
         }

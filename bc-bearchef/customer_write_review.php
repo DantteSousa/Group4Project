@@ -61,9 +61,8 @@ if (isset($_GET['orderID'])) {
     $order = retriveOrders($conn, $orderID);
     $chefID = $order->getChefID();
     $customerID = $userID;
-
   
-    sendReview($conn, $customerID, $chefID, $today, $nameCustomer, $reviewDescription, $rating, $anonymus);
+    sendReview($conn, $orderID, $customerID, $chefID, $today, $nameCustomer, $reviewDescription, $rating, $anonymus);
 }
  else {
     // Redirect or display an error message if 'idfortest' is not set

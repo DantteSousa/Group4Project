@@ -59,7 +59,7 @@ function body_customer($conn){
                window.location.href = 'customer_orders.php'; 
                break;
             case 'Option2':
-               window.location.href = 'customer_experience.php'; 
+               window.location.href = 'customer_display.php'; 
                break;
             case 'Option3':
                window.location.href = 'customer_read.php'; 

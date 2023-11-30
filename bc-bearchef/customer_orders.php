@@ -64,7 +64,7 @@ function seeOrders($conn, $userID){
                     DETAILS;
             echo "<td> CAD$ " . $row['total'] . ".00</td>";
             echo "<td> {$order->statusString()}</td>";
-            if($order->getStatus() == "3") {
+            if($order->getStatus() == "3" || $order->getStatus() == "5") {
                 echo "<td></td>";
                 echo "<td></td>";
             }elseif($order->getStatus() == "4"){
