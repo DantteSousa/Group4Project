@@ -273,6 +273,35 @@
 
    }
 
+   function sendReview($connection, $customerID, $chefID,$today,$nameCustomer,$reviewDescription,$rating,$anonymus){
+      if($anonymus == "1"){
+         $nameCustomer = "Anonymus";
+      }
+      $query = "INSERT INTO review (customerID, chefID, dateMsg, nameCustomer, reviewDescription, rating, anonymus) 
+      VALUES ('$customerID', '$chefID', '$today','$nameCustomer', '$reviewDescription', '$rating', '$anonymus')";
+
+      // Execute the query
+      mysqli_query($connection, $query);
+
+      // Check for errors
+      if (mysqli_error($connection)) {
+         echo "Error: " . mysqli_error($connection);
+      }
+
+
+      // You may want to add error handling here
+      if (mysqli_error($connection)) {
+         echo "Error: " . mysqli_error($connection);
+      }
+   //    else {
+   //       echo '<script type="text/javascript">
+   //           alert("Review sent!");
+   //           location="customer_reviews.php";
+   //           </script>';
+   //   }
+
+   }
+
    ////////////////////////////////////////////////////////////////////////////////////////////////
    //// Retrive REVIEWS from DB for Chef 
    ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -328,7 +357,7 @@
             </tr>";
 
          while ($row = $result->fetch_assoc()) {
-            $isAnonymus = ($row['reviewDescription'] == 0) ? "No" : "Yes";
+            $isAnonymus = ($row['anonymus'] == 0) ? "No" : "Yes";
             echo "<tr>";
             echo "<td>" . $isAnonymus . "</td>";
             echo "<td>" . $row['dateMsg'] . "</td>";

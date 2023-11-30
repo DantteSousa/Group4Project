@@ -47,7 +47,7 @@ function seeOrders($conn, $userID){
             $customer = retriveCustomer($conn,$row['customerID']);
             $chef = retrieveChef($conn,$row['chefID']);
             $order = retriveOrders($conn,$row['orderID']);
-            
+
             echo "<tr>";
             echo "<td>" . $row['orderID'] . "</td>";
             echo "<td>" . $chef->getName() . "</td>";
@@ -64,12 +64,16 @@ function seeOrders($conn, $userID){
                     DETAILS;
             echo "<td> CAD$ " . $row['total'] . ".00</td>";
             echo "<td> {$order->statusString()}</td>";
-            if($order->getStatus() == "3" || $order->getStatus() == "4") {
+            if($order->getStatus() == "3") {
                 echo "<td></td>";
+                echo "<td></td>";
+            }elseif($order->getStatus() == "4"){
+                echo "<td> <a href='customer_write_review.php?orderID=" . $row['orderID'] . "' class='btn btn-danger'>Write Review</a>
+                </td>";
                 echo "<td></td>";
             }else{
                 echo "<td> <a href='customer_messages.php?orderID=" . $row['orderID'] . "' class='btn btn-danger'>Message</a>
-         </td>";
+                </td>";
                 echo "<td><form class='form-horizontal' method='post' action='customer_orders.php'>
                 <input name='orderID' type='hidden' value='" . $row['orderID'] . "'>
                 <input type='submit' class='btn btn-danger' name='reject' value='Cancel'>

@@ -51,7 +51,7 @@ if (isset($_GET['orderID'])) {
     $full_message->sendMessageToChef($conn);
 
 } else {
-    // Redirect or display an error message if 'idfortest' is not set
+    
     header("Location: index.php"); // Redirect to the homepage or another page
     exit();
 }
