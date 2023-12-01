@@ -2,10 +2,12 @@
 // Include necessary files or configurations if needed
 include 'includes/config.php';
 include 'views/helpers_user.php';
+include 'views/helpers_HTML.php';
 include 'class/retriveDB.php';
 
 // Start the session
 session_start();
+
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
@@ -40,21 +42,34 @@ function body_edit_profile($conn){
     }
 
     echo <<< PROFILE
-        <div>
+    <div class="form-payment">
+        <div class="outra-div">
+            <form class="form" action="$_SERVER[PHP_SELF]" method="post">
             <h2>Edit Profile</h2>      
-            <form action="$_SERVER[PHP_SELF]" method="post">
-                <h3>profile settings</h3>
-                <div><label>First name: </label><input type="text" name="name" value="{$user->getName()}"></div>
-                <div><label>Last name</label><input type="text" name="lastname" value="{$user->getLastName()}"></div>
-                <div><label>Email</label><input type="email" name="email" value="{$user->getEmail()}"></div>
-                <div><label>Password</label><input type="password" name="password" value="{$user->getPassword()}"></div>
-                <div><label>Address</label><input type="text" name="address" value="{$user->getAddress()}"></div>
-                <div><label>Phone</label><input type="number" name="phone" value="{$user->getPhone()}"></div>
-                <input type="submit" name="submit" value="save information" class="btn">
-            </form>
-            <!-- Back button -->
-            <button onclick="location.href = 'settings.php';"">Go Back</button>
-        </div>
+            <h3>profile settings</h3>
+            <label>First name: </label>
+            <input type="text" name="name" value="{$user->getName()}">
+
+            <label>Last name</label>
+            <input type="text" name="lastname" value="{$user->getLastName()}">
+
+            <label>Email</label>
+            <input type="email" name="email" value="{$user->getEmail()}">
+
+            <label>Password</label>
+            <input type="password" name="password" value="{$user->getPassword()}">
+
+            <label>Address</label>
+            <input type="text" name="address" value="{$user->getAddress()}">
+
+            <label>Phone</label>
+            <input type="number" name="phone" value="{$user->getPhone()}">
+            <input type="submit" name="submit" value="save information" class="btn">
+        </form>
+        <!-- Back button -->
+        <button onclick="location.href = 'settings.php';"">Go Back</button>
+    </div>
+    </div>
     PROFILE;
 }
 

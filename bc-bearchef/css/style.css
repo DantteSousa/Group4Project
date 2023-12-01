@@ -583,6 +583,17 @@ caption h2{
     border-radius: 5px;
 }
 
+.form-payment form select{
+    width: 95%;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin: 8px 0px;
+    background: #eee;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    appearance: none; 
+}
+
 .form{
     background-color: #ffeae5;
     padding: 5px 20px 15px 20px;
@@ -591,7 +602,7 @@ caption h2{
     width: 500px;
 }
 
-input[type=text] {
+input[type=text], input[type=password], input[type=email], input[type=number],  input[type=textarea]{
     width: 90%;
     padding: 10px 15px;
     margin-bottom: 20px;
@@ -599,6 +610,7 @@ input[type=text] {
     border: 1px solid #ccc;
     border-radius: 3px;
 }
+
 
 .form label {
     margin-bottom: 10px;
@@ -709,6 +721,78 @@ input[type=text] {
     padding:20px;
 }
 
+/* ================================== */
+.container-settings{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:20px;
+    padding-bottom: 60px;
+}
+ 
+.container-settings .content-settings{
+    text-align: center;
+}
+
+.container-settings .content-settings h3{
+    font-size: 30px;
+    color:#333;
+}
+ 
+.container-settings .content-settings h3 span{
+    background: orangered;
+    color:#fff;
+    border-radius: 5px;
+    padding:0 15px;
+}
+ 
+.container-settings .content-settings h1{
+    font-size: 50px;
+    color:#333;
+}
+ 
+.container-settings .content-settings h1 span{
+    color:orangered;
+}
+ 
+.container-settings .content-settings p{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+ 
+.container-settings .content-settings .btn{
+    padding:10px 30px;
+    font-size: 20px;
+    background: #333;
+    color:#fff;
+    margin:0 5px;
+    text-transform: capitalize;
+}
+
+.container-settings .content-settings a{
+    text-decoration: none;
+}
+ 
+.container-settings .content-settings .btn:hover{
+    background: orangered;
+}
+/* ================================== */
+.radio-group {
+    display: flex;
+    flex-direction: column; /* Arrange buttons vertically; use 'row' for horizontal */
+    gap: 10px; /* Adjust the gap between buttons */
+}
+
+
+.radio-item {
+    display: flex;
+    align-items: center;
+}
+
+
+.radio-item input {
+    margin-right: 5px; 
+}
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {

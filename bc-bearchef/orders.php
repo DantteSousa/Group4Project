@@ -160,7 +160,7 @@ function show_payment_form($conn, $errors = array()) {
                 <input type="submit" value="Continue to checkout" class="btn">
             </form>
         </div>
-        </div>
+    </div>
     PAYFORM;
 }
 

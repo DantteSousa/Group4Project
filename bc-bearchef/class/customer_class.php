@@ -211,7 +211,7 @@
                     location="settings.php";
                     </script>';
             } else{
-                echo 'mudou porra nnehuma';
+                echo 'Error. Try again';
             }
         }
 

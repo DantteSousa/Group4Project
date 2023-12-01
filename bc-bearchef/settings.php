@@ -1,7 +1,7 @@
 <?php
 include "views/helpers_HTML.php";
-include 'includes/config.php';
 include 'views/helpers_user.php';
+include 'includes/config.php';
 include 'class/retriveDB.php';
 
 session_start();
@@ -31,8 +31,8 @@ function body_settings_chef($conn){
    $chef = retrieveChef($conn, $userID);
  
    echo <<<BODY
-      <div class="container">
-         <div class="content">
+      <div class="container-settings">
+         <div class="content-settings">
             <h3>hi, <span>chef</span></h3>
             <h1>welcome <span>{$chef->getName()}</span></h1>
             <p>This is your user page</p>
@@ -51,8 +51,8 @@ function body_settings_customer($conn){
    $customer = retriveCustomer($conn, $userID);
  
    echo <<<BODY
-      <div class="container">
-         <div class="content">
+      <div class="container-settings">
+         <div class="content-settings">
             <h3>hi, <span>customer</span></h3>
             <h1>welcome <span>{$customer->getName()}</span></h1>
             <p>This is your user page</p>
