@@ -47,8 +47,7 @@ if (isset($_GET['id'])) {
       DISPLAY_USER;
    } else {
       echo "<p>User not found.</p>";
-   }
-   
+   }   
    retrivePlatesForOrder($conn, $idChef);
    retriveReview($conn,$idChef);
 } else {

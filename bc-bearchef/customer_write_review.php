@@ -6,30 +6,28 @@ include "views/helpers_HTML.php";
 include 'class/retriveDB.php';
 include 'class/message.php';
 session_start();
-// $user_chef = 'chef';
 $user_customer = 'customer';
 
 // Retrieve user information from the session
 $userID = $_SESSION['userID'];
 $order = new Orders();
 
-head_HTML();
-if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer) {
-   header_USER($user_customer);
-}else{
-   header_HTML();
+if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer)) {
+    // Redirect to login page or handle unauthorized access
+    header("Location: login_form.php");
+    exit();
 }
-
-
+head_HTML();
+header_USER('customer');
 if (isset($_GET['orderID'])) {
     $orderID = $_GET['orderID'];
     $order = retriveOrders($conn, $orderID);
     $chef = retrieveChef($conn, $order->getChefID());
 
     echo <<<REVIEWFORM
-        <div>
-            <h1>Send your review about: {$chef->getName()}</h1>
+        <div class="form-review">
             <form method="post" action="$_SERVER[PHP_SELF]">
+                <h1>Send your review about: {$chef->getName()}</h1>
                 <label for="nameCustomer">Name</label>
                 <input type="text" id="nameCustomer" name="nameCustomer" required placeholder="Customer name"><br>                
                 <input type="checkbox" id="anonymus" name="anonymus">

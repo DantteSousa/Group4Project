@@ -1,6 +1,7 @@
 <?php
 include 'includes/config.php';
 include 'views/helpers_user.php';
+include 'views/helpers_HTML.php';
 include 'class/retriveDB.php';
 
 // Start the session
@@ -21,7 +22,9 @@ $userID = $_SESSION['userID'];
 
 head_HTML();
 header_USER('customer');
+customer_top();
 retrieve_messages_from_customer($conn);
+customer_Bottom();
 footer_USER();
 
 function retrieve_messages_from_customer($conn){
@@ -30,21 +33,21 @@ function retrieve_messages_from_customer($conn){
     $result = $conn->query($query);
 
     echo "<div class='content-container'>";
-    echo "";
     if (!$result) {
        // Handle query error
        echo "Error: " . $conn->error;
     } elseif ($result->num_rows > 0) {
-        echo "<div class='container'><table>
-            <caption><h2>Messages</caption></h2>
-            <tr>
+        echo "<div class='table-order'>
+                <table>
+                <h2>Messages</h2>                      
+                <tr>
                     <th>OrderID</th>
                     <th>Date</th>
                     <th>Sender</th>
                     <th>Receiver</th>
                     <th>Message</th> 
                     <th>Send message</th>                 
-            </tr>";
+                </tr>";
             $sender= "";
             $receiver = "";
             

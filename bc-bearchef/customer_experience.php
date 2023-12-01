@@ -23,8 +23,9 @@ if (isset($_POST['submit'])) {
 } else {
     add_experience();
 }
-
 footer_USER();
+
+
 
 function add_experience(){
     echo <<< PROFILE

@@ -1,23 +1,21 @@
 <?php
-
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include "views/helpers_HTML.php";
 include 'class/retriveDB.php';
 include 'class/message.php';
 session_start();
-// $user_chef = 'chef';
+
 $user_customer = 'customer';
-head_HTML();
-// Retrieve user information from the session
 $userID = $_SESSION['userID'];
 $order = new Orders();
-// if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_chef) {
-//    header_USER($user_chef);
-// }else{
-//    header_HTML();
-// }
 
+head_HTML();
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_customer){
+   header_USER('customer');
+}else{
+   header_HTML();
+}
 
 if (isset($_GET['orderID'])) {
     $orderID = $_GET['orderID'];
@@ -25,11 +23,11 @@ if (isset($_GET['orderID'])) {
     $chef = retrieveChef($conn, $order->getChefID());
 
     echo <<<MESSAGEFORM
-        <div>
-            <h1>Send Message</h1>
-            From: You <br>
-            To: {$chef->getName()}
+        <div class="form-container">
             <form method="post" action="$_SERVER[PHP_SELF]">
+                <h1>Send Message</h1>
+                <p>From: You</p>
+                <p>To: {$chef->getName()}</p>
                 <input type="hidden" name="orderID" value="$orderID">
                 <textarea name="message" rows="4" cols="50" placeholder="Type your message here"></textarea>
                 <br>
@@ -50,8 +48,7 @@ if (isset($_GET['orderID'])) {
     $full_message->setOrderID($order->getOrderID());
     $full_message->sendMessageToChef($conn);
 
-} else {
-    
+} else {    
     header("Location: index.php"); // Redirect to the homepage or another page
     exit();
 }

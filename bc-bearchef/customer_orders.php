@@ -2,12 +2,12 @@
 // Include necessary files or configurations if needed
 include 'includes/config.php';
 include 'views/helpers_user.php';
+include 'views/helpers_HTML.php';
 include 'class/retriveDB.php';
 
 // Start the session
 session_start();
 
-// Check if the user is logged in as a chef
 $user_type = 'customer';
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
     // Redirect to login page or handle unauthorized access
@@ -21,7 +21,9 @@ $userID = $_SESSION['userID'];
 
 head_HTML();
 header_USER('customer');
+customer_top();
 seeOrders($conn, $userID);
+customer_Bottom();
 footer_USER();
 
 function seeOrders($conn, $userID){
@@ -29,20 +31,20 @@ function seeOrders($conn, $userID){
     $result = $conn->query($query);
 
     echo "<div class='content-container'>";
-    echo "";
     if ($result->num_rows > 0) {
-       echo "<div class='container'><table>
-          <caption><h2>Orders</h2></caption>
-          <tr>
-                <th>Order ID</th>
-                <th>Chef Name</th>
-                <th>Date</th>
-                <th>Details</th> 
-                <th>Total of Order</th>
-                <th>Order Status</th>
-                <th>Send Message</th>
-                <th>Cancel Order</th>                 
-          </tr>";
+       echo "<div class='table-order'>
+                <table>
+                <h2>Plates</h2>
+                <tr>          
+                    <th>Order ID</th>
+                    <th>Chef Name</th>
+                    <th>Date</th>
+                    <th>Details</th> 
+                    <th>Total of Order</th>
+                    <th>Order Status</th>
+                    <th>Send Message</th>
+                    <th>Cancel Order</th>                 
+                </tr>";
 
        while ($row = $result->fetch_assoc()) {  
             $customer = retriveCustomer($conn,$row['customerID']);
@@ -106,8 +108,6 @@ function seeOrders($conn, $userID){
                         location="customer_orders.php";
                     </script>';
         }
-
-
     }else{
        echo <<<NOORDER
              The user don't have any pending order <br>

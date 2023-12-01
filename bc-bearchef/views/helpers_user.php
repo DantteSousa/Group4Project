@@ -39,4 +39,48 @@ function footer_USER(){
     HTML_FOOTER;
 }
 
+function customer_Bottom(){
+    echo <<<ORDERBOTTOM
+    </div>
+        </div>
+        <script>
+        function showOption(option) {
+        // Add logic for each option
+        switch (option) {
+            case 'Option1':
+                window.location.href = 'customer_orders.php'; 
+                break;
+            case 'Option2':
+                window.location.href = 'customer_display.php'; 
+                break;
+            case 'Option3':
+                window.location.href = 'customer_read.php'; 
+                break;
+            case 'Option4':
+                window.location.href = 'customer_reviews.php'; 
+                break;           
+            default:
+                // You can choose to do nothing or redirect to a default page
+                break;
+        }
+        }
+    </script> 
+    ORDERBOTTOM;
+}
+
+function customer_top(){
+    echo <<<ORDERTOP
+        <div class="main-container">
+        <div class="options-bar">
+                <ul>
+                    <li><a href="#" onclick="showOption('Option1')">Recent Orders</a></li>
+                    <li><a href="#" onclick="showOption('Option2')">Experience</a></li>
+                    <li><a href="#" onclick="showOption('Option3')">Messages</a></li>
+                    <li><a href="#" onclick="showOption('Option4')">Reviews History</a></li>
+                </ul>
+        </div>
+        <div class="account-info" id="account-info">
+       ORDERTOP;
+}
+
 ?>

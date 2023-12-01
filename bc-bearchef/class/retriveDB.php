@@ -252,7 +252,7 @@
             echo "<td>" . $row['firstCourse'] . "</td>";
             echo "<td>" . $row['mainCourse'] . "</td>";
             echo "<td>" . $row['dessert'] . "</td>";
-            echo "<td> <button onclick='redirectToProfile($plateID);'>Reserve</button> </td>";
+            echo "<td> <button class='btn-profile' onclick='redirectToProfile($plateID);'>Reserve</button> </td>";
             echo "</tr>";
          }
          echo "</td></tr>";
@@ -368,8 +368,11 @@
       $result = $conn->query($query);
 
       if ($result->num_rows > 0) {
-         echo "<div class='container'><table>
-            <tr>
+         echo "<div class='table-order'>
+               <table>
+               <h2>Reviews</h2>                      
+               <tr>
+            
                   <th>Anonymus</th>
                   <th>Date</th>
                   <th>Review</th>
@@ -414,7 +417,7 @@
          echo <<<NOREVIEW
                <div>
                   The user didn't made any review <br>
-                  <button onclick="location.href = 'customer.php';"">Go Back</button>        
+                  <button class="btn-profile" onclick="location.href = 'customer.php';"">Go Back</button>        
                </div>
                NOREVIEW;
       }
