@@ -1,6 +1,7 @@
 <?php
 include 'includes/config.php';
 include 'views/helpers_user.php';
+include 'views/helpers_HTML.php';
 include 'class/retriveDB.php';
 
 // Start the session
@@ -19,7 +20,9 @@ $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
 head_HTML();
 header_USER('chef');
+chef_top();
 retriveAcceptedOrders($conn, $userID);
+chef_bottom();
 footer_USER();
 
 function retriveAcceptedOrders($conn, $userId){

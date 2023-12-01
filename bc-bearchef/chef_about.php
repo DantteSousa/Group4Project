@@ -3,6 +3,7 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
+include "views/helpers_HTML.php";
 
 session_start();
 // Check if the user is logged in as a chef
@@ -18,7 +19,8 @@ $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
 $chef = retrieveChef($conn, $userID);
 
-header_USER($user_type);
+head_HTML();
+header_USER('chef');
 if (isset($_POST['submit'])) {
     check_update_about($conn);
 } else {
@@ -30,9 +32,10 @@ function body_edit_profile(){
     $chef = $GLOBALS['chef'];
 
     echo <<< PROFILE
-        <div>
+    <div class="form-payment">
+    <div class="outra-div">
+    <form class="form" action="$_SERVER[PHP_SELF]" method="post">
             <h2>Edit Profile</h2>      
-            <form action="$_SERVER[PHP_SELF]" method="post">
                 <h3>profile settings</h3>
                 <div><label>Specialities:</label><br> <textarea name="specialities" rows="4" cols="50">{$chef->getSpecialities()}</textarea></div>
                 <div><label>Description:</label><br> <textarea name="description" rows="4" cols="50">{$chef->getDescription()}</textarea></div>

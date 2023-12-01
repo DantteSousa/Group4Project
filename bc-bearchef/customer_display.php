@@ -42,6 +42,7 @@ function order_body($conn, $order, $plate, $customer){
             <strong>Time: </strong> {$customer->getStringDayTime()}<br>
             <strong>Number of people</strong> {$customer->getNumOfPeople()} people <br>
             <strong>Restriction: </strong> {$customer->doesHaveRestriction()}<br>        
+            <strong>Extra: </strong> {$customer->getExtraInfo()}<br>        
             <button class="btn-profile" onclick="location.href = 'customer_information.php';"">Edit</button>         
         </div>             
         ORDERREVIEW;

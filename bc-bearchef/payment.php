@@ -4,7 +4,8 @@ include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
 include 'class/payment_info.php';
-// Start the session
+include "views/helpers_HTML.php";
+
 session_start();
 
 // Check if the user is logged in as a chef
@@ -21,9 +22,9 @@ $userID = $_SESSION['userID'];
 $chef = retrieveChef($conn, $userID);
 
 // Include the header and body functions
-// header_USER('chef');
-
-
+head_HTML();
+header_USER('chef');
+chef_top();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //If validate_form returns errors, pass them to show_form()
     if($form_errors = validate_payment($conn, $chef)){
@@ -32,6 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 } else{
     payment_body();
 }
+chef_bottom();
 footer_USER();
 
 function validate_payment($conn, $chef){
@@ -82,32 +84,34 @@ function payment_body($errors = array()){
     }
 
     echo <<<UPGRADE
-    <form action="$_SERVER[PHP_SELF]" method="post">
-            <span class="error-msg">$combinedText</span><br>
-            <h3>Choose your upgrade</h3>
-            <input type="radio" id="yearly" name="premium" value="150" checked="true">
-            <label for="html">CA$150.00 / year</label><br>
-            <input type="radio" id="monthly" name="premium" value="15">
-            <label for="css">CA$15.00 / month </label><br>
-            <br>
+    <div class="form-payment">
+    <div class="outra-div">
+    <form class="form" action="$_SERVER[PHP_SELF]" method="post">
+            <span class="error-msg">$combinedText</span>            
+            <label for="premium"><h3>Choose your upgrade</h3></label>
+                        <select name="premium" id="premium" required>
+                            <option value="150">CA$150.00 / year</option>
+                            <option value="15">CA$15.00 / year</option>
+                        </select>
+            
             <h3>Billing Address</h3>
             <label for="fname">Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe"> <br>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
             
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com"><br>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
             
             <label for="adr">Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street"><br>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
             
             <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="Burnaby"><br>           
+            <input type="text" id="city" name="city" placeholder="Burnaby">         
             
             <label for="state">State</label>
-            <input type="text" id="state" name="state" placeholder="BC"><br>
+            <input type="text" id="state" name="state" placeholder="BC">
             
             <label for="zip">Zip</label>
-            <input type="text" id="zip" name="zip" placeholder="XXX XXX"><br><br>
+            <input type="text" id="zip" name="zip" placeholder="XXX XXX">
                 
             <h3>Payment</h3>
             <label for="fname">Accepted Cards</label>
@@ -119,11 +123,11 @@ function payment_body($errors = array()){
             </div>
             
             <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe"><br>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
             <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"><br>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
             <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="XX"><br>
+            <input type="text" id="expmonth" name="expmonth" placeholder="XX">
                 <div class="col-50">
                     <label for="expyear">Exp Year</label>
                     <input type="text" id="expyear" name="expyear" placeholder="XXXX">
@@ -131,10 +135,11 @@ function payment_body($errors = array()){
                 <div class="col-50">
                     <label for="cvv">CVV</label>
                     <input type="text" id="cvv" name="cvv" placeholder="XXX">
-                </div>
-            
+                </div>            
             <input type="submit" value="Continue to checkout" class="btn">
         </form>
+        </div>
+        </div>
 
     UPGRADE;
 }

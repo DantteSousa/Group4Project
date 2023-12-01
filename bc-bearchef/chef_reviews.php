@@ -3,6 +3,7 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
+include "views/helpers_HTML.php";
 
 // Start the session
 session_start();
@@ -20,7 +21,9 @@ $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
 
 header_USER('chef');
+chef_top();
 retriveReview($conn, $userID);
+chef_bottom();
 footer_USER();
 ?>
 

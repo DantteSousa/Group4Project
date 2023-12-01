@@ -2,6 +2,7 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
+include "views/helpers_HTML.php";
 
 // Start the session
 session_start();
@@ -19,7 +20,9 @@ $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
 head_HTML();
 header_USER('chef');
+chef_top();
 retrieve_messages_from_chef($conn, $userID);
+chef_bottom();
 footer_USER();
 
 function retrieve_messages_from_chef($conn, $userId){

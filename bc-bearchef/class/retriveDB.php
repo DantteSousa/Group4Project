@@ -371,8 +371,7 @@
          echo "<div class='table-order'>
                <table>
                <h2>Reviews</h2>                      
-               <tr>
-            
+               <tr>            
                   <th>Anonymus</th>
                   <th>Date</th>
                   <th>Review</th>
@@ -417,7 +416,6 @@
          echo <<<NOREVIEW
                <div>
                   The user didn't made any review <br>
-                  <button class="btn-profile" onclick="location.href = 'customer.php';"">Go Back</button>        
                </div>
                NOREVIEW;
       }
