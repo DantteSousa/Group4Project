@@ -148,7 +148,7 @@ class PaymentInfo {
     }
 
     public function makePayment($connection, $orderTotal) {
-        // Assuming you have other necessary properties in your PaymentInfo class
+        
         $userID = mysqli_real_escape_string($connection, $this->getUserID());
         $fullName = mysqli_real_escape_string($connection, $this->getFullName());
         $email = mysqli_real_escape_string($connection, $this->getEmail());

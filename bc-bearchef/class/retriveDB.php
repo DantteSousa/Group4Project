@@ -37,6 +37,9 @@
       return $chef;
    }
 
+   ////////////////////////////////////////////////////////////////////////////////////////////////
+   //// Retrive CUSTOMER from DB
+   ////////////////////////////////////////////////////////////////////////////////////////////////
    function retriveCustomer($conn, $userID) {
       $select = "SELECT * FROM user_form WHERE id = $userID";
    
@@ -75,14 +78,16 @@
    }
 
    ////////////////////////////////////////////////////////////////////////////////////////////////
-   //// Retrive CUSTOMER from DB
+   //// Retrive PLATES from DB
    ////////////////////////////////////////////////////////////////////////////////////////////////
    function retrivePlates($conn, $userId){
       $query = "SELECT * FROM plate WHERE chefID= '$userId'";
       $result = $conn->query($query);
 
       if ($result->num_rows > 0) {
-         echo "<div class='container'><table width='' class='table table-bordered' border='1' >
+         echo "<div class='table'>
+         <table>
+         <caption><h2>Plates</h2></caption>
             <tr>
                   <th>Plate Name</th>
                   <th>Cusine</th>
@@ -172,8 +177,10 @@
 
       }else{
          echo <<<NOPLATE
-               The user dont't have any added plate <br>
-               <a href="chef_add_plates.php" class="btn">Add Plates</a>
+            <div class='table'> 
+               The user don't have any plate<br><br>
+               <a class="btn" href="chef_add_plates.php" class="btn">Add Plates</a> 
+            </div>
             NOPLATE;
       }
 
@@ -272,7 +279,6 @@
                The user dont't have any added plate <br>               
             NOPLATE;
       }
-
    }
 
    function sendReview($connection, $orderID, $customerID, $chefID, $today, $nameCustomer, $reviewDescription, $rating, $anonymus){

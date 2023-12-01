@@ -51,11 +51,9 @@ if (isset($_GET['id'])) {
    retrivePlatesForOrder($conn, $idChef);
    retriveReview($conn,$idChef);
 } else {
-   // Redirect or display an error message if 'idfortest' is not set
    header("Location: index.php"); // Redirect to the homepage or another page
    exit();
 }
-
 
 footer_USER();
 ?>

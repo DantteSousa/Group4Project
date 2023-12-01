@@ -34,7 +34,7 @@ function retrivePendingOrders($conn, $userId){
     echo "";
     if ($result->num_rows > 0) {
        echo "<div class='container'><table>
-          <caption>Pending Orders</caption>
+          <caption><h2>Pending Orders</h2></caption>
           <tr>
                 <th>Customer Name</th>
                 <th>Date</th>
@@ -95,7 +95,6 @@ function retrivePendingOrders($conn, $userId){
                         location="chef_pending_orders.php";
                     </script>';
         }
-
 
     }else{
        echo <<<NOORDER

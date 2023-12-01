@@ -138,9 +138,6 @@
 
             $select = "SELECT * FROM customer WHERE customerID = '$userID'";
             $result = mysqli_query($connection, $select);
-
-            //In case there is alreay an experience, it will update it. 
-            //Else, it will create a new one 
             
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_array($result);

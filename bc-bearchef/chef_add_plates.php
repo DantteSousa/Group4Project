@@ -1,9 +1,10 @@
 <?php
-// Include necessary files or configurations if needed
+
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
 include 'class/plate.php';
+include "views/helpers_HTML.php";
 
 // Start the session
 session_start();
@@ -34,24 +35,22 @@ footer_USER();
 
 function add_plate_form(){
     echo <<< PROFILE
-        <div>
-            <h2>Plates</h2>      
-            <form action="$_SERVER[PHP_SELF]" method="post">
+    <div class="form-payment">
+        <div class="outra-div">
+            <form class="form action="$_SERVER[PHP_SELF]" method="post">
+                <h2>Plates</h2>      
                 <h3>Add New Plate</h3>
-                <div>
-                    <label>Name:</label><br>
+                    <label>Name:</label>
                     <input type="text" name="plateName" placeholder="Plate name" required>
-                </div>
-                <div>
-                    <label for="mealRangeType">Meal Range Type:</label><br>
+
+                    <label for="mealRangeType">Meal Range Type:</label>
                     <select name="mealRangeType" id="mealRangeType" required>
                         <option value="0">Basic ($190 - $230 per person)</option>
                         <option value="1">Indulge ($230 - $260 per person)</option>
                         <option value="2">Exclusive ($260 - $330 per person)</option>
                     </select>
-                </div>
-                <div>
-                    <label for="cusineType">Cusine Type:</label><br>
+
+                    <label for="cusineType">Cusine Type:</label>
                     <select name="cusineType" id="cusineType" required>
                         <option value="0">Mediterranean</option>
                         <option value="1">Italian</option>
@@ -60,31 +59,27 @@ function add_plate_form(){
                         <option value="4">Latin American</option>
                         <option value="5">Other</option>
                     </select>
-                </div>
-                <div>
-                    <label>Starter Menu:</label><br> 
+
+                    <label>Starter Menu:</label>
                     <textarea name="starterMenu" rows="4" cols="50" required placeholder="Separete the first course options with a coma"></textarea>
-                </div>
-                <div>
-                    <label>First Course:</label><br> 
+             
+                    <label>First Course:</label>
                     <textarea name="firstCourse" rows="4" cols="50" required placeholder="Separete the first course options with a coma"></textarea>
-                </div>
-                <div>
-                    <label>Main Course:</label><br> 
+              
+                    <label>Main Course:</label>
                     <textarea name="mainCourse" rows="4" cols="50" required placeholder="Separete the main course options with a coma"></textarea>
-                </div>
-                <div>
-                    <label>Dessert:</label><br> 
+             
+                    <label>Dessert:</label>
                     <textarea name="dessert" rows="4" cols="50" required placeholder="Separete the dessert options with a coma"></textarea>
-                </div>
-                <input type="submit" name="submit" value="save information">
+              
+                <input class="btn"type="submit" name="submit" value="save information">
             </form>
-            <a href="chef_view_plates.php" class="btn">VIEW PLATES</a>
-            <br>
-     
-            <!-- Back button -->
-            <button onclick="location.href = 'settings.php';"">Go Back</button>
+            <div class="chef-about">
+                <button class="btn-chef" onclick="location.href = 'settings.php';"">Go back</button> <br>
+                <button class="btn-chef" onclick="location.href = 'chef_view_plates.php';"">View Plates</button>
+            </div>
         </div>
+    </div>
     PROFILE;
 }
 

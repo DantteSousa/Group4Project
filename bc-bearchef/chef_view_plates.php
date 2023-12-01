@@ -4,9 +4,11 @@ include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
 include 'class/plate.php';
+include "views/helpers_HTML.php";
 
 // Start the session
 session_start();
+
 head_HTML();
 // Check if the user is logged in as a chef
 $user_type = 'chef';

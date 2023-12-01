@@ -7,7 +7,6 @@ include "views/helpers_HTML.php";
 // Start the session
 session_start();
 
-// Check if the user is logged in as a chef
 $user_type = 'chef';
 if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
     // Redirect to login page or handle unauthorized access
@@ -18,6 +17,7 @@ if (!(isset($_SESSION['user_type']) && $_SESSION['user_type'] == $user_type)) {
 // Retrieve user information from the session
 $userType = $_SESSION['user_type'];
 $userID = $_SESSION['userID'];
+
 head_HTML();
 header_USER('chef');
 chef_top();
@@ -35,9 +35,10 @@ function retrieve_messages_from_chef($conn, $userId){
        // Handle query error
        echo "Error: " . $conn->error;
     } elseif ($result->num_rows > 0) {
-        echo "<div class='container'><table>
-            <caption><h2>Messages</caption></h2>
-            <tr>
+        echo "<div class='table-order'>
+                <table>
+                <h2>Messages</h2>                      
+                <tr>
                     <th>OrderID</th>
                     <th>Date</th>
                     <th>Sender</th>

@@ -63,24 +63,39 @@ function add_experience(){
             <label for="eventDay">Pick the date</label>
             <input type="date" id="eventDay" name="eventDay">
         
-            <label for="cusineType">Our preferred cuisine is...:</label>
-            <input type="radio" id="0" name="cusineType" value="0">
-            <label for="0">Mediterranean</label>
+            <div class="radio-group">
+                <label for="cusineType">Our preferred cuisine is...:</label>
 
-            <input type="radio" id="1" name="cusineType" value="1">
-            <label for="1">Italian</label>
-
-            <input type="radio" id="2" name="cusineType" value="2">
-            <label for="2">French</label>
-
-            <input type="radio" id="3" name="cusineType" value="3">
-            <label for="3">Asian</label>
-
-            <input type="radio" id="4" name="cusineType" value="4">
-            <label for="4">Latin American</label>
-
-            <input type="radio" id="3" name="cusineType" value="5">
-            <label for="5">Other</label>
+                <div class="radio-item">
+                    <input type="radio" id="0" name="cusineType" value="0">
+                    <label for="0">Mediterranean</label>
+                </div>
+                
+                <div class="radio-item">
+                    <input type="radio" id="1" name="cusineType" value="1">
+                    <label for="1">Italian</label>
+                </div>
+                
+                <div class="radio-item">
+                    <input type="radio" id="2" name="cusineType" value="2">
+                    <label for="2">French</label>
+                </div>
+                
+                <div class="radio-item">
+                    <input type="radio" id="3" name="cusineType" value="3">
+                    <label for="3">Asian</label>
+                </div>
+                
+                <div class="radio-item">
+                    <input type="radio" id="4" name="cusineType" value="4">
+                    <label for="4">Latin American</label>
+                </div>
+                
+                <div class="radio-item">
+                    <input type="radio" id="5" name="cusineType" value="5">
+                    <label for="5">Other</label>
+                </div>
+            </div>
             
             <label for="mealRangeType">We are looking for...:</label>
             <select name="mealRangeType" id="mealRangeType" required>

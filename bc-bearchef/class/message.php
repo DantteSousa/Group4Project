@@ -78,7 +78,7 @@ class Message {
         // Execute the query
         mysqli_stmt_execute($stmt);
 
-        // You may want to add error handling here
+        // Error handling 
         if (mysqli_stmt_error($stmt)) {
             echo "Error: " . mysqli_stmt_error($stmt);
         } else {
@@ -105,13 +105,13 @@ class Message {
         // Execute the query
         mysqli_stmt_execute($stmt);
 
-        // You may want to add error handling here
+        // Error handling 
         if (mysqli_stmt_error($stmt)) {
             echo "Error: " . mysqli_stmt_error($stmt);
         } else {
             echo '<script type="text/javascript">
                 alert("Message sent!");
-                location="settings.php";
+                location="customer_read.php";
                 </script>';
         }
     }
