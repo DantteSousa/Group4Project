@@ -6,7 +6,6 @@ include 'class/retriveDB.php';
 include 'class/plate.php';
 include "views/helpers_HTML.php";
 
-// Start the session
 session_start();
 
 head_HTML();

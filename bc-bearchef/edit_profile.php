@@ -1,11 +1,10 @@
 <?php
-// Include necessary files or configurations if needed
+
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'views/helpers_HTML.php';
 include 'class/retriveDB.php';
 
-// Start the session
 session_start();
 
 // Retrieve user information from the session

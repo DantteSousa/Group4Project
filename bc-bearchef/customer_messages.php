@@ -49,7 +49,7 @@ if (isset($_GET['orderID'])) {
     $full_message->sendMessageToChef($conn);
 
 } else {    
-    header("Location: index.php"); // Redirect to the homepage or another page
+    header("Location: index.php"); 
     exit();
 }
 

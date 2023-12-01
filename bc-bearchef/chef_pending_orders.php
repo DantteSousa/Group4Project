@@ -33,8 +33,8 @@ function retrivePendingOrders($conn, $userId){
     echo "<div class='content-container'>";
     echo "";
     if ($result->num_rows > 0) {
-       echo "<div class='container'><table>
-          <caption><h2>Pending Orders</h2></caption>
+      echo "<div class='container'><table>
+          <caption><h2>Pending Orders</caption>
           <tr>
                 <th>Customer Name</th>
                 <th>Date</th>
@@ -44,15 +44,15 @@ function retrivePendingOrders($conn, $userId){
                 <th>Cancel Order</th>                 
           </tr>";
 
-       while ($row = $result->fetch_assoc()) {  
+      while ($row = $result->fetch_assoc()) {  
           $customer = retriveCustomer($conn,$row['customerID']);
 
 
-          echo "<tr>";
-          echo "<td>" . $customer->getName() . "</td>";
-          echo "<td>" . $row['dateExperience'] . "</td>";
-          echo "<td> CAD$ " . $row['total'] . ".00</td>";
-          echo <<<DETAILS
+         echo "<tr>";
+         echo "<td>" . $customer->getName() . "</td>";
+         echo "<td>" . $row['dateExperience'] . "</td>";
+         echo "<td> CAD$ " . $row['total'] . ".00</td>";
+         echo <<<DETAILS
                 <td>  
                    Number of people: {$customer->getNumOfPeople()} <br>
                    Time of the day: {$customer->getStringDayTime()}<br>
@@ -62,21 +62,21 @@ function retrivePendingOrders($conn, $userId){
                    Extra Info: {$customer->getExtraInfo()}<br><br>
                 </td>
                 DETAILS;
-          echo "<td><form class='form-horizontal' method='post' action='chef_pending_orders.php'>
+         echo "<td><form class='form-horizontal' method='post' action='chef_pending_orders.php'>
              <input name='orderID' type='hidden' value='" . $row['orderID'] . "'>
              <input type='submit' class='btn btn-danger' name='accept' value='Accept'>
              </form></td>";
-          echo "<td><form class='form-horizontal' method='post' action='chef_pending_orders.php'>
+         echo "<td><form class='form-horizontal' method='post' action='chef_pending_orders.php'>
                 <input name='orderID' type='hidden' value='" . $row['orderID'] . "'>
                 <input type='submit' class='btn btn-danger' name='reject' value='Reject'>
                 </form></td>";
-          echo "</tr>";
+         echo "</tr>";
        }
-       echo "</table></div>";
-       echo "</td></tr>";
-       echo "</fieldset></form></div></div></div> ";
+      echo "</table></div>";
+      echo "</td></tr>";
+      echo "</fieldset></form></div></div></div> ";
 
-       if (isset($_POST['accept'])) {
+      if (isset($_POST['accept'])) {
             $orderID = $conn->real_escape_string($_POST['orderID']);
             // Update the database to mark the order as accepted
             $updateQuery = "UPDATE orders SET statusOrder = '2' WHERE orderID = '$orderID'";
@@ -85,7 +85,7 @@ function retrivePendingOrders($conn, $userId){
                         alert("Order Accepted");
                         location="chef_accepted_orders.php";
                     </script>';
-        } elseif (isset($_POST['reject'])) {
+      } elseif (isset($_POST['reject'])) {
             $orderID = $conn->real_escape_string($_POST['orderID']);
             // Update the database to mark the order as canceled
             $updateQuery = "UPDATE orders SET statusOrder = '3' WHERE orderID = '$orderID'";
@@ -94,14 +94,15 @@ function retrivePendingOrders($conn, $userId){
                         alert("Order Rejected");
                         location="chef_pending_orders.php";
                     </script>';
-        }
+      }
 
-    }else{
-       echo <<<NOORDER
-             The user dont't have any pending order <br>
-             NOORDER;
-    }
- }
+
+   }else{
+      echo <<<NOORDER
+            The user dont't have any pending order <br>
+            NOORDER;
+   }
+}
 ?>
 
 

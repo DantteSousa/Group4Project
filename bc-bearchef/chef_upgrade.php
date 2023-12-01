@@ -1,11 +1,9 @@
 <?php
-// Include necessary files or configurations if needed
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
 include "views/helpers_HTML.php";
 
-// Start the session
 session_start();
 // Check if the user is logged in as a chef
 $user_type = 'chef';

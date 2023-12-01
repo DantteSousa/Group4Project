@@ -4,7 +4,6 @@ include 'views/helpers_user.php';
 include 'views/helpers_HTML.php';
 include 'class/retriveDB.php';
 
-// Start the session
 session_start();
 
 // Check if the user is logged in as a chef

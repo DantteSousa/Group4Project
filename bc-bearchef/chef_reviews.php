@@ -1,5 +1,4 @@
 <?php
-// Include necessary files or configurations if needed
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
