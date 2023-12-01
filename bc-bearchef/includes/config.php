@@ -126,7 +126,8 @@ if (!$tableExists) {
             chefID INT,
             dateExperience VARCHAR(255),
             statusOrder INT,
-            total INT
+            total INT,
+            paymentInfoID INT
     )";
 
     if ($conn->query($createTableQuery) === FALSE) {

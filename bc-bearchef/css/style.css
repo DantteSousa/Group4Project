@@ -564,6 +564,64 @@ caption h2{
     content: "\2605\2605\2605\2605\2605"; /* Display five filled stars */
 }
 
+/* Order page */
+.order-review h1{
+    color: #e44d26;
+    font-size: 25px;
+}
+
+.order-review h2{
+    color: orangered;
+    font-size: 20px;
+}
+
+/* Form payment */
+.form-payment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.form{
+    background-color: #ffeae5;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px; 
+    width: 500px;
+}
+
+input[type=text] {
+    width: 90%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.btn {
+    background-color: #e44d26;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 95%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+    align-self: center;
+}
+  
+.btn:hover {
+    background: rgb(143, 43, 6);
+    color:#fff;
+}
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {

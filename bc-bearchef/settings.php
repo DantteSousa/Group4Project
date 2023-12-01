@@ -1,5 +1,5 @@
 <?php
-
+include "views/helpers_HTML.php";
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';

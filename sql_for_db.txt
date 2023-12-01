@@ -41,7 +41,8 @@ CREATE TABLE orders (
             chefID INT,
             dateExperience VARCHAR(255),
             statusOrder INT,
-            total INT
+            total INT,
+            paymentInfoID INT
     );
 
 CREATE TABLE plate (

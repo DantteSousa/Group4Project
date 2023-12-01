@@ -36,7 +36,7 @@ function hero(){
 function howWorks(){
     echo <<<WORKS
     <section class="how-it-works" id="how-it-works">
-            <div class="container">
+            <div class="container-how-works">
                 <h2>How it Works</h2>
                 <div class="steps">
                     <div class="step">
