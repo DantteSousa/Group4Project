@@ -60,10 +60,12 @@ function order_body($conn, $order, $plate, $customer){
         $order->setCustomerID($GLOBALS['userID']);
         $order->setDateExperience($customer->getEventDay());
         $order->setStatus(0);
+        $order->setPlateID($plateID);
         $price = $plate->calculateUnitPlatePrice($customer->getNumOfPeople());
         $total = $order->calculateTotal($customer->getNumOfPeople(),$price);
         $order->setTotal($total);
         $order->makeOrder($conn);
+        
 
         echo <<<ORDERREVIEW
             <div class="order-review">
@@ -188,7 +190,26 @@ function validate_payment_form($conn, $order, $plate, $customer){
         $userID = $GLOBALS['userID'];
         $total = $order->getTotal();
         $payment = new PaymentInfo($userID, $fullName, $email, $address, $city, $state, $zip, $cardName, $cardNumber, $expMonth, $expYear, $cvv);
-        $order->updatePayment($conn, $payment->makePayment($conn, $total));
+        $payment->makePayment($conn, $total);
+
+        $query = "SELECT paymentInfoID FROM paymentinfo WHERE userID = '$userID' ORDER BY paymentInfoID DESC LIMIT 1;";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {            
+            if (mysqli_num_rows($result) > 0) {
+                // Fetch the row
+                $row = mysqli_fetch_assoc($result);
+                // Access the paymentID value
+                $paymentID = $row['paymentInfoID'];
+                $order->updatePayment($conn,$paymentID);
+            } else {
+                echo "No results found.";
+            }
+        } else {
+            // Handle the case where the query execution fails
+            echo "Error: " . mysqli_error($conn);
+        }
+        
     }
     
     return $errors;

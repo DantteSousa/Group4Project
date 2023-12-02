@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Database name
-$dbname = 'BC_bearchefsDB';
+$dbname = 'PUTAQMEPARIU';
 
 // Check if the database exists
 if (!mysqli_select_db($conn, $dbname)) {
@@ -127,7 +127,8 @@ if (!$tableExists) {
             dateExperience VARCHAR(255),
             statusOrder INT,
             total INT,
-            paymentInfoID INT
+            paymentInfoID INT,
+            plateID INT
     )";
 
     if ($conn->query($createTableQuery) === FALSE) {

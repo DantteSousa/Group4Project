@@ -187,7 +187,7 @@ function check_update_experience($conn){
     $customer->setNumOfPeople($numOfPeople);
     $customer->setDayTime($dayTime);
     $customer->setEventDay($eventDay);
-    $customer->setCusineType((int)$cusineType);
+    $customer->setCusineType($cusineType);
     $customer->setMealType($mealRangeType);
     $customer->setRestrictions($restrictions);
     $customer->setExtraInfo($extraInfo);

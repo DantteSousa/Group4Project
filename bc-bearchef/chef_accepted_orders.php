@@ -45,7 +45,7 @@ function retriveAcceptedOrders($conn, $userId){
 
        while ($row = $result->fetch_assoc()) {  
           $customer = retriveCustomer($conn,$row['customerID']);          
-          
+          $plate = retrivePlate($conn,$row['plateID']);
         echo "<tr>";
         echo "<td>" . $customer->getName() . "</td>";
         echo "<td>" . $row['dateExperience'] . "</td>";
@@ -55,7 +55,7 @@ function retriveAcceptedOrders($conn, $userId){
                 Number of people: {$customer->getNumOfPeople()} <br>
                 Time of the day: {$customer->getStringDayTime()}<br>
                 Stove Top Type: {$customer->getStringStoveTopType()}<br>
-                Plate Choosen: *COLOCAR O ID + O NOME DO PRATO* <br>
+                Plate Choosen: {$plate->getPlateName()} <br>
                 Restrictions: {$customer->doesHaveRestriction()}<br>
                 Extra Info: {$customer->getExtraInfo()}<br><br>
             </td>

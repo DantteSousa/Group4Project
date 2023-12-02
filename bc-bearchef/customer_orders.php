@@ -5,6 +5,7 @@ include 'views/helpers_user.php';
 include 'views/helpers_HTML.php';
 include 'class/retriveDB.php';
 
+
 session_start();
 
 $user_type = 'customer';
@@ -49,6 +50,7 @@ function seeOrders($conn, $userID){
             $customer = retriveCustomer($conn,$row['customerID']);
             $chef = retrieveChef($conn,$row['chefID']);
             $order = retriveOrders($conn,$row['orderID']);
+            $plate = retrivePlate($conn,$row['plateID']);
 
             echo "<tr>";
             echo "<td>" . $row['orderID'] . "</td>";
@@ -59,7 +61,7 @@ function seeOrders($conn, $userID){
                     Number of people: {$customer->getNumOfPeople()} <br>
                     Time of the day: {$customer->getStringDayTime()}<br>
                     Stove Top Type: {$customer->getStringStoveTopType()}<br>
-                    Plate Choosen: *COLOCAR O ID + O NOME DO PRATO* <br>
+                    Plate Choosen: {$plate->getPlateName()} <br>
                     Restrictions: {$customer->doesHaveRestriction()}<br>
                     Extra Info: {$customer->getExtraInfo()}<br><br>
                     </td>

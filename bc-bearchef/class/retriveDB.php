@@ -3,6 +3,7 @@
    include 'class/user_class.php';
    include 'class/customer_class.php';
    include 'class/order_class.php';
+   include 'class/plate.php';
 
    ////////////////////////////////////////////////////////////////////////////////////////////////
    //// Retrive CHEF from DB
@@ -458,5 +459,29 @@
 
       return $order;
    }
+
+   function retrivePlate($conn, $plateID) {
+      $select = "SELECT * FROM plate WHERE plateID = $plateID"; 
+      
+      $plate = new Plate();
+      
+      $result = mysqli_query($conn, $select);
+      if (!$result) {
+          // Handle the case where the query execution fails
+          echo "Error: " . mysqli_error($conn);
+      } else {
+          $row = mysqli_fetch_array($result);
+          $plate->setPlateID($row["plateID"]);
+          $plate->setPlateName($row["plateName"]);
+          $plate->setStarterMenu($row["starterMenu"]);
+          $plate->setFirstCourse($row["firstCourse"]); // Corrected the column name
+          $plate->setMainCourse($row["mainCourse"]);
+          $plate->setDessert($row["dessert"]);
+      }
+      
+      return $plate;
+  }
+  
+
 
 ?>

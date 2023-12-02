@@ -175,13 +175,12 @@ class PaymentInfo {
 
         // Retrieve the last inserted ID
         $lastInsertedID = mysqli_insert_id($connection);
-        echo "". $lastInsertedID ."";
+        
 
         // You may want to add error handling here
         if (mysqli_error($connection)) {
             echo "Error: " . mysqli_error($connection);
         }
-        return $lastInsertedID;
     }
 }
 

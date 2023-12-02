@@ -7,12 +7,20 @@ class Orders {
     private $status;
     private $total;
 
+    private $plateID;
+
 
     // Constructor
     public function __construct() {
         
     }
 
+    public function setPlateID($plateID) {
+        $this->plateID = $plateID;
+    }
+    public function getPlateID() {
+        return $this->plateID;
+    }
     // Getter and Setter for orderID
     public function getOrderID() {
         return $this->orderID;
@@ -91,14 +99,19 @@ class Orders {
 
     public function makeOrder($connection) {
 
+        if ($this->getOrderID()) {
+            return; // Skip order creation if the orderID is already set
+        }
+        
         $chefID = mysqli_real_escape_string($connection, $this->getChefID());
         $customerID = mysqli_real_escape_string($connection, $this->getCustomerID());
         $dateExperience = mysqli_real_escape_string($connection, $this->getDateExperience());
         $statusID = mysqli_real_escape_string($connection, $this->getStatus());
         $total = mysqli_real_escape_string($connection, $this->getTotal());
+        $plateID = mysqli_real_escape_string($connection, $this->getPlateID());
         
-        $query = "INSERT INTO orders (customerID, chefID, dateExperience, statusOrder, total, paymentID) 
-            VALUES ('$customerID', '$chefID', '$dateExperience', '$statusID', '$total', '')";
+        $query = "INSERT INTO orders (customerID, chefID, dateExperience, statusOrder, total, paymentInfoID, plateID) 
+            VALUES ('$customerID', '$chefID', '$dateExperience', '$statusID', '$total', '', '$plateID')";
 
         // Execute the query
         mysqli_query($connection, $query);
@@ -111,7 +124,7 @@ class Orders {
 
     public function updatePayment($connection, $paymentID){
         $userID = mysqli_real_escape_string($connection, $this->getCustomerID());
-        $stmt = $connection->prepare("UPDATE orders SET paymentID=? WHERE customerID=?");
+        $stmt = $connection->prepare("UPDATE orders SET paymentInfoID=? WHERE customerID=?");
             
         // Check if the statement was prepared successfully
         if (!$stmt) {
