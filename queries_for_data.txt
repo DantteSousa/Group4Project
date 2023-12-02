@@ -1,82 +1,82 @@
 -- User 1
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Alice', 'Johnson', 'alice.johnson@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '789 Elm St', '555-1111');
+VALUES ('Alice', 'Johnson', 'alice.johnson@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '789 Elm St', '5551111');
 
 -- User 2
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Bob', 'Williams', 'bob.williams@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '101 Pine St', '555-2222');
+VALUES ('Bob', 'Williams', 'bob.williams@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '101 Pine St', '5552222');
 
 -- User 3
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Charlie', 'Smith', 'charlie.smith@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '202 Oak St', '555-3333');
+VALUES ('Charlie', 'Smith', 'charlie.smith@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '202 Oak St', '5553333');
 
 -- User 4
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('David', 'Davis', 'david.davis@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '404 Birch St', '555-4444');
+VALUES ('David', 'Davis', 'david.davis@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '404 Birch St', '5554444');
 
 -- User 5
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Eva', 'Evans', 'eva.evans@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '505 Cedar St', '555-5555');
+VALUES ('Eva', 'Evans', 'eva.evans@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '505 Cedar St', '5555555');
 
 -- User 6
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Frank', 'Franklin', 'frank.franklin@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '606 Pine St', '555-6666');
+VALUES ('Frank', 'Franklin', 'frank.franklin@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '606 Pine St', '5556666');
 
 -- User 7
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Grace', 'Gray', 'grace.gray@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '707 Maple St', '555-7777');
+VALUES ('Grace', 'Gray', 'grace.gray@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '707 Maple St', '5557777');
 
 -- User 8
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Henry', 'Harrison', 'henry.harrison@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '808 Oak St', '555-8888');
+VALUES ('Henry', 'Harrison', 'henry.harrison@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '808 Oak St', '5558888');
 
 -- User 9
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Ivy', 'Irwin', 'ivy.irwin@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '909 Birch St', '555-9999');
+VALUES ('Ivy', 'Irwin', 'ivy.irwin@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '909 Birch St', '5559999');
 
 -- User 10
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Jack', 'Johnson', 'jack.johnson@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1010 Elm St', '555-1010');
+VALUES ('Jack', 'Johnson', 'jack.johnson@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1010 Elm St', '5551010');
 
 -- User 11
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Katie', 'Keller', 'katie.keller@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1111 Pine St', '555-1111');
+VALUES ('Katie', 'Keller', 'katie.keller@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1111 Pine St', '5551111');
 
 -- User 12
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Leo', 'Lopez', 'leo.lopez@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1212 Cedar St', '555-1212');
+VALUES ('Leo', 'Lopez', 'leo.lopez@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1212 Cedar St', '5551212');
 
 -- User 13
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Mia', 'Miller', 'mia.miller@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1313 Birch St', '555-1313');
+VALUES ('Mia', 'Miller', 'mia.miller@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1313 Birch St', '5551313');
 
 -- User 14
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Nathan', 'Nelson', 'nathan.nelson@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1414 Oak St', '555-1414');
+VALUES ('Nathan', 'Nelson', 'nathan.nelson@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1414 Oak St', '5551414');
 
 -- User 15
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Olivia', 'Owens', 'olivia.owens@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1515 Maple St', '555-1515');
+VALUES ('Olivia', 'Owens', 'olivia.owens@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1515 Maple St', '5551515');
 
 -- User 16
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Paul', 'Perry', 'paul.perry@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1616 Pine St', '555-1616');
+VALUES ('Paul', 'Perry', 'paul.perry@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1616 Pine St', '5551616');
 
 -- User 17
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Quinn', 'Quinlan', 'quinn.quinlan@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1717 Elm St', '555-1717');
+VALUES ('Quinn', 'Quinlan', 'quinn.quinlan@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1717 Elm St', '5551717');
 
 -- User 18
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Ryan', 'Reed', 'ryan.reed@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1818 Birch St', '555-1818');
+VALUES ('Ryan', 'Reed', 'ryan.reed@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '1818 Birch St', '5551818');
 
 -- User 19
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Sara', 'Stone', 'sara.stone@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1919 Cedar St', '555-1919');
+VALUES ('Sara', 'Stone', 'sara.stone@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'chef', '1919 Cedar St', '5551919');
 
 -- User 20
 INSERT INTO user_form (name, lastName, email, password, user_type, address, phone)
-VALUES ('Tom', 'Taylor', 'tom.taylor@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '2020 Oak St', '555-202');
+VALUES ('Tom', 'Taylor', 'tom.taylor@example.com', '$2y$10$0pNN6.GDdTyF7/TxUWyo7eBE0WK1uyWpd1sC2q6oYQPpXHPeWnZC6', 'customer', '2020 Oak St', '555202');
 
 -- Chef 1
 INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
@@ -110,7 +110,6 @@ VALUES (19, 'Dessert Connoisseur', 'Sweet tooth expert creating delightful desse
 INSERT INTO chef (chefID, specialities, description, education, plates, isPremium)
 VALUES (20, 'Gourmet Fusion', 'Innovative chef fusing flavors from around the world for a unique dining experience.', 'International Culinary Center', 'Truffle Risotto, Fusion Sushi', false);
 
-===============================================================================================================================================================================================
 
 -- Plate 1
 INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
@@ -176,3 +175,60 @@ VALUES (19, 3, 0, 'Flavorful Fusion Journey', 'Mango-Papaya Spring Rolls', 'Tom 
 INSERT INTO plate (chefID, cusineType, mealRangeType, plateName, starterMenu, firstCourse, mainCourse, dessert)
 VALUES (20, 5, 1, 'Grilled Seafood Extravaganza', 'Grilled Octopus', 'Seafood Chowder', 'Grilled Lobster Tails', 'Key Lime Pie');
 
+-- Review 1
+INSERT INTO review (customerID, chefID, dateMsg, nameCustomer, reviewDescription, rating, anonymus)
+VALUES (2, 1, '2023-12-01', 'Alice', 'Amazing Italian Feast! Loved every dish, especially the Tiramisu.', 5, 0);
+
+-- Review 4
+INSERT INTO review (customerID, chefID, dateMsg, nameCustomer, reviewDescription, rating, anonymus)
+VALUES (4, 3, '2023-11-25', 'Bob', 'Asian Delights were a hit at my dinner party. Guests couldnt stop raving about the flavors.', 4, 1);
+
+-- Review 8
+INSERT INTO review (customerID, chefID, dateMsg, nameCustomer, reviewDescription, rating, anonymus)
+VALUES (8, 7, '2023-12-02', 'Charlie', 'French Gourmet Experience exceeded expectations. Coq au Vin was outstanding!', 5, 0);
+
+-- Review 10
+INSERT INTO review (customerID, chefID, dateMsg, nameCustomer, reviewDescription, rating, anonymus)
+VALUES (10, 9, '2023-12-05', 'David', 'Mediterranean Delicacies were a treat. The Paella was a crowd-pleaser.', 4, 1);
+
+-- Review 14
+INSERT INTO review (customerID, chefID, dateMsg, nameCustomer, reviewDescription, rating, anonymus)
+VALUES (14, 13, '2023-12-10', 'Eva', 'Vegan Extravaganza was a pleasant surprise. Each dish was flavorful and satisfying.', 5, 0);
+
+-- Review 18
+INSERT INTO review (customerID, chefID, dateMsg, nameCustomer, reviewDescription, rating, anonymus)
+VALUES (18, 17, '2023-12-15', 'Frank', 'BBQ Bonanza was a hit at our outdoor gathering. Smoked Wings were a favorite.', 4, 1);
+
+-- Review 20
+INSERT INTO review (customerID, chefID, dateMsg, nameCustomer, reviewDescription, rating, anonymus)
+VALUES (20, 19, '2023-12-12', 'Grace', 'Sweet Indulgence was the perfect ending to our meal. Desserts were heavenly.', 5, 0);
+
+-- Customer 2
+INSERT INTO customer (customerID, numOfPeople, dayTime, eventDay, cusineType, stoveTopType, numBurners, oven, mealType, restrictions, typeRestrictions, extraInfo)
+VALUES (2, 3, 1, '2023-12-15', 2, 1, 4, true, 0, false, NULL, 'Looking for a delicious family dinner.');
+
+-- Customer 4
+INSERT INTO customer (customerID, numOfPeople, dayTime, eventDay, cusineType, stoveTopType, numBurners, oven, mealType, restrictions, typeRestrictions, extraInfo)
+VALUES (4, 7, 0, '2023-11-30', 4, 0, 2, false, 1, true, 'Vegetarian', 'Hosting a vegetarian dinner party.');
+
+-- Customer 6
+INSERT INTO customer (customerID, numOfPeople, dayTime, eventDay, cusineType, stoveTopType, numBurners, oven, mealType, restrictions, typeRestrictions, extraInfo)
+VALUES (6, 2, 1, '2023-12-10', 1, 2, 6, true, 2, false, NULL, 'Craving a cozy dinner for two.');
+
+-- Customer 8
+INSERT INTO customer (customerID, numOfPeople, dayTime, eventDay, cusineType, stoveTopType, numBurners, oven, mealType, restrictions, typeRestrictions, extraInfo)
+VALUES (8, 13, 0, '2023-12-25', 3, 1, 4, true, 0, true, 'Allergies: Gluten, Nuts', 'Planning a festive family gathering with dietary restrictions.');
+
+-- Customer 10
+INSERT INTO customer (customerID, numOfPeople, dayTime, eventDay, cusineType, stoveTopType, numBurners, oven, mealType, restrictions, typeRestrictions, extraInfo)
+VALUES (10, 3, 1, '2023-12-05', 5, 0, 2, false, 2, false, NULL, 'Exploring exotic cuisines for a small gathering.');
+
+-- ... (continue with similar INSERT statements for customers 12 to 20)
+
+-- Customer 18
+INSERT INTO customer (customerID, numOfPeople, dayTime, eventDay, cusineType, stoveTopType, numBurners, oven, mealType, restrictions, typeRestrictions, extraInfo)
+VALUES (18, 7, 0, '2023-12-20', 0, 2, 6, true, 1, true, 'Allergies: Dairy', 'Hosting a dinner with dietary restrictions.');
+
+-- Customer 20
+INSERT INTO customer (customerID, numOfPeople, dayTime, eventDay, cusineType, stoveTopType, numBurners, oven, mealType, restrictions, typeRestrictions, extraInfo)
+VALUES (20, 2, 1, '2023-12-12', 2, 1, 4, true, 0, false, NULL, 'Craving a special dinner for two.');
