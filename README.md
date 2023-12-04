@@ -2,7 +2,7 @@
 Students
 * Dantte Ferreira S de Sousa
 * Erica Zasimowicz Pinto Calaca
-* Elton Evancelista
+* Elton Evangelista
 * Alejandro Cruz Ceja
 * Nicolas Alejandro Abrad
 ## Prerequisites
