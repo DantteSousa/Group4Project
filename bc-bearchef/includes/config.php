@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Database name
-$dbname = 'PUTAQMEPARIU';
+$dbname = 'bc_database';
 
 // Check if the database exists
 if (!mysqli_select_db($conn, $dbname)) {

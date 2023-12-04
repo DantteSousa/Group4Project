@@ -3,7 +3,6 @@
 include 'includes/config.php';
 include 'views/helpers_user.php';
 include 'class/retriveDB.php';
-include 'class/plate.php';
 include "views/helpers_HTML.php";
 
 session_start();
