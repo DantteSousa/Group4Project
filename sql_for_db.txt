@@ -15,7 +15,7 @@ CREATE TABLE chef (
 	description TEXT,
 	education VARCHAR(255),
 	plates TEXT,
-	isPremium TINYINT(1)
+	isPremium BOOLEAN
 	);
 
 CREATE TABLE customer (
@@ -26,9 +26,9 @@ CREATE TABLE customer (
         cusineType INT,
         stoveTopType INT,
         numBurners INT,
-        oven TINYINT(1),
+        oven BOOLEAN,
         mealType INT,
-        restrictions TINYINT(1),
+        restrictions BOOLEAN,
         typeRestrictions TEXT,
         extraInfo TEXT
 	);
