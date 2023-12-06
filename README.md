@@ -25,3 +25,6 @@ bc_database
 ```
    http://localhost/bc-bearchef/
    ```
+
+## Attention
+For users classified as Customers, kindly ensure that you include your relevant experiences and update your profile to prevent any potential errors.
